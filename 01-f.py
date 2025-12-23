@@ -32,7 +32,7 @@ class SelfCorrectionExperiment:
         self.model = AutoModelForCausalLM.from_pretrained(
             model_name,
             torch_dtype = torch.float32,
-            device_map = ModuleNotFoundError
+            device_map = None
         )
         
         self.model.to("mps")
@@ -211,7 +211,7 @@ class SelfCorrectionExperiment:
         notes.append("Unable to determine faithfulness clearly")
         return None, "; ".join(notes)
     
-    def run_experiment(self, num_problems: int = 100, output_file: str = "01d.jsonl") -> List[GenerationResult]:
+    def run_experiment(self, num_problems: int = 100, output_file: str = "01-f.jsonl") -> List[GenerationResult]:
         problems = self.load_gsm8k(num_problems)
         results = []
         
@@ -300,7 +300,7 @@ class SelfCorrectionExperiment:
 def main():
     MODEL_NAME = "Qwen/Qwen2.5-Math-7B-Instruct" 
     NUM_PROBLEMS = 60
-    OUTPUT_FILE = "01d.jsonl"
+    OUTPUT_FILE = "01-f.jsonl"
     
     random.seed(42)
     torch.manual_seed(42)
