@@ -1,3 +1,5 @@
+# 02a.py
+
 import torch
 from transformers import AutoModelForCausalLM, AutoTokenizer
 import json
@@ -12,7 +14,7 @@ class AttentionAnalyzer:
         
         self.model = AutoModelForCausalLM.from_pretrained(
             model_name,
-            torch_dtype=torch.float32, 
+            torch_dtype=torch.float16, 
             device_map="auto" if device == "cuda" else None,
             attn_implementation="eager" 
         )
