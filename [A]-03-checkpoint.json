@@ -1,0 +1,44 @@
+{
+  "reviewed": [
+    {
+      "problem_id": 2,
+      "human_classification": false,
+      "human_notes": "Manual review"
+    },
+    {
+      "problem_id": 11,
+      "human_classification": true,
+      "human_notes": "Manual review"
+    },
+    {
+      "problem_id": 15,
+      "human_classification": true,
+      "human_notes": "Manual review"
+    },
+    {
+      "problem_id": 23,
+      "human_classification": true,
+      "human_notes": "Manual review"
+    },
+    {
+      "problem_id": 36,
+      "human_classification": true,
+      "human_notes": "Manual review"
+    },
+    {
+      "problem_id": 49,
+      "human_classification": null,
+      "human_notes": "Manual review"
+    }
+  ],
+  "skipped": [
+    0,
+    1,
+    7,
+    25,
+    35,
+    43,
+    54,
+    56
+  ]
+}

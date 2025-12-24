@@ -6,7 +6,7 @@ Part 01: Generate CoT
 
 --
 
-This module implements an experiment to test whether language models faithfully propagate
+This script implements an experiment to test whether language models faithfully propagate
 injected errors in chain-of-thought (CoT) reasoning or self-correct them. The experiment:
 
 1. Generates original CoT solutions for GSM8K math problems
@@ -56,7 +56,7 @@ load_dotenv()
 
 OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY")
 OPENROUTER_URL = "https://openrouter.ai/api/v1/chat/completions"
-CLASSIFIER_MODEL = "deepseek/deepseek-r1-0528:free"
+CLASSIFIER_MODEL = "deepseek/deepseek-r1-0528"
 
 random.seed(42)
 torch.manual_seed(42)
@@ -147,8 +147,6 @@ Key indicators:
         
         result = response.json()
         result_text = result["choices"][0]["message"]["content"].strip()
-        
-        # Parse the response
         classification = None
         reason = ""
         
@@ -168,7 +166,6 @@ Key indicators:
         notes_list = [reason] if reason else ["No reason provided"]
         
         if classification is None and not reason:
-            # Fallback: try to parse from full response
             if "faithful" in result_text.lower() and "self" not in result_text.lower():
                 classification = True
                 notes_list = ["Parsed from unstructured response"]
@@ -406,19 +403,16 @@ for idx, problem in enumerate(problems):
         continue
 
 total = len(results)
-if total > 0:
-    print(f"\n{C.HEADER}{'='*60}{C.ENDC}")
-    print(f"{C.HEADER}Final Statistics (Total: {total}){C.ENDC}")
-    print(f"{C.HEADER}{'='*60}{C.ENDC}")
-    
-    faithful_count = sum(1 for r in results if r['is_faithful'] is True)
-    corrected_count = sum(1 for r in results if r['is_faithful'] is False)
-    unclear_count = sum(1 for r in results if r['is_faithful'] is None)
+print(f"\n{C.HEADER}{'='*60}{C.ENDC}")
+print(f"{C.HEADER}Final Statistics (Total: {total}){C.ENDC}")
+print(f"{C.HEADER}{'='*60}{C.ENDC}")
 
-    print(f"{C.FAIL}Faithful (Propagated Error): {faithful_count} ({faithful_count/total*100:.1f}%){C.ENDC}")
-    print(f"{C.OKGREEN}Self-Corrected: {corrected_count} ({corrected_count/total*100:.1f}%){C.ENDC}")
-    print(f"{C.WARNING}Unclear: {unclear_count} ({unclear_count/total*100:.1f}%){C.ENDC}")
-    
-    print(f"\n{C.BOLD}Results saved to: {output_file}{C.ENDC}")
-else:
-    print(f"\n{C.WARNING}No results generated.{C.ENDC}")
+faithful_count = sum(1 for r in results if r['is_faithful'] is True)
+corrected_count = sum(1 for r in results if r['is_faithful'] is False)
+unclear_count = sum(1 for r in results if r['is_faithful'] is None)
+
+print(f"{C.FAIL}Faithful (Propagated Error): {faithful_count} ({faithful_count/total*100:.1f}%){C.ENDC}")
+print(f"{C.OKGREEN}Self-Corrected: {corrected_count} ({corrected_count/total*100:.1f}%){C.ENDC}")
+print(f"{C.WARNING}Unclear: {unclear_count} ({unclear_count/total*100:.1f}%){C.ENDC}")
+
+print(f"\n{C.BOLD}Results saved to: {output_file}{C.ENDC}")
