@@ -1,7 +1,7 @@
 """
 [B]-01 analyze_attention.py:
 
-Phase B: Mechanistic EDA - COMPREHENSIVE VERSION
+Phase B: Mechanistic EDA
 Part 05: Complete Attention & Residual Stream Analysis
 
 This script combines position-aware temporal analysis with residual stream
@@ -50,7 +50,6 @@ EARLY_TOKENS = 10  # First N tokens after error (computational phase)
 LATE_START = 20    # Start position for late tokens (summary phase)
 LATE_TOKENS = 30   # Number of late tokens to analyze
 
-
 class Logger:
     """Logs output to both console and file, stripping color codes from file."""
     def __init__(self, filename):
@@ -77,7 +76,7 @@ class ComprehensiveAnalyzer:
         
         self.model = AutoModelForCausalLM.from_pretrained(
             model_name,
-            torch_dtype=torch.bfloat16 if device == "mps" else (torch.float16 if device == "cuda" else torch.float32),
+            dtype=torch.bfloat16 if device == "mps" else (torch.float16 if device == "cuda" else torch.float32),
             device_map="auto" if device == "cuda" else None,
             attn_implementation="eager",
             output_hidden_states=True
@@ -334,8 +333,8 @@ class ComprehensiveAnalyzer:
         corrected_problems = [p for p in problems if p['classification'] is False]
         
         print(f"{C.BOLD}Dataset Composition:{C.ENDC}")
-        print(f"  {C.FAIL}Faithful (Propagated Error):{C.ENDC} {len(faithful_problems)}")
-        print(f"  {C.OKGREEN}Self-Corrected:{C.ENDC} {len(corrected_problems)}")
+        print(f"  Faithful: {len(faithful_problems)}")
+        print(f"  Self-Corrected: {len(corrected_problems)}")
         print(f"  Ratio: {len(faithful_problems)/len(corrected_problems):.2f}:1")
         print()
         
@@ -450,18 +449,18 @@ def compute_statistics(faithful_data, corrected_data, metric_name):
 def print_metric_stats(stats):
     """Pretty print statistics for one metric."""
     print(f"\n{C.BOLD}{stats['metric']}:{C.ENDC}")
-    print(f"  {C.FAIL}Faithful:{C.ENDC} {stats['faithful_mean']:.6f} ± {stats['faithful_se']:.6f} (n={stats['faithful_n']})")
-    print(f"  {C.OKGREEN}Corrected:{C.ENDC} {stats['corrected_mean']:.6f} ± {stats['corrected_se']:.6f} (n={stats['corrected_n']})")
+    print(f"  Faithful: {stats['faithful_mean']:.6f} ± {stats['faithful_se']:.6f} (n={stats['faithful_n']})")
+    print(f"  Corrected: {stats['corrected_mean']:.6f} ± {stats['corrected_se']:.6f} (n={stats['corrected_n']})")
     print(f"  Δ: {stats['difference']:+.6f}, Ratio: {stats['ratio']:.2f}x, d: {stats['cohens_d']:.3f}, p: {stats['p_value']:.4f}", end="")
     
     if stats['p_value'] < 0.001:
-        print(f" {C.OKGREEN}***{C.ENDC}")
+        print(f" ***")
     elif stats['p_value'] < 0.01:
-        print(f" {C.OKGREEN}**{C.ENDC}")
+        print(f" **")
     elif stats['p_value'] < 0.05:
-        print(f" {C.OKGREEN}*{C.ENDC}")
+        print(f" *")
     else:
-        print(f" {C.WARNING}n.s.{C.ENDC}")
+        print(f" n.s.")
 
 
 def main():
@@ -486,17 +485,17 @@ def main():
         
         # Statistical Analysis
         print(f"\n{C.HEADER}{'='*80}{C.ENDC}")
-        print(f"{C.HEADER}Statistical Analysis - All Metrics{C.ENDC}")
+        print(f"{C.HEADER}Statistical Analysis{C.ENDC}")
         print(f"{C.HEADER}{'='*80}{C.ENDC}")
         
         metrics = [
             ('backward_overall', 'Backward Attention (Overall)'),
-            ('backward_early', 'Backward Attention (Early - Computational Phase)'),
-            ('backward_late', 'Backward Attention (Late - Summary Phase)'),
-            ('backward_weighted', 'Backward Attention (Weighted - Decay)'),
+            ('backward_early', 'Backward Attention (Early)'),
+            ('backward_late', 'Backward Attention (Late)'),
+            ('backward_weighted', 'Backward Attention (Weighted)'),
             ('first_token_attention', 'First Token Attention'),
             ('last_token_attention', 'Last Token Attention'),
-            ('error_context_attention', 'Error Context Attention (Forward)'),
+            ('error_context_attention', 'Error Context Attention'),
             ('residual_stream_ratio', 'Residual Stream Ratio'),
             ('error_attention_entropy', 'Error Attention Entropy')
         ]
@@ -512,134 +511,12 @@ def main():
                 all_stats[metric_key] = stats_result
                 print_metric_stats(stats_result)
         
-        # === INTERPRETATION ===
-        print(f"\n{C.HEADER}{'='*80}{C.ENDC}")
-        print(f"{C.HEADER}Key Findings & Interpretation{C.ENDC}")
-        print(f"{C.HEADER}{'='*80}{C.ENDC}\n")
-        
-        # 1. Early vs Late temporal analysis
-        if 'backward_early' in all_stats and 'backward_late' in all_stats:
-            early = all_stats['backward_early']
-            late = all_stats['backward_late']
-            
-            print(f"{C.BOLD}1. Temporal Pattern (Early vs Late Attention):{C.ENDC}")
-            print(f"   Early (computational): F={early['faithful_mean']:.6f}, C={early['corrected_mean']:.6f}")
-            print(f"   Late (summary): F={late['faithful_mean']:.6f}, C={late['corrected_mean']:.6f}")
-            
-            if early['p_value'] < 0.05:
-                if early['difference'] < 0:
-                    print(f"   {C.OKGREEN}✓{C.ENDC} Faithful models show LOWER early attention")
-                    print(f"   → They ignore errors during computation")
-                else:
-                    print(f"   {C.WARNING}○{C.ENDC} Faithful models show HIGHER early attention")
-                    print(f"   → They read errors but propagate anyway")
-            
-            # Check decay pattern
-            f_decay = early['faithful_mean'] - late['faithful_mean']
-            c_decay = early['corrected_mean'] - late['corrected_mean']
-            print(f"\n   Attention decay: F={f_decay:+.6f}, C={c_decay:+.6f}")
-        
-        # 2. Error contextual integration
-        if 'error_context_attention' in all_stats:
-            eca = all_stats['error_context_attention']
-            print(f"\n{C.BOLD}2. Error Context Attention (Error → Context):{C.ENDC}")
-            if eca['p_value'] < 0.05:
-                if eca['difference'] > 0:
-                    print(f"   {C.OKGREEN}✓{C.ENDC} Faithful errors attend MORE to context (p={eca['p_value']:.3f})")
-                    print(f"   → Error gets integrated into representation")
-                else:
-                    print(f"   {C.WARNING}○{C.ENDC} Corrected errors attend MORE to context")
-            else:
-                print(f"   {C.OKCYAN}○{C.ENDC} Similar contextual attention (p={eca['p_value']:.3f})")
-        
-        # 3. CRITICAL: Residual stream
-        if 'residual_stream_ratio' in all_stats:
-            rsr = all_stats['residual_stream_ratio']
-            print(f"\n{C.BOLD}3. Residual Stream Effects (CRITICAL FOR PARADOX):{C.ENDC}")
-            if rsr['p_value'] < 0.05:
-                if rsr['difference'] > 0:
-                    print(f"   {C.OKGREEN}✓✓✓ PARADOX RESOLVED!{C.ENDC}")
-                    print(f"   → Faithful errors have STRONGER residual presence")
-                    print(f"   → F={rsr['faithful_mean']:.3f} vs C={rsr['corrected_mean']:.3f} (p={rsr['p_value']:.4f})")
-                    print(f"   → Effect size: {rsr['cohens_d']:.3f}")
-                    print(f"\n   {C.BOLD}Explanation:{C.ENDC}")
-                    print(f"   • Low backward attention = not actively inspecting")
-                    print(f"   • High residual ratio = error baked into representation")
-                    print(f"   • Propagation via residual stream, NOT attention!")
-                else:
-                    print(f"   {C.WARNING}○ Unexpected: Corrected errors stronger in residual{C.ENDC}")
-            else:
-                print(f"   {C.OKCYAN}○ No significant residual difference (p={rsr['p_value']:.3f}){C.ENDC}")
-                print(f"   → Paradox remains unresolved")
-        
-        # 4. Entropy analysis
-        if 'error_attention_entropy' in all_stats:
-            entropy = all_stats['error_attention_entropy']
-            print(f"\n{C.BOLD}4. Attention Entropy at Error:{C.ENDC}")
-            if entropy['p_value'] < 0.05:
-                if entropy['difference'] > 0:
-                    print(f"   {C.OKGREEN}✓{C.ENDC} Faithful errors have HIGHER entropy")
-                    print(f"   → More diffuse attention = better integration")
-                else:
-                    print(f"   {C.OKGREEN}✓{C.ENDC} Faithful errors have LOWER entropy")
-                    print(f"   → More focused attention = selective integration")
-        
-        # === SUMMARY ===
-        print(f"\n{C.HEADER}{'='*80}{C.ENDC}")
-        print(f"{C.HEADER}SUMMARY: The Paradox Explained{C.ENDC}")
-        print(f"{C.HEADER}{'='*80}{C.ENDC}\n")
-        
-        print(f"{C.BOLD}Original Paradox:{C.ENDC}")
-        print(f"  • Intervention study: Faithful models have HIGH causal dependence on errors")
-        print(f"  • Attention study: Faithful models have LOW backward attention to errors")
-        print(f"  • How can they depend on something they don't look at?\n")
-        
-        if 'residual_stream_ratio' in all_stats and all_stats['residual_stream_ratio']['p_value'] < 0.05:
-            rsr = all_stats['residual_stream_ratio']
-            if rsr['difference'] > 0:
-                print(f"{C.OKGREEN}✓ RESOLUTION CONFIRMED:{C.ENDC}")
-                print(f"  1. Errors leave strong residual stream signatures")
-                print(f"  2. Future tokens inherit these corrupted representations")
-                print(f"  3. No explicit backward attention needed")
-                print(f"  4. Propagation is IMPLICIT through the residual stream\n")
-                print(f"{C.BOLD}Mechanism:{C.ENDC}")
-                print(f"  • Faithful models: Error → Residual Stream → Passive Inheritance")
-                print(f"  • Self-corrected models: Error → Inspection (high attention) → Rejection\n")
-                print(f"{C.BOLD}This explains:{C.ENDC}")
-                print(f"  ✓ Why intervention has large effect (breaks residual stream)")
-                print(f"  ✓ Why attention is low (no need to look back)")
-                print(f"  ✓ Why early attention matters (sets up residual corruption)")
-            else:
-                print(f"{C.WARNING}○ PARTIAL RESOLUTION:{C.ENDC}")
-                print(f"  • Residual stream shows opposite pattern")
-                print(f"  • May need deeper investigation (activation patching, etc.)")
-        else:
-            print(f"{C.WARNING}○ PARADOX UNRESOLVED:{C.ENDC}")
-            print(f"  • No significant residual stream difference")
-            print(f"  • Alternative hypotheses to explore:")
-            print(f"    1. Different layer analysis (early vs late layers)")
-            print(f"    2. Activation patching to trace information flow")
-            print(f"    3. Value/key/query decomposition")
-            print(f"    4. MLP activations (bypassing attention entirely)")
-        
         print(f"\n{C.HEADER}{'='*80}{C.ENDC}")
         print(f"{C.BOLD}Files Saved:{C.ENDC}")
-        print(f"  • {OUTPUT_FILE} (complete metrics)")
-        print(f"  • {LOG_FILE} (this analysis)")
-        print(f"\n{C.BOLD}Next Steps:{C.ENDC}")
-        if 'residual_stream_ratio' in all_stats and all_stats['residual_stream_ratio']['p_value'] < 0.05:
-            print(f"  ✓ Mechanism identified! Consider:")
-            print(f"    - Activation patching to confirm causal path")
-            print(f"    - Layer-wise analysis to find critical layer")
-            print(f"    - Probing for error representations")
-        else:
-            print(f"  → Need deeper mechanistic investigation:")
-            print(f"    - Analyze MLP activations (not just attention)")
-            print(f"    - Try different layer ranges")
-            print(f"    - Consider model-specific architectures")
+        print(f"  • {OUTPUT_FILE}")
+        print(f"  • {LOG_FILE}")
         
         print(f"\n{C.OKGREEN}Analysis complete!{C.ENDC}")
-        print(f"Execution time: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
         
     finally:
         sys.stdout = logger.terminal
