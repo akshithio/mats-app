@@ -35,7 +35,6 @@ class C:
     BOLD = '\033[1m'
     UNDERLINE = '\033[4m'
 
-# Configuration
 MODEL_NAME = "Qwen/Qwen2.5-Math-7B-Instruct"
 INPUT_FILE = "[A].jsonl"
 OUTPUT_FILE = "[B]-01-output.json"

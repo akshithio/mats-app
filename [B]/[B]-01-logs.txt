@@ -1,5 +1,5 @@
 Comprehensive Mechanistic Analysis Log
-Generated: 2025-12-25 00:10:39
+Generated: 2025-12-25 13:24:43
 ================================================================================
 
 Loading model: Qwen/Qwen2.5-Math-7B-Instruct on mps...
@@ -13,7 +13,7 @@ Loading dataset from [A].jsonl...
 Loaded 278 problems
 
 Dataset Composition:
-  Faithful (Propagated Error): 169
+  Faithful: 169
   Self-Corrected: 109
   Ratio: 1.55:1
 
@@ -65,7 +65,7 @@ Token Position Diagnostics:
 Saving results to [B]-01-output.json...
 
 ================================================================================
-Statistical Analysis - All Metrics
+Statistical Analysis
 ================================================================================
 
 Backward Attention (Overall):
@@ -73,17 +73,17 @@ Backward Attention (Overall):
   Corrected: 0.007845 ± 0.000398 (n=107)
   Δ: -0.005384, Ratio: 0.31x, d: -1.971, p: 0.0000 ***
 
-Backward Attention (Early - Computational Phase):
+Backward Attention (Early):
   Faithful: 0.004429 ± 0.000199 (n=164)
   Corrected: 0.017348 ± 0.000939 (n=107)
   Δ: -0.012920, Ratio: 0.26x, d: -2.014, p: 0.0000 ***
 
-Backward Attention (Late - Summary Phase):
+Backward Attention (Late):
   Faithful: 0.001607 ± 0.000082 (n=162)
   Corrected: 0.004606 ± 0.000308 (n=106)
   Δ: -0.002999, Ratio: 0.35x, d: -1.393, p: 0.0000 ***
 
-Backward Attention (Weighted - Decay):
+Backward Attention (Weighted):
   Faithful: 0.005290 ± 0.000244 (n=164)
   Corrected: 0.022201 ± 0.001181 (n=107)
   Δ: -0.016911, Ratio: 0.24x, d: -2.102, p: 0.0000 ***
@@ -98,7 +98,7 @@ Last Token Attention:
   Corrected: 0.003409 ± 0.000355 (n=107)
   Δ: -0.002312, Ratio: 0.32x, d: -0.920, p: 0.0000 ***
 
-Error Context Attention (Forward):
+Error Context Attention:
   Faithful: 0.003090 ± 0.000073 (n=164)
   Corrected: 0.003511 ± 0.000095 (n=107)
   Δ: -0.000421, Ratio: 0.88x, d: -0.441, p: 0.0005 ***
@@ -114,69 +114,8 @@ Error Attention Entropy:
   Δ: +115.494596, Ratio: 3.95x, d: 1.348, p: 0.0000 ***
 
 ================================================================================
-Key Findings & Interpretation
-================================================================================
-
-1. Temporal Pattern (Early vs Late Attention):
-   Early (computational): F=0.004429, C=0.017348
-   Late (summary): F=0.001607, C=0.004606
-   ✓ Faithful models show LOWER early attention
-   → They ignore errors during computation
-
-   Attention decay: F=+0.002821, C=+0.012742
-
-2. Error Context Attention (Error → Context):
-   ○ Corrected errors attend MORE to context
-
-3. Residual Stream Effects (CRITICAL FOR PARADOX):
-   ✓✓✓ PARADOX RESOLVED!
-   → Faithful errors have STRONGER residual presence
-   → F=1.051 vs C=0.991 (p=0.0000)
-   → Effect size: 1.189
-
-   Explanation:
-   • Low backward attention = not actively inspecting
-   • High residual ratio = error baked into representation
-   • Propagation via residual stream, NOT attention!
-
-4. Attention Entropy at Error:
-   ✓ Faithful errors have HIGHER entropy
-   → More diffuse attention = better integration
-
-================================================================================
-SUMMARY: The Paradox Explained
-================================================================================
-
-Original Paradox:
-  • Intervention study: Faithful models have HIGH causal dependence on errors
-  • Attention study: Faithful models have LOW backward attention to errors
-  • How can they depend on something they don't look at?
-
-✓ RESOLUTION CONFIRMED:
-  1. Errors leave strong residual stream signatures
-  2. Future tokens inherit these corrupted representations
-  3. No explicit backward attention needed
-  4. Propagation is IMPLICIT through the residual stream
-
-Mechanism:
-  • Faithful models: Error → Residual Stream → Passive Inheritance
-  • Self-corrected models: Error → Inspection (high attention) → Rejection
-
-This explains:
-  ✓ Why intervention has large effect (breaks residual stream)
-  ✓ Why attention is low (no need to look back)
-  ✓ Why early attention matters (sets up residual corruption)
-
-================================================================================
 Files Saved:
-  • [B]-01-output.json (complete metrics)
-  • [B]-01-logs.txt (this analysis)
-
-Next Steps:
-  ✓ Mechanism identified! Consider:
-    - Activation patching to confirm causal path
-    - Layer-wise analysis to find critical layer
-    - Probing for error representations
+  • [B]-01-output.json
+  • [B]-01-logs.txt
 
 Analysis complete!
-Execution time: 2025-12-25 00:16:54

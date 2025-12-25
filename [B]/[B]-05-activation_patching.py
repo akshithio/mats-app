@@ -1,5 +1,5 @@
 """
-[B]-05 activation_patching.py - FIXED VERSION:
+[B]-05 activation_patching.py
 
 Phase B: Mechanistic EDA
 Part 05: Activation Patching to Test Causal Role of Residual Stream
@@ -15,12 +15,6 @@ Expected Result:
 - If faithful models propagate errors via residual stream, patching should
   restore correct reasoning
 - If self-corrected models ignore residual stream, patching should have no effect
-
-FIXES:
-- Generate complete solutions (not just 100 tokens)
-- Extract and compare final boxed answers
-- Better answer matching logic
-- Comprehensive debugging output
 """
 
 import torch
@@ -48,9 +42,9 @@ OUTPUT_FILE = "[B]-05-output.json"
 LOG_FILE = "[B]-05-logs.txt"
 DEVICE = "cuda" if torch.cuda.is_available() else "mps" if torch.backends.mps.is_available() else "cpu"
 
-MAX_PROBLEMS = None  # Start with subset for faster iteration
+MAX_PROBLEMS = None  # None = all problems
 LAYERS_TO_PATCH = None  # Will be auto-detected based on model architecture
-GENERATION_LENGTH = 512  # Longer to get complete solutions
+GENERATION_LENGTH = 1024 
 DEBUG = True  # Enable detailed debugging output
 
 class Logger:
@@ -79,7 +73,7 @@ class ActivationPatcher:
         
         self.model = AutoModelForCausalLM.from_pretrained(
             model_name,
-            torch_dtype=torch.bfloat16 if device == "mps" else (torch.float16 if device == "cuda" else torch.float32),
+            dtype=torch.bfloat16 if device == "mps" else (torch.float16 if device == "cuda" else torch.float32),
             device_map="auto" if device == "cuda" else None,
             attn_implementation="eager",
             output_hidden_states=True
@@ -100,51 +94,68 @@ class ActivationPatcher:
         
         # Auto-select layers to patch (last 4 layers)
         global LAYERS_TO_PATCH
-        LAYERS_TO_PATCH = list(range(max(0, self.num_layers - 4), self.num_layers))
+        if LAYERS_TO_PATCH is None:
+            LAYERS_TO_PATCH = list(range(self.num_layers))
         print(f"{C.BOLD}Will patch layers: {LAYERS_TO_PATCH}{C.ENDC}")
         
         print(f"{C.OKGREEN}Model loaded successfully!{C.ENDC}\n")
     
-    def extract_boxed_answer(self, text: str) -> Optional[str]:
-        """Extract answer from \\boxed{...} format."""
-        # Try to find boxed answer
-        match = re.search(r'\\boxed\{([^}]+)\}', text)
-        if match:
-            answer = match.group(1).strip()
-            # Clean up common formatting
-            answer = answer.replace('\\', '').replace(',', '')
-            return answer
-        
-        # Fallback: look for "answer is X" patterns at end
-        patterns = [
-            r'(?:answer|solution|result)\s+is\s+[:\s]*([+-]?\d+(?:\.\d+)?)',
-            r'=\s*([+-]?\d+(?:\.\d+)?)\s*$',
-            r'therefore[,\s]+([+-]?\d+(?:\.\d+)?)'
+    def extract_final_answer(self, text):
+        """
+        Extract numerical answer from text, supporting both decimals and fractions.
+        COPIED FROM CAUSAL INTERVENTION SCRIPT - proven to work!
+        """
+        answer_patterns = [
+            (r'\\boxed\{\s*\\frac\{(\d+)\}\{(\d+)\}\s*\}', 'frac'),
+            (r'\\boxed\{\s*(\d+)\\frac\{(\d+)\}\{(\d+)\}\s*\}', 'mixed'),
+            (r'\\boxed\{\s*(\$?-?[\d,]+(?:\.\d+)?).*?\}', 'decimal'),
+            (r'\\frac\{(\d+)\}\{(\d+)\}', 'frac'),
+            (r'(?:answer|result)(?:\s+is)?[:\s]+(\d+)/(\d+)', 'text_frac'),
+            (r'(?:final answer|answer|result)(?:\s+is)?[:\s]+\$?\s*([\d,]+(?:\.\d+)?)', 'decimal'),
+            (r'####\s*([\d,]+(?:\.\d+)?)', 'decimal'),
+            (r'(?:^|\n)(?:the answer is|answer:)\s*\$?\s*([\d,]+(?:\.\d+)?)', 'decimal'),
+            (r'=\s*\$?\s*([\d,]+(?:\.\d+)?)\s*(?:\n|$)', 'decimal')
         ]
         
-        for pattern in patterns:
-            match = re.search(pattern, text, re.IGNORECASE | re.MULTILINE)
-            if match:
-                return match.group(1).strip()
+        for pattern, pattern_type in answer_patterns:
+            matches = re.findall(pattern, text, re.IGNORECASE)
+            if matches:
+                try:
+                    if pattern_type == 'frac':
+                        numerator, denominator = matches[-1]
+                        return float(numerator) / float(denominator)
+                    elif pattern_type == 'mixed':
+                        whole, numerator, denominator = matches[-1]
+                        return float(whole) + (float(numerator) / float(denominator))
+                    elif pattern_type == 'text_frac':
+                        numerator, denominator = matches[-1]
+                        return float(numerator) / float(denominator)
+                    else:
+                        return float(matches[-1].replace(',', '').replace('$', '').strip())
+                except (ValueError, ZeroDivisionError): 
+                    continue
         
         return None
     
-    def normalize_answer(self, answer: str) -> str:
-        """Normalize answer for comparison."""
-        if answer is None:
-            return ""
-        answer = str(answer).strip().lower()
-        # Remove common formatting
-        answer = answer.replace(',', '').replace('$', '').replace(' ', '')
-        # Try to convert to float for numeric comparison
+    def answers_match(self, extracted, ground_truth):
+        """
+        Check if extracted answer matches ground truth with tolerance.
+        Returns True if correct, False if incorrect, None if extraction failed.
+        """
+        if extracted is None:
+            return None
+        
         try:
-            return str(float(answer))
-        except:
-            return answer
-    
-    def answers_match(self, ans1: str, ans2: str) -> bool:
-        """Check if two answers match after normalization."""
-        return self.normalize_answer(ans1) == self.normalize_answer(ans2)
+            extracted_float = float(extracted)
+            ground_truth_float = float(ground_truth)
+            
+            # Use relative tolerance: 1% of value or 0.01 absolute
+            tolerance = 0.01 * abs(ground_truth_float) + 0.01
+            is_correct = abs(extracted_float - ground_truth_float) < tolerance
+            
+            return is_correct
+        except (ValueError, TypeError):
+            return None
     
     def find_value_positions(self, text: str, value: str) -> List[int]:
         """Find token positions where value appears in text."""
@@ -161,13 +172,16 @@ class ActivationPatcher:
     def get_clean_and_corrupted_states(
         self, 
         problem_text: str,
-        continuation_with_error: str,
+        continuation_prefix: str,  # NOW EXPECTS PREFIX, NOT FULL CoT
         injected_value: str,
         original_value: str
     ) -> Optional[Dict]:
         """
         Get hidden states from both clean and corrupted forward passes.
         Returns positions and states needed for patching.
+        
+        CRITICAL: continuation_prefix should be the CoT up to shortly after the error,
+        NOT the complete solution. This allows the model to continue solving.
         """
         try:
             # Build prompts
@@ -179,8 +193,8 @@ class ActivationPatcher:
                 messages, tokenize=False, add_generation_prompt=True
             )
             
-            # Corrupted version (with injected error)
-            corrupted_full = base_prompt + continuation_with_error
+            # Corrupted version (with injected error in prefix)
+            corrupted_full = base_prompt + continuation_prefix
             corrupted_inputs = self.tokenizer(
                 corrupted_full,
                 return_tensors="pt",
@@ -188,9 +202,9 @@ class ActivationPatcher:
                 max_length=2048
             ).to(self.device)
             
-            # Find error positions in continuation
+            # Find error positions in prefix
             error_positions_in_cont = self.find_value_positions(
-                continuation_with_error,
+                continuation_prefix,
                 injected_value
             )
             
@@ -204,8 +218,8 @@ class ActivationPatcher:
             error_start = error_positions_in_cont[0] + base_len
             error_end = error_positions_in_cont[-1] + base_len + 1
             
-            # Clean version (with correct value)
-            continuation_clean = continuation_with_error.replace(
+            # Clean version (with correct value in prefix)
+            continuation_clean = continuation_prefix.replace(
                 str(injected_value),
                 str(original_value),
                 1  # Only first occurrence
@@ -247,7 +261,7 @@ class ActivationPatcher:
                 'corrupted_attention_mask': corrupted_inputs.attention_mask,
                 'clean_attention_mask': clean_inputs.attention_mask,
                 'base_prompt': base_prompt,
-                'continuation_with_error': continuation_with_error,
+                'continuation_with_error': continuation_prefix,
                 'continuation_clean': continuation_clean
             }
             
@@ -262,7 +276,7 @@ class ActivationPatcher:
         self,
         states_dict: Dict,
         layer_to_patch: int,
-        correct_answer: str
+        ground_truth_answer: float
     ) -> Optional[Dict]:
         """
         Patch clean activations into corrupted run and generate continuation.
@@ -294,9 +308,11 @@ class ActivationPatcher:
                         patch_end = min(error_end, seq_len)
                         clean_states = states_dict['clean_hidden_states'][layer_idx]
                         
-                        # Patch error positions
-                        hidden_states[:, error_start:patch_end, :] = \
-                            clean_states[:, error_start:patch_end, :]
+                        # Make sure we don't exceed clean_states bounds
+                        if patch_end <= clean_states.shape[1]:
+                            # Patch error positions
+                            hidden_states[:, error_start:patch_end, :] = \
+                                clean_states[:, error_start:patch_end, :]
                     
                     return (hidden_states,) if isinstance(output, tuple) else hidden_states
                 
@@ -328,14 +344,14 @@ class ActivationPatcher:
             generated_text = self.tokenizer.decode(generated_ids, skip_special_tokens=True)
             
             # Extract answer
-            extracted_answer = self.extract_boxed_answer(generated_text)
-            is_correct = self.answers_match(extracted_answer, correct_answer)
+            extracted_answer = self.extract_final_answer(generated_text)
+            is_correct = self.answers_match(extracted_answer, ground_truth_answer)
             
             if DEBUG:
                 print(f"\n{C.OKCYAN}    Layer {layer_to_patch} Patched Generation:{C.ENDC}")
                 print(f"      Generated (first 150 chars): {generated_text[:150]}...")
                 print(f"      Extracted answer: {extracted_answer}")
-                print(f"      Correct answer: {correct_answer}")
+                print(f"      Ground truth: {ground_truth_answer}")
                 print(f"      Is correct: {is_correct}")
             
             return {
@@ -357,7 +373,7 @@ class ActivationPatcher:
         self, 
         states_dict: Dict, 
         use_clean: bool, 
-        correct_answer: str
+        ground_truth_answer: float
     ) -> Optional[Dict]:
         """Generate without patching (baseline comparison)."""
         try:
@@ -378,8 +394,8 @@ class ActivationPatcher:
             generated_text = self.tokenizer.decode(generated_ids, skip_special_tokens=True)
             
             # Extract answer
-            extracted_answer = self.extract_boxed_answer(generated_text)
-            is_correct = self.answers_match(extracted_answer, correct_answer)
+            extracted_answer = self.extract_final_answer(generated_text)
+            is_correct = self.answers_match(extracted_answer, ground_truth_answer)
             
             condition = 'clean_baseline' if use_clean else 'corrupted_baseline'
             
@@ -387,7 +403,7 @@ class ActivationPatcher:
                 print(f"\n{C.OKCYAN}  {condition.upper()}:{C.ENDC}")
                 print(f"    Generated (first 150 chars): {generated_text[:150]}...")
                 print(f"    Extracted answer: {extracted_answer}")
-                print(f"    Correct answer: {correct_answer}")
+                print(f"    Ground truth: {ground_truth_answer}")
                 print(f"    Is correct: {is_correct}")
             
             return {
@@ -416,18 +432,38 @@ class ActivationPatcher:
         2. Generate baselines (no patching)
         3. Generate with patching at each layer
         4. Compare outcomes
+        
+        CRITICAL FIX: Create prefix from continued_cot (not use full CoT)
         """
         try:
             if verbose or DEBUG:
                 print(f"\n{C.BOLD}{'='*80}{C.ENDC}")
                 print(f"{C.BOLD}Analyzing problem {problem['problem_id']}:{C.ENDC}")
                 print(f"  Injected: {problem['injected_value']}, Correct: {problem['original_value']}")
-                print(f"  Expected answer: {problem.get('answer', 'N/A')}")
+                print(f"  Ground truth answer: {problem.get('ground_truth_answer', 'N/A')}")
             
-            # Get states
+            # CREATE PREFIX (not full CoT) - CRITICAL FIX
+            continued_cot = problem['continued_cot']
+            injection_pos = continued_cot.find(str(problem['injected_value']))
+            
+            if injection_pos == -1:
+                if DEBUG:
+                    print(f"{C.WARNING}  Could not find injection position for problem {problem['problem_id']}{C.ENDC}")
+                return None
+            
+            # Get prefix up to shortly after the error (just like causal intervention)
+            prefix_end = min(injection_pos + len(str(problem['injected_value'])) + 100, 
+                            len(continued_cot))
+            continued_cot_prefix = continued_cot[:prefix_end]
+            
+            if DEBUG:
+                print(f"\n{C.OKCYAN}  Using CoT prefix (length {len(continued_cot_prefix)} of {len(continued_cot)}):{C.ENDC}")
+                print(f"    {continued_cot_prefix[:200]}...")
+            
+            # Get states using PREFIX (not full CoT)
             states = self.get_clean_and_corrupted_states(
                 problem['problem_text'],
-                problem['continued_cot'],
+                continued_cot_prefix,  # USE PREFIX, not full CoT
                 problem['injected_value'],
                 problem['original_value']
             )
@@ -441,11 +477,16 @@ class ActivationPatcher:
             states['original_value'] = problem['original_value']
             states['injected_value'] = problem['injected_value']
             
-            correct_answer = problem.get('answer', problem['original_value'])
+            # Use ground_truth_answer from dataset
+            ground_truth = problem.get('ground_truth_answer')
+            if ground_truth is None:
+                if DEBUG:
+                    print(f"{C.WARNING}  No ground_truth_answer for problem {problem['problem_id']}{C.ENDC}")
+                return None
             
             # Baselines
-            corrupted_baseline = self.baseline_generate(states, use_clean=False, correct_answer=correct_answer)
-            clean_baseline = self.baseline_generate(states, use_clean=True, correct_answer=correct_answer)
+            corrupted_baseline = self.baseline_generate(states, use_clean=False, ground_truth_answer=ground_truth)
+            clean_baseline = self.baseline_generate(states, use_clean=True, ground_truth_answer=ground_truth)
             
             if corrupted_baseline is None or clean_baseline is None:
                 if DEBUG:
@@ -458,7 +499,7 @@ class ActivationPatcher:
                 if not DEBUG:
                     print(f"  Patching layer {layer}...", end="\r")
                 
-                result = self.patch_and_generate(states, layer, correct_answer)
+                result = self.patch_and_generate(states, layer, ground_truth)
                 if result is not None:
                     patching_results.append(result)
             
@@ -470,7 +511,7 @@ class ActivationPatcher:
                 'classification': problem['classification'],
                 'injected_value': problem['injected_value'],
                 'original_value': problem['original_value'],
-                'correct_answer': correct_answer,
+                'ground_truth_answer': ground_truth,
                 'corrupted_baseline': corrupted_baseline,
                 'clean_baseline': clean_baseline,
                 'patching_results': patching_results
@@ -565,9 +606,9 @@ def compute_patching_effectiveness(results: Dict):
         
         # Baseline metrics
         corrupted_correct = sum(1 for p in problems 
-                               if p['corrupted_baseline']['is_correct'])
+                               if p['corrupted_baseline']['is_correct'] is True)
         clean_correct = sum(1 for p in problems 
-                           if p['clean_baseline']['is_correct'])
+                           if p['clean_baseline']['is_correct'] is True)
         
         # Patching metrics per layer
         layer_recovery = {}
@@ -578,7 +619,7 @@ def compute_patching_effectiveness(results: Dict):
             if layer_results:
                 patched_correct = sum(
                     1 for p in layer_results
-                    if any(r['layer_patched'] == layer and r['is_correct'] 
+                    if any(r['layer_patched'] == layer and r['is_correct'] is True
                           for r in p['patching_results'])
                 )
                 
