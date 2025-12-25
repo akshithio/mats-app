@@ -28,8 +28,8 @@ Input:
     - [A].jsonl (dataset with original CoT and answers)
 
 Output:
-    - [B]-03-precomputation_analysis.json (probe results)
-    - Console output with accuracy comparison
+    - [B]-03-output.json (probe results)
+    - [B]-03-logs.txt (console output log)
 
 --
 
@@ -42,17 +42,16 @@ Evidence: Both groups show ~10% predictive power from early states
           Difference: -1.9% (essentially zero, p >> 0.05)
           
 Conclusion: Pre-computation does NOT explain the behavioral difference
-
 """
 
 import torch
 from transformers import AutoModelForCausalLM, AutoTokenizer
 import json
 import numpy as np
-from scipy import stats
 from sklearn.linear_model import LogisticRegression
 from sklearn.preprocessing import StandardScaler
-from collections import defaultdict
+import sys
+from datetime import datetime
 
 class C:
     HEADER = '\033[95m'
@@ -67,13 +66,37 @@ class C:
 # Configuration
 MODEL_NAME = "Qwen/Qwen2.5-Math-7B-Instruct"
 INPUT_FILE = "[A].jsonl"
-OUTPUT_FILE = "[B]-03-precomputation_analysis.json"
+OUTPUT_FILE = "[B]-03-output.json"
+LOG_FILE = "[B]-03-logs.txt"
 DEVICE = "cuda" if torch.cuda.is_available() else "mps" if torch.backends.mps.is_available() else "cpu"
 
 # Analysis settings
 MAX_PROBLEMS = None  # Set to number for testing, None for all
 LAYER_TO_ANALYZE = -1  # Which layer to probe (-1 = last layer)
 EARLY_POSITION_FRACTION = 0.3  # Extract state at 30% through the CoT
+
+
+class TeeOutput:
+    """Writes to both stdout/stderr and a file simultaneously."""
+    def __init__(self, file_path, original_stream):
+        self.file = open(file_path, 'w', encoding='utf-8')
+        self.original_stream = original_stream
+        
+    def write(self, message):
+        # Strip ANSI color codes for the file
+        import re
+        clean_message = re.sub(r'\033\[[0-9;]+m', '', message)
+        self.file.write(clean_message)
+        self.file.flush()
+        self.original_stream.write(message)
+        self.original_stream.flush()
+    
+    def flush(self):
+        self.file.flush()
+        self.original_stream.flush()
+    
+    def close(self):
+        self.file.close()
 
 
 class PrecomputationAnalyzer:
@@ -304,127 +327,151 @@ def train_answer_probe(states, answers, test_size=0.2):
 
 
 def main():
-    # Initialize analyzer
-    analyzer = PrecomputationAnalyzer(MODEL_NAME, DEVICE)
+    # Set up output redirection
+    original_stdout = sys.stdout
+    original_stderr = sys.stderr
     
-    # Extract hidden states
-    results = analyzer.analyze_dataset(INPUT_FILE, max_problems=MAX_PROBLEMS)
+    tee_stdout = TeeOutput(LOG_FILE, original_stdout)
+    sys.stdout = tee_stdout
+    sys.stderr = tee_stdout
     
-    # Check if we have enough data
-    print(f"\n{C.HEADER}{'='*80}{C.ENDC}")
-    print(f"{C.HEADER}Linear Probe Analysis{C.ENDC}")
-    print(f"{C.HEADER}{'='*80}{C.ENDC}\n")
-    
-    print(f"{C.BOLD}Sample Sizes:{C.ENDC}")
-    print(f"  Faithful: {len(results['faithful']['states'])} samples")
-    print(f"  Corrected: {len(results['corrected']['states'])} samples\n")
-    
-    if len(results['faithful']['states']) < 20 or len(results['corrected']['states']) < 20:
-        print(f"{C.FAIL}Error: Insufficient data for probe training (need at least 20 samples each){C.ENDC}")
-        return
-    
-    # Train probes for each group
-    print(f"{C.OKCYAN}Training probe on FAITHFUL models...{C.ENDC}")
-    faithful_probe_results = train_answer_probe(
-        results['faithful']['states'],
-        results['faithful']['answers']
-    )
-    
-    print(f"{C.OKCYAN}Training probe on SELF-CORRECTED models...{C.ENDC}")
-    corrected_probe_results = train_answer_probe(
-        results['corrected']['states'],
-        results['corrected']['answers']
-    )
-    
-    # Display results
-    print(f"\n{C.HEADER}{'='*80}{C.ENDC}")
-    print(f"{C.HEADER}Probe Accuracy Results{C.ENDC}")
-    print(f"{C.HEADER}{'='*80}{C.ENDC}\n")
-    
-    print(f"{C.BOLD}Can we predict the final answer from EARLY hidden states?{C.ENDC}\n")
-    
-    print(f"{C.FAIL}FAITHFUL Models:{C.ENDC}")
-    print(f"  Train Accuracy: {faithful_probe_results['train_accuracy']:.3f}")
-    print(f"  Test Accuracy:  {faithful_probe_results['test_accuracy']:.3f}")
-    print(f"  Baseline:       {faithful_probe_results['baseline_accuracy']:.3f}")
-    print(f"  Above Baseline: {(faithful_probe_results['test_accuracy'] - faithful_probe_results['baseline_accuracy']):.3f}")
-    
-    print(f"\n{C.OKGREEN}SELF-CORRECTED Models:{C.ENDC}")
-    print(f"  Train Accuracy: {corrected_probe_results['train_accuracy']:.3f}")
-    print(f"  Test Accuracy:  {corrected_probe_results['test_accuracy']:.3f}")
-    print(f"  Baseline:       {corrected_probe_results['baseline_accuracy']:.3f}")
-    print(f"  Above Baseline: {(corrected_probe_results['test_accuracy'] - corrected_probe_results['baseline_accuracy']):.3f}")
-    
-    # Compare
-    diff = corrected_probe_results['test_accuracy'] - faithful_probe_results['test_accuracy']
-    
-    print(f"\n{C.BOLD}Comparison:{C.ENDC}")
-    print(f"  Difference: {diff:+.3f}")
-    
-    if diff > 0.05:
-        advantage = "CORRECTED"
-        color = C.OKGREEN
-    elif diff < -0.05:
-        advantage = "FAITHFUL"
-        color = C.FAIL
-    else:
-        advantage = "SIMILAR"
-        color = C.OKCYAN
-    
-    print(f"  Advantage: {color}{advantage}{C.ENDC}")
-    
-    # Interpretation
-    print(f"\n{C.HEADER}{'='*80}{C.ENDC}")
-    print(f"{C.HEADER}Interpretation{C.ENDC}")
-    print(f"{C.HEADER}{'='*80}{C.ENDC}\n")
-    
-    corrected_advantage = corrected_probe_results['test_accuracy'] - corrected_probe_results['baseline_accuracy']
-    faithful_advantage = faithful_probe_results['test_accuracy'] - faithful_probe_results['baseline_accuracy']
-    
-    if corrected_advantage > faithful_advantage + 0.05:
-        print(f"{C.OKGREEN}✓ Strong Evidence of Pre-Computation in Self-Corrected Models:{C.ENDC}")
-        print(f"  → Self-corrected models encode the answer EARLY in the CoT")
-        print(f"  → Linear probe can predict final answer from {EARLY_POSITION_FRACTION*100:.0f}% position")
-        print(f"  → Suggests answer was computed upfront, not step-by-step")
-        print(f"  → Self-correction = retrieving pre-computed knowledge")
-        print(f"\n{C.FAIL}✓ Faithful Models Show Less Pre-Computation:{C.ENDC}")
-        print(f"  → Answer is NOT strongly encoded in early hidden states")
-        print(f"  → Suggests genuine sequential computation")
-        print(f"  → Faithfulness = live reasoning through CoT")
-        print(f"\n{C.BOLD}Conclusion:{C.ENDC} CoT serves different purposes:")
-        print(f"  • Self-corrected: CoT is post-hoc explanation of pre-computed answer")
-        print(f"  • Faithful: CoT is genuine working memory for step-by-step computation")
-    
-    elif faithful_advantage > corrected_advantage + 0.05:
-        print(f"{C.WARNING}⚠ Unexpected: Faithful Models Show More Pre-Computation:{C.ENDC}")
-        print(f"  → Faithful models encode answer early")
-        print(f"  → Yet they propagate errors when injected")
-        print(f"  → Suggests they have the answer but override it with CoT")
-        print(f"  → Faithfulness = commitment to sequential process over cached knowledge")
-    
-    else:
-        print(f"{C.OKCYAN}○ Similar Pre-Computation in Both Groups:{C.ENDC}")
-        print(f"  → Both groups encode similar information early")
-        print(f"  → Probe accuracy difference: {diff:.3f}")
-        print(f"  → Pre-computation alone doesn't explain behavioral differences")
-        print(f"  → Other mechanisms (attention, reasoning) must be responsible")
-    
-    # Save results
-    output_data = {
-        'faithful': {
-            'probe_results': faithful_probe_results,
-            'problem_ids': results['faithful']['problem_ids']
-        },
-        'corrected': {
-            'probe_results': corrected_probe_results,
-            'problem_ids': results['corrected']['problem_ids']
-        },
-        'metadata': results['metadata']
-    }
-    
-    print(f"\n{C.BOLD}Saving results to: {OUTPUT_FILE}{C.ENDC}")
-    with open(OUTPUT_FILE, 'w') as f:
-        json.dump(output_data, f, indent=2)
+    try:
+        # Print header with timestamp
+        print(f"Execution started: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+        print(f"Log file: {LOG_FILE}\n")
+        
+        # Initialize analyzer
+        analyzer = PrecomputationAnalyzer(MODEL_NAME, DEVICE)
+        
+        # Extract hidden states
+        results = analyzer.analyze_dataset(INPUT_FILE, max_problems=MAX_PROBLEMS)
+        
+        # Check if we have enough data
+        print(f"\n{C.HEADER}{'='*80}{C.ENDC}")
+        print(f"{C.HEADER}Linear Probe Analysis{C.ENDC}")
+        print(f"{C.HEADER}{'='*80}{C.ENDC}\n")
+        
+        print(f"{C.BOLD}Sample Sizes:{C.ENDC}")
+        print(f"  Faithful: {len(results['faithful']['states'])} samples")
+        print(f"  Corrected: {len(results['corrected']['states'])} samples\n")
+        
+        if len(results['faithful']['states']) < 20 or len(results['corrected']['states']) < 20:
+            print(f"{C.FAIL}Error: Insufficient data for probe training (need at least 20 samples each){C.ENDC}")
+            return
+        
+        # Train probes for each group
+        print(f"{C.OKCYAN}Training probe on FAITHFUL models...{C.ENDC}")
+        faithful_probe_results = train_answer_probe(
+            results['faithful']['states'],
+            results['faithful']['answers']
+        )
+        
+        print(f"{C.OKCYAN}Training probe on SELF-CORRECTED models...{C.ENDC}")
+        corrected_probe_results = train_answer_probe(
+            results['corrected']['states'],
+            results['corrected']['answers']
+        )
+        
+        # Display results
+        print(f"\n{C.HEADER}{'='*80}{C.ENDC}")
+        print(f"{C.HEADER}Probe Accuracy Results{C.ENDC}")
+        print(f"{C.HEADER}{'='*80}{C.ENDC}\n")
+        
+        print(f"{C.BOLD}Can we predict the final answer from EARLY hidden states?{C.ENDC}\n")
+        
+        print(f"{C.FAIL}FAITHFUL Models:{C.ENDC}")
+        print(f"  Train Accuracy: {faithful_probe_results['train_accuracy']:.3f}")
+        print(f"  Test Accuracy:  {faithful_probe_results['test_accuracy']:.3f}")
+        print(f"  Baseline:       {faithful_probe_results['baseline_accuracy']:.3f}")
+        print(f"  Above Baseline: {(faithful_probe_results['test_accuracy'] - faithful_probe_results['baseline_accuracy']):.3f}")
+        
+        print(f"\n{C.OKGREEN}SELF-CORRECTED Models:{C.ENDC}")
+        print(f"  Train Accuracy: {corrected_probe_results['train_accuracy']:.3f}")
+        print(f"  Test Accuracy:  {corrected_probe_results['test_accuracy']:.3f}")
+        print(f"  Baseline:       {corrected_probe_results['baseline_accuracy']:.3f}")
+        print(f"  Above Baseline: {(corrected_probe_results['test_accuracy'] - corrected_probe_results['baseline_accuracy']):.3f}")
+        
+        # Compare
+        diff = corrected_probe_results['test_accuracy'] - faithful_probe_results['test_accuracy']
+        
+        print(f"\n{C.BOLD}Comparison:{C.ENDC}")
+        print(f"  Difference: {diff:+.3f}")
+        
+        if diff > 0.05:
+            advantage = "CORRECTED"
+            color = C.OKGREEN
+        elif diff < -0.05:
+            advantage = "FAITHFUL"
+            color = C.FAIL
+        else:
+            advantage = "SIMILAR"
+            color = C.OKCYAN
+        
+        print(f"  Advantage: {color}{advantage}{C.ENDC}")
+        
+        # Interpretation
+        print(f"\n{C.HEADER}{'='*80}{C.ENDC}")
+        print(f"{C.HEADER}Interpretation{C.ENDC}")
+        print(f"{C.HEADER}{'='*80}{C.ENDC}\n")
+        
+        corrected_advantage = corrected_probe_results['test_accuracy'] - corrected_probe_results['baseline_accuracy']
+        faithful_advantage = faithful_probe_results['test_accuracy'] - faithful_probe_results['baseline_accuracy']
+        
+        if corrected_advantage > faithful_advantage + 0.05:
+            print(f"{C.OKGREEN}✓ Strong Evidence of Pre-Computation in Self-Corrected Models:{C.ENDC}")
+            print(f"  → Self-corrected models encode the answer EARLY in the CoT")
+            print(f"  → Linear probe can predict final answer from {EARLY_POSITION_FRACTION*100:.0f}% position")
+            print(f"  → Suggests answer was computed upfront, not step-by-step")
+            print(f"  → Self-correction = retrieving pre-computed knowledge")
+            print(f"\n{C.FAIL}✓ Faithful Models Show Less Pre-Computation:{C.ENDC}")
+            print(f"  → Answer is NOT strongly encoded in early hidden states")
+            print(f"  → Suggests genuine sequential computation")
+            print(f"  → Faithfulness = live reasoning through CoT")
+            print(f"\n{C.BOLD}Conclusion:{C.ENDC} CoT serves different purposes:")
+            print(f"  • Self-corrected: CoT is post-hoc explanation of pre-computed answer")
+            print(f"  • Faithful: CoT is genuine working memory for step-by-step computation")
+        
+        elif faithful_advantage > corrected_advantage + 0.05:
+            print(f"{C.WARNING}⚠ Unexpected: Faithful Models Show More Pre-Computation:{C.ENDC}")
+            print(f"  → Faithful models encode answer early")
+            print(f"  → Yet they propagate errors when injected")
+            print(f"  → Suggests they have the answer but override it with CoT")
+            print(f"  → Faithfulness = commitment to sequential process over cached knowledge")
+        
+        else:
+            print(f"{C.OKCYAN}○ Similar Pre-Computation in Both Groups:{C.ENDC}")
+            print(f"  → Both groups encode similar information early")
+            print(f"  → Probe accuracy difference: {diff:.3f}")
+            print(f"  → Pre-computation alone doesn't explain behavioral differences")
+            print(f"  → Other mechanisms (attention, reasoning) must be responsible")
+        
+        # Save results
+        output_data = {
+            'faithful': {
+                'probe_results': faithful_probe_results,
+                'problem_ids': results['faithful']['problem_ids']
+            },
+            'corrected': {
+                'probe_results': corrected_probe_results,
+                'problem_ids': results['corrected']['problem_ids']
+            },
+            'metadata': results['metadata']
+        }
+        
+        print(f"\n{C.BOLD}Saving results to: {OUTPUT_FILE}{C.ENDC}")
+        print(f"{C.BOLD}Saving console output to: {LOG_FILE}{C.ENDC}")
+        with open(OUTPUT_FILE, 'w') as f:
+            json.dump(output_data, f, indent=2)
+        
+        print(f"\nExecution completed: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+        
+    finally:
+        # Restore original stdout/stderr
+        sys.stdout = original_stdout
+        sys.stderr = original_stderr
+        tee_stdout.close()
+        
+        print(f"\nConsole output saved to: {LOG_FILE}")
 
 
 if __name__ == "__main__":

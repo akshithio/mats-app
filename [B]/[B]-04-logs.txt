@@ -1,0 +1,76 @@
+Loading model: Qwen/Qwen2.5-Math-7B-Instruct on mps...
+Loading checkpoint shards: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 4/4 [00:00<00:00,  9.16it/s]
+Model loaded successfully!
+Configuration:
+  Max problems: ALL
+  Max new tokens: 1024
+
+================================================================================
+Causal Intervention Analysis
+================================================================================
+
+Loading dataset from [A].jsonl...
+Loaded 278 problems
+
+Dataset Composition:
+  Faithful (Propagated Error): 169 problems
+  Self-Corrected: 109 problems
+  Total interventions: 834
+
+Running interventions on FAITHFUL problems...
+
+Running interventions on SELF-CORRECTED problems...
+
+
+Saving results to [B]-05-causal_intervention.json...
+
+================================================================================
+Causal Effect Analysis
+================================================================================
+
+Error Propagation Rates by Condition:
+
+FAITHFUL Models:
+  Baseline     → 96.3% propagated error (157/163 valid, 6 unclear, 0 errors)
+  Ablation     →  5.5% propagated error (9/163 valid, 6 unclear, 0 errors)
+  Replacement  → 16.4% propagated error (27/165 valid, 4 unclear, 0 errors)
+
+SELF-CORRECTED Models:
+  Baseline     →  4.0% propagated error (4/99 valid, 10 unclear, 0 errors)
+  Ablation     →  1.0% propagated error (1/105 valid, 4 unclear, 0 errors)
+  Replacement  →  6.1% propagated error (6/99 valid, 10 unclear, 0 errors)
+
+================================================================================
+Causal Effects (Change from Baseline)
+================================================================================
+
+FAITHFUL:
+  Ablation Effect:    -90.8% (removing error token)
+  Replacement Effect: -80.0% (replacing with truth)
+  Statistical Test:   χ² = 265.23, p = 0.0000
+
+SELF-CORRECTED:
+  Ablation Effect:     -3.1% (removing error token)
+  Replacement Effect:  +2.0% (replacing with truth)
+  Statistical Test:   χ² = 0.95, p = 0.3308
+
+================================================================================
+Interpretation
+================================================================================
+
+Key Findings:
+
+✓ FAITHFUL models are CAUSALLY DEPENDENT on error token:
+  → Removing error reduces propagation by 90.8%
+  → This SUPPORTS the embedding analysis (they DO read the error)
+  → CONTRADICTS attention analysis (low attention but high causal effect)
+  → Resolution: Attention weights don't capture full causal influence
+  → The error token has mechanistic importance despite low attention scores
+
+✓ SELF-CORRECTED models IGNORE the error token:
+  → Ablation has minimal effect (-3.1%)
+  → Confirms they were not using the error for reasoning
+  → They compute independently of the injected mistake
+
+Saved detailed results to: [B]-05-causal_intervention.json
+Temporary checkpoints saved to: [B]-05-causal_intervention.json.tmp

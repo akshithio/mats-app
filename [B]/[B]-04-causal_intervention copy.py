@@ -1,8 +1,8 @@
 """
-[B]-05a causal_intervention.py:
+[B]-04 causal_intervention.py:
 
 Phase B: Mechanistic EDA
-Part 05: Causal Intervention on Error Token
+Part 04: Causal Intervention on Error Token
 
 --
 
@@ -32,14 +32,16 @@ Input:
     - [A].jsonl (dataset with injected errors)
 
 Output:
-    - [B]-04-causal_intervention.json (results for each condition)
-    - Console output with causal effect analysis
+    - [B]-04-output.json (results for each condition)
+    - [B]-04-logs.txt (console output log)
 """
 
 import torch
 from transformers import AutoModelForCausalLM, AutoTokenizer
 import json
 import re
+import sys
+from datetime import datetime
 
 class C:
     HEADER = '\033[95m'
@@ -53,11 +55,33 @@ class C:
 
 MODEL_NAME = "Qwen/Qwen2.5-Math-7B-Instruct"
 INPUT_FILE = "[A].jsonl"
-OUTPUT_FILE = "[B]-05-causal_intervention.json"
+OUTPUT_FILE = "[B]-04-output.json"
+LOG_FILE = "[B]-04-logs.txt"
 DEVICE = "cuda" if torch.cuda.is_available() else "mps" if torch.backends.mps.is_available() else "cpu"
 
 MAX_PROBLEMS = None
 MAX_NEW_TOKENS = 1024 
+
+class TeeOutput:
+    """Writes to both stdout/stderr and a file simultaneously."""
+    def __init__(self, file_path, original_stream):
+        self.file = open(file_path, 'w', encoding='utf-8')
+        self.original_stream = original_stream
+        
+    def write(self, message):
+        # Strip ANSI color codes for the file
+        clean_message = re.sub(r'\033\[[0-9;]+m', '', message)
+        self.file.write(clean_message)
+        self.file.flush()
+        self.original_stream.write(message)
+        self.original_stream.flush()
+    
+    def flush(self):
+        self.file.flush()
+        self.original_stream.flush()
+    
+    def close(self):
+        self.file.close()
 
 class CausalInterventionAnalyzer:
     def __init__(self, model_name, device):
@@ -81,7 +105,7 @@ class CausalInterventionAnalyzer:
         
         print(f"{C.OKGREEN}Model loaded successfully!{C.ENDC}")
         print(f"{C.BOLD}Configuration:{C.ENDC}")
-        print(f"  Max problems: ALL")
+        print(f"  Max problems: {MAX_PROBLEMS}")
         print(f"  Max new tokens: {MAX_NEW_TOKENS}")
         print()
     
@@ -460,134 +484,158 @@ def compute_intervention_statistics(results):
 
 
 def main():
-    analyzer = CausalInterventionAnalyzer(MODEL_NAME, DEVICE)
+    # Set up output redirection
+    original_stdout = sys.stdout
+    original_stderr = sys.stderr
     
-    results = analyzer.analyze_dataset(INPUT_FILE, max_problems=MAX_PROBLEMS)
+    tee_stdout = TeeOutput(LOG_FILE, original_stdout)
+    sys.stdout = tee_stdout
+    sys.stderr = tee_stdout
     
-    print(f"\n{C.OKGREEN}Saving results to {OUTPUT_FILE}...{C.ENDC}")
-    with open(OUTPUT_FILE, 'w') as f:
-        json.dump(results, f, indent=2)
-    
-    print(f"\n{C.HEADER}{'='*80}{C.ENDC}")
-    print(f"{C.HEADER}Causal Effect Analysis{C.ENDC}")
-    print(f"{C.HEADER}{'='*80}{C.ENDC}\n")
-    
-    stats = compute_intervention_statistics(results)
-    
-    print(f"{C.BOLD}Error Propagation Rates by Condition:{C.ENDC}\n")
-    
-    for group_name, group_color, group_stats in [
-        ('FAITHFUL', C.FAIL, stats['faithful']),
-        ('SELF-CORRECTED', C.OKGREEN, stats['corrected'])
-    ]:
-        print(f"{group_color}{group_name} Models:{C.ENDC}")
+    try:
+        # Print header with timestamp
+        print(f"Execution started: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+        print(f"Log file: {LOG_FILE}\n")
         
-        for condition in ['baseline', 'ablation', 'replacement']:
-            cond_stats = group_stats[condition]
-            rate = cond_stats['propagation_rate']
-            
-            if rate is not None:
-                print(f"  {condition.capitalize():12} → {rate:5.1%} propagated error "
-                      f"({cond_stats['propagated']}/{cond_stats['valid']} valid, "
-                      f"{cond_stats['unclear']} unclear, {cond_stats['errors']} errors)")
-            else:
-                print(f"  {condition.capitalize():12} → No valid results")
+        analyzer = CausalInterventionAnalyzer(MODEL_NAME, DEVICE)
         
-        print()
-    
-    print(f"{C.HEADER}{'='*80}{C.ENDC}")
-    print(f"{C.HEADER}Causal Effects (Change from Baseline){C.ENDC}")
-    print(f"{C.HEADER}{'='*80}{C.ENDC}\n")
-    
-    for group_name, group_color, group_stats, results_key in [
-        ('FAITHFUL', C.FAIL, stats['faithful'], 'faithful'),
-        ('SELF-CORRECTED', C.OKGREEN, stats['corrected'], 'corrected')
-    ]:
-        baseline_rate = group_stats['baseline']['propagation_rate']
-        ablation_rate = group_stats['ablation']['propagation_rate']
-        replacement_rate = group_stats['replacement']['propagation_rate']
+        results = analyzer.analyze_dataset(INPUT_FILE, max_problems=MAX_PROBLEMS)
         
-        if baseline_rate is not None and ablation_rate is not None and replacement_rate is not None:
-            ablation_effect = ablation_rate - baseline_rate
-            replacement_effect = replacement_rate - baseline_rate
+        print(f"\n{C.OKGREEN}Saving results to {OUTPUT_FILE}...{C.ENDC}")
+        with open(OUTPUT_FILE, 'w') as f:
+            json.dump(results, f, indent=2)
+        
+        print(f"\n{C.HEADER}{'='*80}{C.ENDC}")
+        print(f"{C.HEADER}Causal Effect Analysis{C.ENDC}")
+        print(f"{C.HEADER}{'='*80}{C.ENDC}\n")
+        
+        stats = compute_intervention_statistics(results)
+        
+        print(f"{C.BOLD}Error Propagation Rates by Condition:{C.ENDC}\n")
+        
+        for group_name, group_color, group_stats in [
+            ('FAITHFUL', C.FAIL, stats['faithful']),
+            ('SELF-CORRECTED', C.OKGREEN, stats['corrected'])
+        ]:
+            print(f"{group_color}{group_name} Models:{C.ENDC}")
             
-            print(f"{group_color}{group_name}:{C.ENDC}")
-            print(f"  Ablation Effect:    {ablation_effect:+6.1%} (removing error token)")
-            print(f"  Replacement Effect: {replacement_effect:+6.1%} (replacing with truth)")
-            
-            group_baseline = [r['baseline']['propagated_error'] for r in results[results_key] 
-                               if 'baseline' in r and r['baseline'].get('propagated_error') is not None]
-            group_ablation = [r['ablation']['propagated_error'] for r in results[results_key] 
-                               if 'ablation' in r and r['ablation'].get('propagated_error') is not None]
-            
-            if len(group_baseline) > 5 and len(group_ablation) > 5:
-                from scipy.stats import chi2_contingency
-                baseline_prop = sum(group_baseline)
-                ablation_prop = sum(group_ablation)
-                baseline_not = len(group_baseline) - baseline_prop
-                ablation_not = len(group_ablation) - ablation_prop
+            for condition in ['baseline', 'ablation', 'replacement']:
+                cond_stats = group_stats[condition]
+                rate = cond_stats['propagation_rate']
                 
-                contingency = [[baseline_prop, baseline_not], [ablation_prop, ablation_not]]
-                try:
-                    chi2, p_value, dof, expected = chi2_contingency(contingency)
-                    print(f"  Statistical Test:   χ² = {chi2:.2f}, p = {p_value:.4f}")
-                except:
-                    pass
+                if rate is not None:
+                    print(f"  {condition.capitalize():12} → {rate:5.1%} propagated error "
+                          f"({cond_stats['propagated']}/{cond_stats['valid']} valid, "
+                          f"{cond_stats['unclear']} unclear, {cond_stats['errors']} errors)")
+                else:
+                    print(f"  {condition.capitalize():12} → No valid results")
             
             print()
-    
-    print(f"{C.HEADER}{'='*80}{C.ENDC}")
-    print(f"{C.HEADER}Interpretation{C.ENDC}")
-    print(f"{C.HEADER}{'='*80}{C.ENDC}\n")
-    
-    faithful_baseline = stats['faithful']['baseline']['propagation_rate']
-    faithful_ablation = stats['faithful']['ablation']['propagation_rate']
-    corrected_baseline = stats['corrected']['baseline']['propagation_rate']
-    corrected_ablation = stats['corrected']['ablation']['propagation_rate']
-    
-    if faithful_baseline is not None and faithful_ablation is not None:
-        faithful_ablation_effect = faithful_ablation - faithful_baseline
         
-        print(f"{C.BOLD}Key Findings:{C.ENDC}\n")
+        print(f"{C.HEADER}{'='*80}{C.ENDC}")
+        print(f"{C.HEADER}Causal Effects (Change from Baseline){C.ENDC}")
+        print(f"{C.HEADER}{'='*80}{C.ENDC}\n")
         
-        if faithful_ablation_effect < -0.2:
-            print(f"{C.OKGREEN}✓ FAITHFUL models are CAUSALLY DEPENDENT on error token:{C.ENDC}")
-            print(f"  → Removing error reduces propagation by {abs(faithful_ablation_effect):.1%}")
-            print(f"  → This SUPPORTS the embedding analysis (they DO read the error)")
-            print(f"  → CONTRADICTS attention analysis (low attention but high causal effect)")
-            print(f"  → {C.BOLD}Resolution:{C.ENDC} Attention weights don't capture full causal influence")
-            print(f"  → The error token has mechanistic importance despite low attention scores")
-        elif faithful_ablation_effect > -0.05:
-            print(f"{C.WARNING}⚠ FAITHFUL models are NOT causally dependent on error token:{C.ENDC}")
-            print(f"  → Removing error barely affects propagation ({faithful_ablation_effect:+.1%})")
-            print(f"  → This SUPPORTS the attention analysis (low attention = not reading)")
-            print(f"  → CONTRADICTS embedding analysis (aligned representation but not causal)")
-            print(f"  → {C.BOLD}Resolution:{C.ENDC} Embedding similarity doesn't imply causal dependence")
-            print(f"  → Error propagation happens for other reasons (e.g., chain-of-thought momentum)")
-        else:
-            print(f"{C.OKCYAN}○ FAITHFUL models show MODERATE dependence on error token:{C.ENDC}")
-            print(f"  → Ablation effect: {faithful_ablation_effect:+.1%}")
-            print(f"  → Partial evidence for both attention and embedding findings")
-            print(f"  → Error token contributes to propagation but is not the sole cause")
+        for group_name, group_color, group_stats, results_key in [
+            ('FAITHFUL', C.FAIL, stats['faithful'], 'faithful'),
+            ('SELF-CORRECTED', C.OKGREEN, stats['corrected'], 'corrected')
+        ]:
+            baseline_rate = group_stats['baseline']['propagation_rate']
+            ablation_rate = group_stats['ablation']['propagation_rate']
+            replacement_rate = group_stats['replacement']['propagation_rate']
+            
+            if baseline_rate is not None and ablation_rate is not None and replacement_rate is not None:
+                ablation_effect = ablation_rate - baseline_rate
+                replacement_effect = replacement_rate - baseline_rate
+                
+                print(f"{group_color}{group_name}:{C.ENDC}")
+                print(f"  Ablation Effect:    {ablation_effect:+6.1%} (removing error token)")
+                print(f"  Replacement Effect: {replacement_effect:+6.1%} (replacing with truth)")
+                
+                group_baseline = [r['baseline']['propagated_error'] for r in results[results_key] 
+                                   if 'baseline' in r and r['baseline'].get('propagated_error') is not None]
+                group_ablation = [r['ablation']['propagated_error'] for r in results[results_key] 
+                                   if 'ablation' in r and r['ablation'].get('propagated_error') is not None]
+                
+                if len(group_baseline) > 5 and len(group_ablation) > 5:
+                    from scipy.stats import chi2_contingency
+                    baseline_prop = sum(group_baseline)
+                    ablation_prop = sum(group_ablation)
+                    baseline_not = len(group_baseline) - baseline_prop
+                    ablation_not = len(group_ablation) - ablation_prop
+                    
+                    contingency = [[baseline_prop, baseline_not], [ablation_prop, ablation_not]]
+                    try:
+                        chi2, p_value, dof, expected = chi2_contingency(contingency)
+                        print(f"  Statistical Test:   χ² = {chi2:.2f}, p = {p_value:.4f}")
+                    except:
+                        pass
+                
+                print()
         
-        print()
-    
-    if corrected_baseline is not None and corrected_ablation is not None:
-        corrected_ablation_effect = corrected_ablation - corrected_baseline
+        print(f"{C.HEADER}{'='*80}{C.ENDC}")
+        print(f"{C.HEADER}Interpretation{C.ENDC}")
+        print(f"{C.HEADER}{'='*80}{C.ENDC}\n")
         
-        if abs(corrected_ablation_effect) < 0.1:
-            print(f"{C.OKGREEN}✓ SELF-CORRECTED models IGNORE the error token:{C.ENDC}")
-            print(f"  → Ablation has minimal effect ({corrected_ablation_effect:+.1%})")
-            print(f"  → Confirms they were not using the error for reasoning")
-            print(f"  → They compute independently of the injected mistake")
-        else:
-            print(f"{C.WARNING}⚠ SELF-CORRECTED models show UNEXPECTED dependence:{C.ENDC}")
-            print(f"  → Ablation effect: {corrected_ablation_effect:+.1%}")
-            print(f"  → Suggests they may read the error to actively correct it")
-            print(f"  → Correction is an active process, not passive ignorance")
-    
-    print(f"\n{C.BOLD}Saved detailed results to: {OUTPUT_FILE}{C.ENDC}")
-    print(f"{C.BOLD}Temporary checkpoints saved to: {OUTPUT_FILE}.tmp{C.ENDC}")
+        faithful_baseline = stats['faithful']['baseline']['propagation_rate']
+        faithful_ablation = stats['faithful']['ablation']['propagation_rate']
+        corrected_baseline = stats['corrected']['baseline']['propagation_rate']
+        corrected_ablation = stats['corrected']['ablation']['propagation_rate']
+        
+        if faithful_baseline is not None and faithful_ablation is not None:
+            faithful_ablation_effect = faithful_ablation - faithful_baseline
+            
+            print(f"{C.BOLD}Key Findings:{C.ENDC}\n")
+            
+            if faithful_ablation_effect < -0.2:
+                print(f"{C.OKGREEN}✓ FAITHFUL models are CAUSALLY DEPENDENT on error token:{C.ENDC}")
+                print(f"  → Removing error reduces propagation by {abs(faithful_ablation_effect):.1%}")
+                print(f"  → This SUPPORTS the embedding analysis (they DO read the error)")
+                print(f"  → CONTRADICTS attention analysis (low attention but high causal effect)")
+                print(f"  → {C.BOLD}Resolution:{C.ENDC} Attention weights don't capture full causal influence")
+                print(f"  → The error token has mechanistic importance despite low attention scores")
+            elif faithful_ablation_effect > -0.05:
+                print(f"{C.WARNING}⚠ FAITHFUL models are NOT causally dependent on error token:{C.ENDC}")
+                print(f"  → Removing error barely affects propagation ({faithful_ablation_effect:+.1%})")
+                print(f"  → This SUPPORTS the attention analysis (low attention = not reading)")
+                print(f"  → CONTRADICTS embedding analysis (aligned representation but not causal)")
+                print(f"  → {C.BOLD}Resolution:{C.ENDC} Embedding similarity doesn't imply causal dependence")
+                print(f"  → Error propagation happens for other reasons (e.g., chain-of-thought momentum)")
+            else:
+                print(f"{C.OKCYAN}○ FAITHFUL models show MODERATE dependence on error token:{C.ENDC}")
+                print(f"  → Ablation effect: {faithful_ablation_effect:+.1%}")
+                print(f"  → Partial evidence for both attention and embedding findings")
+                print(f"  → Error token contributes to propagation but is not the sole cause")
+            
+            print()
+        
+        if corrected_baseline is not None and corrected_ablation is not None:
+            corrected_ablation_effect = corrected_ablation - corrected_baseline
+            
+            if abs(corrected_ablation_effect) < 0.1:
+                print(f"{C.OKGREEN}✓ SELF-CORRECTED models IGNORE the error token:{C.ENDC}")
+                print(f"  → Ablation has minimal effect ({corrected_ablation_effect:+.1%})")
+                print(f"  → Confirms they were not using the error for reasoning")
+                print(f"  → They compute independently of the injected mistake")
+            else:
+                print(f"{C.WARNING}⚠ SELF-CORRECTED models show UNEXPECTED dependence:{C.ENDC}")
+                print(f"  → Ablation effect: {corrected_ablation_effect:+.1%}")
+                print(f"  → Suggests they may read the error to actively correct it")
+                print(f"  → Correction is an active process, not passive ignorance")
+        
+        print(f"\n{C.BOLD}Saved detailed results to: {OUTPUT_FILE}{C.ENDC}")
+        print(f"{C.BOLD}Temporary checkpoints saved to: {OUTPUT_FILE}.tmp{C.ENDC}")
+        print(f"{C.BOLD}Saved console output to: {LOG_FILE}{C.ENDC}")
+        
+        print(f"\nExecution completed: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+        
+    finally:
+        # Restore original stdout/stderr
+        sys.stdout = original_stdout
+        sys.stderr = original_stderr
+        tee_stdout.close()
+        
+        print(f"\nConsole output saved to: {LOG_FILE}")
 
 if __name__ == "__main__":
     main()

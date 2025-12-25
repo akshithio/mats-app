@@ -21,6 +21,9 @@ Input:
 Output:
     - [A]-04-auto_dataset.jsonl (automatically classified, high-confidence dataset)
     - [A].jsonl (canonical dataset file - same content as above)
+
+Remarks:
+    The final [A].jsonl dataset is generated as a result of running this script.
 """
 
 import json
