@@ -1,0 +1,376 @@
+{
+  "faithful": [
+    {
+      "problem_id": 3,
+      "injected_value": "8",
+      "original_value": "4",
+      "ground_truth": 12.0,
+      "baseline": {
+        "continuation": "eeds 8 candles.\n   \\[\n   12 + 8 = 20\n   \\]\n   Therefore, James needs a total of 20 candles.\n\n3. **Calculate the number of packs of candles required:**\n   - Each pack contains 5 candles.\n   \\[\n   \\frac{20}{5} = 4\n   \\]\n   So, James needs 4 packs of candles.\n\n4. **Calculate the total cost of the candles:**\n   - Each pack costs $3.\n   \\[\n   4 \\times 3 = 12\n   \\]\n   Therefore, the total cost for the candles is $12.\n\nThus, the amount James spends on candles is \\(\\boxed{12}\\).",
+        "error": "unsupported operand type(s) for -: 'float' and 'str'"
+      },
+      "ablation": {
+        "continuation": "he 4-year-old son: \\( 12 - 4 = 8 \\) candles.\n   - Total number of candles: \\( 12 + 8 = 20 \\) candles.\n\n3. **Calculate the number of packs of candles required:**\n   - Each pack contains 5 candles.\n   - Number of packs needed: \\( \\frac{20}{5} = 4 \\) packs.\n\n4. **Determine the total cost of the candles:**\n   - Each pack costs $3.\n   - Total cost: \\( 4 \\times 3 = 12 \\) dollars.\n\nTherefore, James spends \\(\\boxed{12}\\) dollars on candles.",
+        "error": "unsupported operand type(s) for -: 'float' and 'str'"
+      },
+      "replacement": {
+        "continuation": "eeds 4 candles.\n   \\[\n   12 + 4 = 16\n   \\]\n   Therefore, James needs a total of 16 candles.\n\n3. **Calculate the number of packs of candles required:**\n   - Each pack contains 5 candles.\n   \\[\n   \\frac{16}{5} = 3.2\n   \\]\n   Since James cannot buy a fraction of a pack, he needs to round up to the next whole number.\n   \\[\n   \\lceil 3.2 \\rceil = 4\n   \\]\n   So, James needs 4 packs of candles.\n\n4. **Determine the total cost of the candles:**\n   - Each pack costs $3.\n   \\[\n   4 \\times 3 = 12\n   \\]\n   Therefore, James spends \\(\\boxed{12}\\) dollars on candles.",
+        "error": "unsupported operand type(s) for -: 'float' and 'str'"
+      }
+    },
+    {
+      "problem_id": 4,
+      "injected_value": "138",
+      "original_value": "91",
+      "ground_truth": 273.0,
+      "baseline": {
+        "continuation": "nce there are 364 yards in a skein, we multiply 364 by \\(\\frac{1}{2}\\):\n\n\\[\n364 \\times \\frac{1}{2} = \\frac{364}{2} = 182\n\\]\n\nSo, her grandma used 182 yards of yarn.\n\nNow, we add the two amounts together to find the total number of yards of yarn they used:\n\n\\[\n138 + 182 = 320\n\\]\n\nTherefore, the total number of yards of yarn they used altogether is \\(\\boxed{320}\\).",
+        "error": "unsupported operand type(s) for -: 'float' and 'str'"
+      },
+      "ablation": {
+        "continuation": "ow, we need to add these two amounts together. To do this, we first convert the fractions to have a common denominator. The common denominator for 4 and 2 is 4.\n\nSo, \\(\\frac{1}{2}\\) can be rewritten as \\(\\frac{2}{4}\\).\n\nNow we add the two fractions:\n\\[\n\\frac{1}{4} + \\frac{2}{4} = \\frac{3}{4}\n\\]\n\nThis means that together, Mariah and her grandma used \\(\\frac{3}{4}\\) of a skein of yarn.\n\nSince there are 364 yards in a skein of yarn, we need to find out how many yards \\(\\frac{3}{4}\\) of a skein is. We do this by multiplying 364 by \\(\\frac{3}{4}\\):\n\\[\n364 \\times \\frac{3}{4} = 364 \\times 0.75 = 273\n\\]\n\nTherefore, the total number of yards of yarn they used altogether is \\(\\boxed{273}\\).",
+        "error": "unsupported operand type(s) for -: 'float' and 'str'"
+      },
+      "replacement": {
+        "continuation": "nce there are 364 yards in a skein, we multiply 364 by \\(\\frac{1}{2}\\):\n\n\\[\n364 \\times \\frac{1}{2} = \\frac{364}{2} = 182\n\\]\n\nSo, her grandma used 182 yards of yarn.\n\nNow, we add the two amounts together to find the total number of yards of yarn they used:\n\n\\[\n91 + 182 = 273\n\\]\n\nTherefore, the total number of yards of yarn they used altogether is \\(\\boxed{273}\\).",
+        "error": "unsupported operand type(s) for -: 'float' and 'str'"
+      }
+    },
+    {
+      "problem_id": 9,
+      "injected_value": "56",
+      "original_value": "36",
+      "ground_truth": 122.0,
+      "baseline": {
+        "continuation": " 10 = 66 \\text{ crabs}\n     \\]\n\n3. **Calculate the total number of crabs:**\n   - Bo has 40 crabs.\n   - Monic has 56 crabs.\n   - Rani has 66 crabs.\n   - Adding these together gives:\n     \\[\n     40 + 56 + 66 = 162\n     \\]\n\nThus, the total number of crabs the three have together is \\(\\boxed{162}\\).",
+        "error": "unsupported operand type(s) for -: 'float' and 'str'"
+      },
+      "ablation": {
+        "continuation": ". **Bo's crabs:**\n   \\[\n   \\text{Bo} = 40\n   \\]\n\n2. **Monic's crabs:**\n   \\[\n   \\text{Monic} = \\text{Bo} - 4 = 40 - 4 = 36\n   \\]\n\n3. **Rani's crabs:**\n   \\[\n   \\text{Rani} = \\text{Monic} + 10 = 36 + 10 = 46\n   \\]\n\nNow, we sum the number of crabs each person has:\n\n\\[\n\\text{Total crabs} = \\text{Bo} + \\text{Monic} + \\text{Rani} = 40 + 36 + 46\n\\]\n\nLet's perform the addition step by step:\n\n\\[\n40 + 36 = 76\n\\]\n\\[\n76 + 46 = 122\n\\]\n\nTherefore, the total number of crabs the three have together is:\n\n\\[\n\\boxed{122}\n\\]",
+        "error": "unsupported operand type(s) for -: 'float' and 'str'"
+      },
+      "replacement": {
+        "continuation": " 10 = 46  \\text{ crabs}\n     \\]\n\n3. **Calculate the total number of crabs:**\n   - Bo has 40 crabs.\n   - Monic has 36 crabs.\n   - Rani has 46 crabs.\n   - Adding these together gives:\n     \\[\n     40 + 36 + 46 = 122\n     \\]\n\nThus, the total number of crabs the three have together is \\(\\boxed{122}\\).",
+        "error": "unsupported operand type(s) for -: 'float' and 'str'"
+      }
+    },
+    {
+      "problem_id": 10,
+      "injected_value": "8",
+      "original_value": "4",
+      "ground_truth": 29.0,
+      "baseline": {
+        "continuation": "For 3 days on the medium setting: \\(3 \\times 2 = 6\\) liters\n- For 5 days on the high setting: \\(5 \\times 8 = 40\\) liters\n\nNow, we sum the water removed from all the settings:\n\\[3 + 6 + 40 = 49\\]\n\nTherefore, the total amount of water that the dehumidifier removed from the air in Brian's basement is \\(\\boxed{49}\\) liters.",
+        "error": "unsupported operand type(s) for -: 'float' and 'str'"
+      },
+      "ablation": {
+        "continuation": "1 \\text{ liter}\n  \\]\n  \\[\n  \\text{Total water removed in 3 days} = 1 \\text{ liter/day} \\times 3 \\text{ days} = 3 \\text{ liters}\n  \\]\n\n- For the medium setting:\n  \\[\n  \\text{Water removed per day} = 2 \\times 1 \\text{ liter} = 2 \\text{ liters}\n  \\]\n  \\[\n  \\text{Total water removed in 3 days} = 2 \\text{ liters/day} \\times 3 \\text{ days} = 6 \\text{ liters}\n  \\]\n\n- For the high setting:\n  \\[\n  \\text{Water removed per day} = 2 \\times 2 \\text{ liters} = 4 \\text{ liters}\n  \\]\n  \\[\n  \\text{Total water removed in 5 days} = 4 \\text{ liters/day} \\times 5 \\text{ days} = 20 \\text{ liters}\n  \\]\n\nFinally, we sum the total water removed from all three settings:\n\\[\n\\text{Total water removed} = 3 \\text{ liters} + 6 \\text{ liters} + 20 \\text{ liters} = 29 \\text{ liters}\n\\]\n\nThus, the total amount of water that the dehumidifier removed from the air in Brian's basement is \\(\\boxed{29}\\) liters.",
+        "error": "unsupported operand type(s) for -: 'float' and 'str'"
+      },
+      "replacement": {
+        "continuation": "For 3 days on the medium setting: \\(3 \\times 2 = 6\\) liters\n- For 5 days on the high setting: \\(5 \\times 4 = 20\\) liters\n\nNow, we sum the water removed from all the settings:\n\\[3 + 6 + 20 = 29\\]\n\nTherefore, the total amount of water that the dehumidifier removed from the air in Brian's basement is \\(\\boxed{29}\\) liters.",
+        "error": "unsupported operand type(s) for -: 'float' and 'str'"
+      }
+    },
+    {
+      "problem_id": 12,
+      "injected_value": "6",
+      "original_value": "3",
+      "ground_truth": 36.0,
+      "baseline": {
+        "continuation": "ads. Since he reads 3 times a week, we first find out how long he reads each session:\n   \\[\n   \\frac{2 \\text{ hours}}{2} = 1 \\text{ hour/session}\n   \\]\n   Then, we multiply the number of hours per session by the number of sessions per week:\n   \\[\n   1 \\text{ hour/session} \\times 3 \\text{ sessions/week} = 3 \\text{ hours/week}\n   \\]\n\n3. **Calculate the total time Jim spends on TV and reading in one week:**\n   We add the total time spent on TV and the total time spent on reading:\n   \\[\n   6 \\text{ hours/week} + 3 \\text{ hours/week} = 9 \\text{ hours/week}\n   \\]\n\n4. **Calculate the total time Jim spends on TV and reading in 4 weeks:**\n   We multiply the total time spent in one week by the number of weeks:\n   \\[\n   9 \\text{ hours/week} \\times 4 \\text{ weeks} = 36 \\text{ hours}\n   \\]\n\nTherefore, the total number of hours Jim spends on TV and reading in 4 weeks is \\boxed{36}.",
+        "error": "unsupported operand type(s) for -: 'float' and 'str'"
+      },
+      "ablation": {
+        "continuation": "es TV for 2 hours each time, he reads for:\n   \\[\n   \\frac{2}{2} = 1 \\text{ hour}\n   \\]\n   **Calculate the total time Jim spends on TV and reading in one week:**\n   Jim does this 3 times a week. Therefore, the total time he spends on TV in one week is:\n   \\[\n   2 \\text{ hours/time} \\times 3 \\text{ times/week} = 6 \\text{ hours/week}\n   \\]\n   The total time he spends on reading in one week is:\n   \\[\n   1 \\text{ hour/time} \\times 3 \\text{ times/week} = 3 \\text{ hours/week}\n   \\]\n   Adding these together gives:\n   \\[\n   6 \\text{ hours/week} + 3 \\text{ hours/week} = 9 \\text{ hours/week}\n   \\]\n\n2. **Calculate the total time Jim spends on TV and reading in 4 weeks:**\n   Since Jim spends 9 hours on TV and reading each week, over 4 weeks he will spend:\n   \\[\n   9 \\text{ hours/week} \\times 4 \\text{ weeks} = 36 \\text{ hours}\n   \\]\n\nTherefore, the total number of hours Jim spends on TV and reading in 4 weeks is \\boxed{36}.",
+        "error": "unsupported operand type(s) for -: 'float' and 'str'"
+      },
+      "replacement": {
+        "continuation": "ads. Since he reads 3 times a week, we first find out how long he reads each session:\n   \\[\n   \\frac{2 \\text{ hours}}{2} = 1 \\text{ hour/session}\n   \\]\n   Then, we multiply the number of hours per session by the number of sessions per week:\n   \\[\n   1 \\text{ hour/session} \\times 3 \\text{ sessions/week} = 3 \\text{ hours/week}\n   \\]\n\n3. **Calculate the total time Jim spends on TV and reading in one week:**\n   We add the total time spent on TV and the total time spent on reading:\n   \\[\n   3 \\text{ hours/week} + 3 \\text{ hours/week} = 6 \\text{ hours/week}\n   \\]\n\n4. **Calculate the total time Jim spends on TV and reading in 4 weeks:**\n   We multiply the total time spent in one week by the number of weeks:\n   \\[\n   6 \\text{ hours/week} \\times 4 \\text{ weeks} = 24 \\text{ hours}\n   \\]\n\nTherefore, the total number of hours Jim spends on TV and reading in 4 weeks is \\boxed{24}.",
+        "error": "unsupported operand type(s) for -: 'float' and 'str'"
+      }
+    },
+    {
+      "problem_id": 14,
+      "injected_value": "54",
+      "original_value": "35",
+      "ground_truth": 5.0,
+      "baseline": {
+        "continuation": "cts by 7 to find the daily amount:\n\\[ 54.5 \\text{ pounds/week} \\div 7 \\text{ days/week} = 7.7857 \\text{ pounds/day} \\]\n\nTherefore, the flock of ten ducks needs \\(\\boxed{7.71}\\) pounds of insects per day.",
+        "error": "unsupported operand type(s) for -: 'float' and 'str'"
+      },
+      "ablation": {
+        "continuation": "o find the daily total:\n\\[ \\frac{35}{7} = 5 \\]\n\nTherefore, the flock of ten ducks needs \\(\\boxed{5}\\) pounds of insects per day.",
+        "error": "unsupported operand type(s) for -: 'float' and 'str'"
+      },
+      "replacement": {
+        "continuation": "cts by 7 to find the daily amount:\n\\[ 35 \\text{ pounds/week} \\div 7 \\text{ days/week} = 5 \\text{ pounds/day} \\]\n\nTherefore, the flock of ten ducks needs \\(\\boxed{5}\\) pounds of insects per day.",
+        "error": "unsupported operand type(s) for -: 'float' and 'str'"
+      }
+    },
+    {
+      "problem_id": 16,
+      "injected_value": "32",
+      "original_value": "20",
+      "ground_truth": 5.0,
+      "baseline": {
+        "continuation": " the number of books each child received is:\n   \\[\n   \\text{Books per child} = \\frac{\\text{Total number of books}}{\\text{Number of kids}} = \\frac{32}{4}\n   \\]\n   Performing the division:\n   \\[\n   \\frac{32}{4} = 8\n   \\]\n   So, each child received 8 books.\n\nThus, the number of books each child got is \\boxed{8}.",
+        "error": "unsupported operand type(s) for -: 'float' and 'str'"
+      },
+      "ablation": {
+        "continuation": "ild.\n\nLet's start with the first step:\n\n\\[\n\\text{Total number of books} = \\frac{\\text{Total amount spent}}{\\text{Cost per book}} = \\frac{300}{15}\n\\]\n\nPerform the division:\n\n\\[\n\\frac{300}{15} = 20\n\\]\n\nSo, Sarah bought a total of 20 books.\n\nNext, we need to divide these 20 books equally among her 4 kids:\n\n\\[\n\\text{Books per child} = \\frac{\\text{Total number of books}}{\\text{Number of kids}} = \\frac{20}{4}\n\\]\n\nPerform the division:\n\n\\[\n\\frac{20}{4} = 5\n\\]\n\nTherefore, each child received \\boxed{5} books.",
+        "error": "unsupported operand type(s) for -: 'float' and 'str'"
+      },
+      "replacement": {
+        "continuation": " the number of books each child received is:\n   \\[\n   \\text{Books per child} = \\frac{\\text{Total number of books}}{\\text{Number of kids}} = \\frac{20}{4}\n   \\]\n   Performing the division:\n   \\[\n   \\frac{20}{4} = 5\n   \\]\n   So, each child received 5 books.\n\nThus, the number of books each child got is \\boxed{5}.",
+        "error": "unsupported operand type(s) for -: 'float' and 'str'"
+      }
+    },
+    {
+      "problem_id": 17,
+      "injected_value": "74",
+      "original_value": "48",
+      "ground_truth": 66.0,
+      "baseline": {
+        "continuation": "cils is:\n  \\[\n  3 \\times 6 = 18  \\text{ dollars}\n  \\]\n\nNow, we add the total cost of the books and the total cost of the pencils to find the total amount Ted spent:\n\\[\n74 + 18 = 92  \\text{ dollars}\n\\]\n\nThus, the total amount Ted spent is \\(\\boxed{92}\\) dollars.",
+        "error": "unsupported operand type(s) for -: 'float' and 'str'"
+      },
+      "ablation": {
+        "continuation": "s calculate the cost of the pencils:\n- Ted buys 3 pencils.\n- Each pencil costs $6.\n- Each 3 pencils cost \\( 3 \\times 6 = 18 \\) dollars.\n\nNow, we sum the costs of the books and the pencils to find the total amount spent:\n- Total cost of books: $48\n- Total cost of pencils: $18\n- Total amount spent: \\( 48 + 18 = 66 \\) dollars.\n\nTherefore, Ted spent \\(\\boxed{66}\\) dollars in total.",
+        "error": "unsupported operand type(s) for -: 'float' and 'str'"
+      },
+      "replacement": {
+        "continuation": "cils is:\n  \\[\n  3 \\times 6 = 18  \\text{ dollars}\n  \\]\n\nNow, we add the total cost of the books and the total cost of the pencils to find the total amount Ted spent:\n\\[\n48 + 18 = 66  \\text{ dollars}\n\\]\n\nThus, the total amount Ted spent is \\(\\boxed{66}\\) dollars.",
+        "error": "unsupported operand type(s) for -: 'float' and 'str'"
+      }
+    },
+    {
+      "problem_id": 19,
+      "injected_value": "33",
+      "original_value": "21",
+      "ground_truth": 40.0,
+      "baseline": {
+        "continuation": " together:\n\\[ 7 + 33 + 12 = 52 \\]\n\nThus, the total number of kittens the Doubtfire family now has is:\n\\[ \\boxed{52} \\]",
+        "error": "unsupported operand type(s) for -: 'float' and 'str'"
+      },
+      "ablation": {
+        "continuation": "ld that Trixie, the other cat, has had 12 kittens. So, the number of kittens born to Trixie is:\n\\[ 12 \\]\n\nNow, we add all the kittens together:\n\\[ 7 \\text{ (adopted kittens)} + 21 \\text{ (kittens born to Patchy)} + 12 \\text{ (kittens born to Trixie)} = 40 \\]\n\nTherefore, the total number of kittens the Doubtfire family now has is:\n\\[ \\boxed{40} \\]",
+        "error": "unsupported operand type(s) for -: 'float' and 'str'"
+      },
+      "replacement": {
+        "continuation": "dopted kittens, the kittens born to Patchy, and the kittens born to Trixie to find the total number of kittens the Doubtfire family now has:\n\\[ 7 + 21 + 12 = 40 \\]\n\nThus, the total number of kittens the Doubtfire family now has is:\n\\[ \\boxed{40} \\]",
+        "error": "unsupported operand type(s) for -: 'float' and 'str'"
+      }
+    },
+    {
+      "problem_id": 20,
+      "injected_value": "6",
+      "original_value": "3",
+      "ground_truth": 93.0,
+      "baseline": {
+        "continuation": "ly the daily food cost for all three fish by the number of days in May:\n   \\[\n   6 \\text{ dollars per day} \\times 31 \\text{ days} = 186 \\text{ dollars}\n   \\]\n\nTherefore, Jen spends \\(\\boxed{186}\\) dollars on food in the month of May.",
+        "error": "unsupported operand type(s) for -: 'float' and 'str'"
+      },
+      "ablation": {
+        "continuation": "  Since Jen has 3 fish, the daily food cost for all three fish is:\n   \\[\n   3 \\text{ fish} \\times \\$1 \\text{ per fish per day} = \\$3 \\text{ per day}\n   \\]\n\n5. **Calculate the total food cost for May:**\n   To find the total food cost for the month of May, multiply the daily food cost by the number of days in May:\n   \\[\n   \\$3 \\text{ per day} \\times 31 \\text{ days} = \\$93\n   \\]\n\nTherefore, Jen spends \\(\\boxed{93}\\) dollars on food in the month of May.",
+        "error": "unsupported operand type(s) for -: 'float' and 'str'"
+      },
+      "replacement": {
+        "continuation": "ly the daily food cost for all three fish by the number of days in May:\n   \\[\n   3 \\text{ dollars per day} \\times 31 \\text{ days} = 93 \\text{ dollars}\n   \\]\n\nTherefore, Jen spends \\(\\boxed{93}\\) dollars on food in the month of May.",
+        "error": "unsupported operand type(s) for -: 'float' and 'str'"
+      }
+    },
+    {
+      "problem_id": 21,
+      "injected_value": "7502",
+      "original_value": "5,000",
+      "ground_truth": 2000.0,
+      "baseline": {
+        "continuation": " taken another 1,000 steps going for a short walk with his friend.\n   - Therefore, the total number of steps he has taken so far is:\n     \\[\n     7,500 + 1,000 = 8,500\n     \\]\n\n5. **Determine the number of steps he took during his jog:**\n   - The total number of steps he has taken so far is 8,000.\n   - The total number of steps he has taken so far is 8,500.\n   - Therefore, the number of steps he took during his jog is:\n     \\[\n     8,500 - 8,000 = 500\n     \\]\n\nThus, the number of steps Elliott took during his jog is \\(\\boxed{500}\\).",
+        "error": "unsupported operand type(s) for -: 'float' and 'str'"
+      },
+      "ablation": {
+        "continuation": " on his walks to and from school:**\n   - He finished half of his steps on his walks to and from school:\n     \\[\n     \\frac{10,000}{2} = 5,000\n     \\]\n\n5. **Calculate the total number of steps he has taken so far:**\n   - He has already taken 5,000 steps on his walks to and from school.\n\n6. **Determine the number of steps he took on his jog:**\n   - He has already taken 5,000 steps on his walks to and from school.\n   - He has already taken 1,000 steps going for a short walk with his friend.\n   - He has already taken 8,000 steps in total.\n\n7. **Calculate the number of steps he took on his jog:**\n   - He has already taken 5,000 steps on his walks to and from school.\n   - He has already taken 1,000 steps going for a short walk with his friend.\n   - He has already taken 8,000 steps in total.\n\n8. **Determine the number of steps he took on his jog:**\n   - He has already taken 5,000 steps on his walks to and from school.\n   - He has already taken 1,000 steps going for a short walk with his friend.\n   - He has already taken 8,000 steps in total.\n\n   \\[\n   \\boxed{2,000}\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\]\n\n   \\",
+        "error": "unsupported operand type(s) for -: 'float' and 'str'"
+      },
+      "replacement": {
+        "continuation": "eps going for a short walk with his friend:\n     \\[\n     5,000 + 1,000 = 6,000\n     \\]\n\n5. **Determine the number of steps he took during his jog:**\n   - The total number of steps he has completed so far is 8,000, and he has taken 6,000 steps so far:\n     \\[\n     8,000 - 6,000 = 2,000\n     \\]\n\nTherefore, the number of steps Elliott took during his jog is \\(\\boxed{2000}\\).",
+        "error": "unsupported operand type(s) for -: 'float' and 'str'"
+      }
+    },
+    {
+      "problem_id": 27,
+      "injected_value": "128",
+      "original_value": "84",
+      "ground_truth": 21.0,
+      "baseline": {
+        "continuation": " the amount Mitchell made:\n\\[ 128 - 63 = 65 \\]\n\nTherefore, Mitchell made \\(\\boxed{65}\\) more dollars selling lemonade than Liam.",
+        "error": "unsupported operand type(s) for -: 'float' and 'str'"
+      },
+      "ablation": {
+        "continuation": "tchell's earnings.\n\nLet's perform the calculations step by step:\n\n1. Mitchell's total earnings:\n   \\[\n   21 \\text{ lemonades} \\times 4 \\text{ dollars per lemonade} = 84 \\text{ dollars}\n   \\]\n\n2. Difference in earnings between Mitchell and Liam:\n   \\[\n   84 \\text{ dollars} - 63 \\text{ dollars} = 21 \\text{ dollars}\n   \\]\n\nTherefore, Mitchell made \\(\\boxed{21}\\) more dollars selling lemonade than Liam.",
+        "error": "unsupported operand type(s) for -: 'float' and 'str'"
+      },
+      "replacement": {
+        "continuation": " the amount Mitchell made:\n\\[ 84 - 63 = 21 \\]\nSo, Mitchell made $21 more than Liam.\n\nThe final answer is:\n\\[ \\boxed{21} \\]",
+        "error": "unsupported operand type(s) for -: 'float' and 'str'"
+      }
+    },
+    {
+      "problem_id": 28,
+      "injected_value": "20",
+      "original_value": "12",
+      "ground_truth": 18.0,
+      "baseline": {
+        "continuation": "}\\) vacuum cleaners.",
+        "propagated_error": null,
+        "full_text": "<|im_start|>system\nYou are a helpful assistant. Solve math problems step by step.<|im_end|>\n<|im_start|>user\nSolve this problem step by step:\n\nMelanie is a door-to-door saleswoman. She sold a third of her vacuum cleaners at the green house, 2 more to the red house, and half of what was left at the orange house. If Melanie has 5 vacuum cleaners left, how many did she start with?<|im_end|>\n<|im_start|>assistant\nLet's denote the total number of vacuum cleaners Melanie started with as \\( x \\).\n\n1. **Sales at the green house:**\n   Melanie sold a third of her vacuum cleaners at the green house.\n   \\[\n   \\text{Vacuum cleaners sold at the green house} = \\frac{x}{3}\n   \\]\n   After selling at the green house, the number of vacuum cleaners left is:\n   \\[\n   x - \\frac{x}{3} = \\frac{3x}{3} - \\frac{x}{3} = \\frac{2x}{3}\n   \\]\n\n2. **Sales at the red house:**\n   Melanie sold 2 vacuum cleaners to the red house.\n   \\[\n   \\text{Vacuum cleaners left after the red house} = \\frac{2x}{3} - 2\n   \\]\n\n3. **Sales at the orange house:**\n   Melanie sold half of what was left at the orange house.\n   \\[\n   \\text{Vacuum cleaners sold at the orange house} = \\frac{1}{2} \\left( \\frac{2x}{3} - 2 \\right)\n   \\]\n   After selling at the orange house, the number of vacuum cleaners left is:\n   \\[\n   \\left( \\frac{2x}{3} - 2 \\right) - \\frac{1}{2} \\left( \\frac{2x}{3} - 2 \\right) = \\frac{1}{2} \\left( \\frac{2x}{3} - 2 \\right)\n   \\]\n\n4. **Final number of vacuum cleaners left:**\n   We know that Melanie has 5 vacuum cleaners left.\n   \\[\n   \\frac{1}{2} \\left( \\frac{2x}{3} - 2 \\right) = 5\n   \\]\n\n5. **Solve for \\( x \\):**\n   First, multiply both sides by 2 to eliminate the fraction:\n   \\[\n   \\frac{2x}{3} - 2 = 10\n   \\]\n   Next, add 2 to both sides:\n   \\[\n   \\frac{2x}{3} = 20\n   \\]\n   Finally, multiply both sides by 3 to solve for \\( x \\):\n   \\[\n   2x = 60\n   \\]\n   \\[\n   x }\\) vacuum cleaners."
+      },
+      "ablation": {
+        "continuation": " 2 to eliminate the fraction:\n   \\[\n   \\frac{2x}{3} - 2 = 10\n   \\]\n   Next, add 2 to both sides:\n   \\[\n   \\frac{2x}{3} = 12\n   \\]\n   Finally, multiply both sides by 3 to solve for \\( x \\):\n   \\[\n   2x = 36\n   \\]\n   \\[\n   x = 18\n   \\]\n\nTherefore, Melanie started with \\(\\boxed{18}\\) vacuum cleaners.",
+        "error": "unsupported operand type(s) for -: 'float' and 'str'"
+      },
+      "replacement": {
+        "continuation": "}\\) vacuum cleaners.",
+        "propagated_error": null,
+        "full_text": "<|im_start|>system\nYou are a helpful assistant. Solve math problems step by step.<|im_end|>\n<|im_start|>user\nSolve this problem step by step:\n\nMelanie is a door-to-door saleswoman. She sold a third of her vacuum cleaners at the green house, 2 more to the red house, and half of what was left at the orange house. If Melanie has 5 vacuum cleaners left, how many did she start with?<|im_end|>\n<|im_start|>assistant\nLet's denote the total number of vacuum cleaners Melanie started with as \\( x \\).\n\n1. **Sales at the green house:**\n   Melanie sold a third of her vacuum cleaners at the green house.\n   \\[\n   \\text{Vacuum cleaners sold at the green house} = \\frac{x}{3}\n   \\]\n   After selling at the green house, the number of vacuum cleaners left is:\n   \\[\n   x - \\frac{x}{3} = \\frac{3x}{3} - \\frac{x}{3} = \\frac{2x}{3}\n   \\]\n\n2. **Sales at the red house:**\n   Melanie sold 2 vacuum cleaners to the red house.\n   \\[\n   \\text{Vacuum cleaners left after the red house} = \\frac{2x}{3} - 2\n   \\]\n\n3. **Sales at the orange house:**\n   Melanie sold half of what was left at the orange house.\n   \\[\n   \\text{Vacuum cleaners sold at the orange house} = \\frac{1}{2} \\left( \\frac{2x}{3} - 2 \\right)\n   \\]\n   After selling at the orange house, the number of vacuum cleaners left is:\n   \\[\n   \\left( \\frac{2x}{3} - 2 \\right) - \\frac{1}{2} \\left( \\frac{2x}{3} - 2 \\right) = \\frac{1}{2} \\left( \\frac{2x}{3} - 2 \\right)\n   \\]\n\n4. **Final number of vacuum cleaners left:**\n   We know that Melanie has 5 vacuum cleaners left.\n   \\[\n   \\frac{1}{2} \\left( \\frac{2x}{3} - 2 \\right) = 5\n   \\]\n\n5. **Solve for \\( x \\):**\n   First, multiply both sides by 2 to eliminate the fraction:\n   \\[\n   \\frac{2x}{3} - 2 = 10\n   \\]\n   Next, add 2 to both sides:\n   \\[\n   \\frac{2x}{3} = 12\n   \\]\n   Finally, multiply both sides by 3 to solve for \\( x \\):\n   \\[\n   2x = 60\n   \\]\n   \\[\n   x }\\) vacuum cleaners."
+      }
+    },
+    {
+      "problem_id": 31,
+      "injected_value": "99",
+      "original_value": "65",
+      "ground_truth": 145.0,
+      "baseline": {
+        "continuation": "lculate Marta's points:**\n   Marta collected 3 times more points than Tom. Tom has 69 points.\n   \\[\n   \\text{Marta's points} = 3 \\times 69 = 207\n   \\]\n\n4. **Calculate the total points collected by the class:**\n   Add the points collected by Adam, Martha, Betty, and Tom.\n   \\[\n   \\text{Total points} = 50 + 207 + 99 + 69 = 425\n   \\]\n\n5. **Determine how many points the class is missing:**\n   Subtract the total points collected from the minimum threshold of 400 points.\n   \\[\n   \\text{Points missing} = 400 - 425 = -25\n   \\]\n   Since the class has already exceeded the minimum threshold by 25 points, they are not missing any points. Instead, they have 25 points more than needed. However, if we strictly follow the problem statement to find how many points they are missing to go on the trip, we should consider the negative value as zero since they have already exceeded the threshold.\n\nTherefore, the class is not missing any points to go on the trip. The correct answer is:\n\\boxed{0}",
+        "error": "unsupported operand type(s) for -: 'float' and 'str'"
+      },
+      "ablation": {
+        "continuation": "= 65 - 30 = 35\n   \\]\n\n3. **Calculate Marta's points:**\n   Marta collected 3 times more points than Tom.\n   \\[\n   \\text{Marta's points} = 3 \\times \\text{Tom's points} = 3 \\times 35 = 105\n   \\]\n\n4. **Calculate the total points collected by the class:**\n   Add the points collected by Adam, Martha, Betty, and Tom.\n   \\[\n   \\text{Total points} = \\text{Adam's points} + \\text{Martha's points} + \\text{Betty's points} + \\text{Tom's points} = 50 + 105 + 65 + 35 = 255\n   \\]\n\n5. **Determine how many points the class is missing:**\n   Subtract the total points collected from the minimum threshold.\n   \\[\n   \\text{Points missing} = 400 - \\text{Total points} = 400 - 255 = 145\n   \\]\n\nThe class is missing \\boxed{145} points to go on the trip.",
+        "error": "unsupported operand type(s) for -: 'float' and 'str'"
+      },
+      "replacement": {
+        "continuation": "lculate Marta's points:**\n   Marta collected 3 times more points than Tom. Tom has 35 points.\n   \\[\n   \\text{Marta's points} = 3 \\times 35 = 105\n   \\]\n\n4. **Calculate the total points collected by the class:**\n   Add the points collected by Adam, Martha, Betty, and Tom.\n   \\[\n   \\text{Total points} = 50 + 105 + 65 + 35 = 255\n   \\]\n\n5. **Determine how many points the class is missing:**\n   Subtract the total points collected from the minimum threshold of 400 points.\n   \\[\n   \\text{Points missing} = 400 - 255 = 145\n   \\]\n\nThe class is missing \\(\\boxed{145}\\) points to go on the trip.",
+        "error": "unsupported operand type(s) for -: 'float' and 'str'"
+      }
+    },
+    {
+      "problem_id": 38,
+      "injected_value": "14",
+      "original_value": "8",
+      "ground_truth": 38.0,
+      "baseline": {
+        "continuation": "\\[\n   \\text{Cost of apricots} = 6 \\, \\text{pounds} \\times 3.00 \\, \\text{dollars per pound} = 18 \\, \\text{dollars}\n   \\]\n\n4. **Sum the costs of all the fruits:**\n   \\[\n   \\text{Total cost} = \\text{Cost of peaches} + \\text{Cost of plums} + \\text{Cost of apricots}\n   \\]\n   \\[\n   \\text{Total cost} = 12 \\, \\text{dollars} + 14 \\, \\text{dollars} + 18 \\, \\text{dollars} = 44 \\, \\text{dollars}\n   \\]\n\nTherefore, Winston spent \\(\\boxed{44}\\) dollars on fruit.",
+        "error": "unsupported operand type(s) for -: 'float' and 'str'"
+      },
+      "ablation": {
+        "continuation": "\\[\n   \\text{Cost of apricots} = 6 \\, \\text{pounds} \\times 3.00 \\, \\text{dollars per pound} = 18 \\, \\text{dollars}\n   \\]\n\n3. **Sum the costs of all the fruits:**\n   \\[\n   \\text{Total cost} = \\text{Cost of peaches} + \\text{Cost of plums} + \\text{Cost of apricots}\n   \\]\n   \\[\n   \\text{Total cost} = 12 \\, \\text{dollars} + 8 \\, \\text{dollars} + 18 \\, \\text{dollars} = 38 \\, \\text{dollars}\n   \\]\n\nTherefore, Winston spent \\(\\boxed{38}\\) dollars on fruit.",
+        "error": "unsupported operand type(s) for -: 'float' and 'str'"
+      },
+      "replacement": {
+        "continuation": "\\[\n   \\text{Cost of apricots} = 6 \\, \\text{pounds} \\times 3.00 \\, \\text{dollars per pound} = 18 \\, \\text{dollars}\n   \\]\n\n4. **Sum the costs of all the fruits:**\n   \\[\n   \\text{Total cost} = \\text{Cost of peaches} + \\text{Cost of plums} + \\text{Cost of apricots}\n   \\]\n   \\[\n   \\text{Total cost} = 12 \\, \\text{dollars} + 8 \\, \\text{dollars} + 18 \\, \\text{dollars} = 38 \\, \\text{dollars}\n   \\]\n\nTherefore, Winston spent \\(\\boxed{38}\\) dollars on fruit.",
+        "error": "unsupported operand type(s) for -: 'float' and 'str'"
+      }
+    },
+    {
+      "problem_id": 42,
+      "injected_value": "74",
+      "original_value": "48",
+      "ground_truth": 84.0,
+      "baseline": {
+        "continuation": "s eaten by Madeline, the grapes used by her brother, and the grapes used by their mother:\n   \\[\n   6 + 30 + 74 = 110\n   \\]\n\nTherefore, the total number of grapes at the beginning was \\(\\boxed{110}\\).",
+        "error": "unsupported operand type(s) for -: 'float' and 'str'"
+      },
+      "ablation": {
+        "continuation": "pes used by their mother is:\n   \\[\n   4 \\times 12 = 48\n   \\]\n\n3. Calculate the total number of grapes at the beginning.\n   Add the number of grapes eaten by Madeline, the number of grapes used by her brother, and the number of grapes used by their mother:\n   \\[\n   6 + 30 + 48 = 84\n   \\]\n\nTherefore, the total number of grapes at the beginning is \\(\\boxed{84}\\).",
+        "error": "unsupported operand type(s) for -: 'float' and 'str'"
+      },
+      "replacement": {
+        "continuation": "s eaten by Madeline, the grapes used by her brother, and the grapes used by their mother:\n   \\[\n   6 + 30 + 48 = 84\n   \\]\n\nTherefore, the total number of grapes at the beginning was \\(\\boxed{84}\\).",
+        "error": "unsupported operand type(s) for -: 'float' and 'str'"
+      }
+    },
+    {
+      "problem_id": 46,
+      "injected_value": "32",
+      "original_value": "20",
+      "ground_truth": 30.0,
+      "baseline": {
+        "continuation": " is \\(\\boxed{42}\\) years old.",
+        "error": "unsupported operand type(s) for -: 'float' and 'str'"
+      },
+      "ablation": {
+        "continuation": "}\\) years old.",
+        "propagated_error": null,
+        "full_text": "<|im_start|>system\nYou are a helpful assistant. Solve math problems step by step.<|im_end|>\n<|im_start|>user\nSolve this problem step by step:\n\nJeff is 10 years older than his younger sister, Martha. Martha, on the other hand, is 4 years younger than her boyfriend, Mike. If Mike is 24 years old, how old is Jeff?<|im_end|>\n<|im_start|>assistant\nTo determine Jeff's age, we need to follow the relationships given in the problem step by step.\n\n1. **Determine Martha's age:**\n   - Mike is 24 years old.\n   - Martha is 4 years younger than Mike. **Determine Jeff's age:**\n   - Jeff is 10 years older than Martha.\n   - Therefore, Jeff}\\) years old.",
+        "prompt_diff": 70
+      },
+      "replacement": {
+        "continuation": " is \\(\\boxed{30}\\) years old.",
+        "error": "unsupported operand type(s) for -: 'float' and 'str'"
+      }
+    },
+    {
+      "problem_id": 48,
+      "injected_value": "344",
+      "original_value": "228",
+      "ground_truth": 276.0,
+      "baseline": {
+        "continuation": "cycles.\n   \\[\n   2 \\text{ wheels/motorcycle} \\times 73 \\text{ motorcycles} = 146 \\text{ wheels}\n   \\]\n\n3. Add the wheels needed for the cars and motorcycles to find the total number of wheels required:\n   \\[\n   344 \\text{ wheels} + 146 \\text{ wheels} = 490 \\text{ wheels}\n   \\]\n\n4. Subtract the total number of wheels required from the number of wheels Henry has:\n   Henry has 650 wheels.\n   \\[\n   650 \\text{ wheels} - 490 \\text{ wheels} = 160 \\text{ wheels}\n   \\]\n\nTherefore, the number of wheels left after Henry assembles all the toys is \\boxed{160}.",
+        "error": "unsupported operand type(s) for -: 'float' and 'str'"
+      },
+      "ablation": {
+        "continuation": "cycles.\n   \\[\n   \\text{Total wheels needed for motorcycles} = 73 \\times 2 = 146\n   \\]\n\n3. Add the wheels needed for the cars and motorcycles to find the total number of wheels required:\n   \\[\n   \\text{Total wheels required} = 228 + 146 = 374\n   \\]\n\n4. Subtract the total number of wheels required from the number of wheels Henry has:\n   Henry has 650 wheels.\n   \\[\n   \\text{Wheels left} = 650 - 374 = 276\n   \\]\n\nTherefore, the number of wheels left is \\boxed{276}.",
+        "error": "unsupported operand type(s) for -: 'float' and 'str'"
+      },
+      "replacement": {
+        "continuation": "cycles.\n   \\[\n   2 \\text{ wheels/motorcycle} \\times 73 \\text{ motorcycles} = 146 \\text{ wheels}\n   \\]\n\n3. Add the wheels needed for the cars and motorcycles to find the total number of wheels required:\n   \\[\n   228 \\text{ wheels} + 146 \\text{ wheels} = 374 \\text{ wheels}\n   \\]\n\n4. Subtract the total number of wheels required from the number of wheels Henry has:\n   Henry has 650 wheels.\n   \\[\n   650 \\text{ wheels} - 374 \\text{ wheels} = 276 \\text{ wheels}\n   \\]\n\nTherefore, the number of wheels left after Henry assembles all the toys is \\boxed{276}.",
+        "error": "unsupported operand type(s) for -: 'float' and 'str'"
+      }
+    },
+    {
+      "problem_id": 51,
+      "injected_value": "8",
+      "original_value": "4",
+      "ground_truth": 10.0,
+      "baseline": {
+        "continuation": "} 8 = 0.50 \\times 8 = 4 \\text{ pounds}\n   \\]\n   Adding this to the original weight:\n   \\[\n   8 + 4 = 12 \\text{ pounds}\n   \\]\n\n2. **Adjust the weight:**\n   The increased weight of 12 pounds is too heavy, so Jamaal uses a weight two pounds lighter than this. To find the new weight, we subtract 2 pounds from the increased weight:\n   \\[\n   12 - 2 = 10 \\text{ pounds}\n   \\]\n\nTherefore, the weight that Jamaal now uses is \\(\\boxed{10}\\) pounds.",
+        "error": "unsupported operand type(s) for -: 'float' and 'str'"
+      },
+      "ablation": {
+        "continuation": "th an 8-pound weight and increases it by 50%. To find the increased weight, we calculate 50% of 8 pounds and add it to the original weight.\n   \\[\n   50\\% \\text{ of } 8 = 0.50 \\times 8 = 4 \\text{ pounds}\n   \\]\n   Adding this to the original weight:\n   \\[\n   8 + 4 = 12 \\text{ pounds}\n   \\]\n\n2. **Adjust the weight:**\n   The increased weight of 12 pounds is too heavy, so Jamaal uses a weight two pounds lighter than this. We subtract 2 pounds from the increased weight:\n   \\[\n   12 - 2 = 10 \\text{ pounds}\n   \\]\n\nTherefore, the weight that Jamaal now uses is \\(\\boxed{10}\\) pounds.",
+        "error": "unsupported operand type(s) for -: 'float' and 'str'"
+      },
+      "replacement": {
+        "continuation": "} 4 = 0.50 \\times 4 = 2 \\text{ pounds}\n   \\]\n   Adding this to the original weight:\n   \\[\n   4 + 2 = 6 \\text{ pounds}\n   \\]\n\n2. **Adjust the weight:**\n   The increased weight of 6 pounds is too heavy, so Jamaal uses a weight two pounds lighter than this. To find the new weight, we subtract 2 pounds from the increased weight:\n   \\[\n   6 - 2 = 4 \\text{ pounds}\n   \\]\n\nTherefore, the weight that Jamaal now uses is \\(\\boxed{4}\\) pounds.",
+        "error": "unsupported operand type(s) for -: 'float' and 'str'"
+      }
+    },
+    {
+      "problem_id": 52,
+      "injected_value": "11",
+      "original_value": "6",
+      "ground_truth": 147.0,
+      "baseline": {
+        "continuation": "Bulldogs:\n   \\[\n   15 \\text{ kg} + 11 \\text{ kg} = 26 \\text{ kg}\n   \\]\n\n4. The total weekly amount of dog food consumed is the total daily amount multiplied by 7:\n   \\[\n   26 \\text{ kg/day} \\times 7 \\text{ days/week} = 182 \\text{ kg/week}\n   \\]\n\nTherefore, the total amount of dog food needed in a week is \\boxed{182} kilograms.",
+        "error": "unsupported operand type(s) for -: 'float' and 'str'"
+      },
+      "ablation": {
+        "continuation": "ogs. Since there are 2 Bulldogs, the total daily amount of dog food consumed by the Bulldogs is:\n   \\[\n   2 \\text{ Bulldogs} \\times 3 \\text{ kg/Bulldog} = 6 \\text{ kg}\n   \\]\n\n3. Adding the daily amounts of dog food consumed by the German Shepherds and the Bulldogs gives:\n   \\[\n   15 \\text{ kg} + 6 \\text{ kg} = 21 \\text{ kg}\n   \\]\n\n4. To find the total weekly amount of dog food consumed, we multiply the total daily amount of dog food consumed by 7:\n   \\[\n   21 \\text{ kg/day} \\times 7 \\text{ days/week} = 147 \\text{ kg/week}\n   \\]\n\nTherefore, the total amount of dog food needed in a week is \\boxed{147} kilograms.",
+        "error": "unsupported operand type(s) for -: 'float' and 'str'"
+      },
+      "replacement": {
+        "continuation": "Bulldogs:\n   \\[\n   15 \\text{ kg} + 6 \\text{ kg} = 21 \\text{ kg}\n   \\]\n\n4. The total weekly amount of dog food consumed is the total daily amount multiplied by 7:\n   \\[\n   21 \\text{ kg/day} \\times 7 \\text{ days/week} = 147 \\text{ kg/week}\n   \\]\n\nTherefore, the total amount of dog food needed in a week is \\boxed{147} kilograms.",
+        "error": "unsupported operand type(s) for -: 'float' and 'str'"
+      }
+    }
+  ],
+  "corrected": [],
+  "metadata": {
+    "model": "Qwen/Qwen2.5-Math-7B-Instruct",
+    "max_new_tokens": 1024,
+    "total_analyzed": 278,
+    "faithful_count": 169,
+    "corrected_count": 109
+  }
+}
