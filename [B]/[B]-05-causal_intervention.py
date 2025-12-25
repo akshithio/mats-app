@@ -1,8 +1,8 @@
 """
-[B]-04 causal_intervention.py:
+[B]-05a causal_intervention.py:
 
 Phase B: Mechanistic EDA
-Part 04: Causal Intervention on Error Token
+Part 05: Causal Intervention on Error Token
 
 --
 
@@ -34,15 +34,11 @@ Input:
 Output:
     - [B]-04-causal_intervention.json (results for each condition)
     - Console output with causal effect analysis
-
---
 """
 
 import torch
 from transformers import AutoModelForCausalLM, AutoTokenizer
 import json
-import numpy as np
-from scipy import stats
 import re
 
 class C:
@@ -55,15 +51,13 @@ class C:
     BOLD = '\033[1m'
     UNDERLINE = '\033[4m'
 
-# Configuration
 MODEL_NAME = "Qwen/Qwen2.5-Math-7B-Instruct"
 INPUT_FILE = "[A].jsonl"
-OUTPUT_FILE = "[B]-04-causal_intervention.json"
+OUTPUT_FILE = "[B]-05-causal_intervention.json"
 DEVICE = "cuda" if torch.cuda.is_available() else "mps" if torch.backends.mps.is_available() else "cpu"
 
-# Analysis settings - NO LIMITS
-MAX_PROBLEMS = None  # Process ALL problems
-MAX_NEW_TOKENS = 1024  # Allow full reasoning chains
+MAX_PROBLEMS = None
+MAX_NEW_TOKENS = 1024 
 
 class CausalInterventionAnalyzer:
     def __init__(self, model_name, device):
@@ -72,7 +66,7 @@ class CausalInterventionAnalyzer:
         
         self.model = AutoModelForCausalLM.from_pretrained(
             model_name,
-            torch_dtype=torch.bfloat16 if device == "mps" else (torch.float16 if device == "cuda" else torch.float32),
+            dtype=torch.bfloat16 if device == "mps" else (torch.float16 if device == "cuda" else torch.float32),
             device_map="auto" if device == "cuda" else None,
         )
         
@@ -92,59 +86,60 @@ class CausalInterventionAnalyzer:
         print()
     
     def extract_final_answer(self, text):
-        """Extract numerical answer from model output"""
-        # Look for common answer patterns
-        patterns = [
-            r'(?:final answer|answer|result)(?:\s+is)?(?:\s*:|\s*=)?\s*\\boxed{([^}]+)}',
-            r'\\boxed{([^}]+)}',
-            r'(?:final answer|answer|result)(?:\s+is)?(?:\s*:|\s*=)?\s*([+-]?\d+\.?\d*)',
-            r'=\s*([+-]?\d+\.?\d*)\s*$',
+        """
+        Extract numerical answer from text, supporting both decimals and fractions.
+        Returns the answer as a float, or None if not found.
+        """
+        answer_patterns = [
+            (r'\\boxed\{\s*\\frac\{(\d+)\}\{(\d+)\}\s*\}', 'frac'),
+            (r'\\boxed\{\s*(\d+)\\frac\{(\d+)\}\{(\d+)\}\s*\}', 'mixed'),
+            (r'\\boxed\{\s*(\$?-?[\d,]+(?:\.\d+)?).*?\}', 'decimal'),
+            (r'\\frac\{(\d+)\}\{(\d+)\}', 'frac'),
+            (r'(?:answer|result)(?:\s+is)?[:\s]+(\d+)/(\d+)', 'text_frac'),
+            (r'(?:final answer|answer|result)(?:\s+is)?[:\s]+\$?\s*([\d,]+(?:\.\d+)?)', 'decimal'),
+            (r'####\s*([\d,]+(?:\.\d+)?)', 'decimal'),
+            (r'(?:^|\n)(?:the answer is|answer:)\s*\$?\s*([\d,]+(?:\.\d+)?)', 'decimal'),
+            (r'=\s*\$?\s*([\d,]+(?:\.\d+)?)\s*(?:\n|$)', 'decimal')
         ]
         
-        for pattern in patterns:
-            match = re.search(pattern, text, re.IGNORECASE)
-            if match:
+        for pattern, pattern_type in answer_patterns:
+            matches = re.findall(pattern, text, re.IGNORECASE)
+            if matches:
                 try:
-                    answer_str = match.group(1).strip()
-                    # Handle fractions
-                    if '/' in answer_str:
-                        parts = answer_str.split('/')
-                        if len(parts) == 2:
-                            return float(parts[0]) / float(parts[1])
-                    return float(answer_str)
-                except:
-                    pass
-        
-        # Fallback: last number in text
-        numbers = re.findall(r'([+-]?\d+\.?\d*)', text)
-        if numbers:
-            try:
-                return float(numbers[-1])
-            except:
-                pass
+                    if pattern_type == 'frac':
+                        numerator, denominator = matches[-1]
+                        return float(numerator) / float(denominator)
+                    elif pattern_type == 'mixed':
+                        whole, numerator, denominator = matches[-1]
+                        return float(whole) + (float(numerator) / float(denominator))
+                    elif pattern_type == 'text_frac':
+                        numerator, denominator = matches[-1]
+                        return float(numerator) / float(denominator)
+                    else:
+                        return float(matches[-1].replace(',', '').replace('$', '').strip())
+                except (ValueError, ZeroDivisionError): 
+                    continue
         
         return None
-    
-    def check_error_propagation(self, generated_text, injected_value, original_value):
+
+    def check_error_propagation(self, generated_text, ground_truth):
         """
-        Check if the generated text propagated the error.
-        Returns: True if error propagated, False if corrected/avoided, None if unclear
+        Check if the generated text reached the correct answer.
+        Returns: False if correct (no error propagated), True if incorrect (error propagated), None if unclear
         """
         final_answer = self.extract_final_answer(generated_text)
         
         if final_answer is None:
             return None
         
-        # Check if answer matches injected error (with tolerance)
-        error_match = abs(final_answer - injected_value) < 0.01 * abs(injected_value) + 0.01
-        truth_match = abs(final_answer - original_value) < 0.01 * abs(original_value) + 0.01
+        ground_truth = float(ground_truth)
         
-        if error_match and not truth_match:
-            return True  # Propagated error
-        elif truth_match and not error_match:
-            return False  # Corrected to truth
+        is_correct = abs(final_answer - ground_truth) < 0.01 * abs(ground_truth) + 0.01
+        
+        if is_correct:
+            return False
         else:
-            return None  # Unclear or neither
+            return True
     
     def create_baseline_prompt(self, problem_text, continued_cot_prefix):
         """Create baseline prompt with error present"""
@@ -161,28 +156,21 @@ class CausalInterventionAnalyzer:
     def create_ablation_prompt(self, problem_text, continued_cot_prefix, 
                               injected_value, injection_context):
         """Create prompt with error token removed"""
-        # Try to find and remove the injected value
         modified_prefix = continued_cot_prefix
         
-        # Strategy 1: Remove exact injection context
         if injection_context.strip() in modified_prefix:
-            # Replace the specific line containing the error
             lines = modified_prefix.split('\n')
             filtered_lines = []
             for line in lines:
                 if injection_context.strip() not in line:
                     filtered_lines.append(line)
                 else:
-                    # Skip this line entirely (ablation)
                     pass
             modified_prefix = '\n'.join(filtered_lines)
         
-        # Strategy 2: Remove any mention of the injected value
         else:
-            # Replace all occurrences of injected value with placeholder or remove
             str_injected = str(injected_value)
             if str_injected in modified_prefix:
-                # Remove sentences containing the value
                 sentences = re.split(r'([.!?]+)', modified_prefix)
                 filtered_sentences = []
                 for i in range(0, len(sentences), 2):
@@ -207,7 +195,6 @@ class CausalInterventionAnalyzer:
     def create_replacement_prompt(self, problem_text, continued_cot_prefix,
                                  injected_value, original_value):
         """Create prompt with error replaced by correct value"""
-        # Replace all occurrences of injected value with original
         modified_prefix = continued_cot_prefix.replace(
             str(injected_value), 
             str(original_value)
@@ -239,7 +226,14 @@ class CausalInterventionAnalyzer:
             'replacement': {}
         }
         
-        # Find a good continuation prefix (up to and including the error)
+        try:
+            injected_val = float(problem['injected_value'])
+            original_val = float(problem['original_value'])
+            ground_truth = float(problem.get('ground_truth_answer'))
+        except (ValueError, TypeError) as e:
+            result['error'] = f'Could not convert values to float: {e}'
+            return result
+        
         continued_cot = problem['continued_cot']
         injection_pos = continued_cot.find(str(problem['injected_value']))
         
@@ -247,12 +241,10 @@ class CausalInterventionAnalyzer:
             result['error'] = 'Could not find injection position'
             return result
         
-        # Include some context after the error for continuation
         prefix_end = min(injection_pos + len(str(problem['injected_value'])) + 100, 
                         len(continued_cot))
         continued_cot_prefix = continued_cot[:prefix_end]
         
-        # === BASELINE: Normal with error ===
         try:
             baseline_prompt = self.create_baseline_prompt(
                 problem['problem_text'],
@@ -275,13 +267,13 @@ class CausalInterventionAnalyzer:
             
             result['baseline']['continuation'] = continuation
             result['baseline']['propagated_error'] = self.check_error_propagation(
-                continuation, problem['injected_value'], problem['original_value']
+                baseline_prompt + continuation,
+                ground_truth
             )
             result['baseline']['full_text'] = baseline_prompt + continuation
         except Exception as e:
             result['baseline']['error'] = str(e)[:200]
         
-        # === ABLATION: Error removed ===
         try:
             ablation_prompt = self.create_ablation_prompt(
                 problem['problem_text'],
@@ -306,14 +298,14 @@ class CausalInterventionAnalyzer:
             
             result['ablation']['continuation'] = continuation
             result['ablation']['propagated_error'] = self.check_error_propagation(
-                continuation, problem['injected_value'], problem['original_value']
+                ablation_prompt + continuation,
+                ground_truth
             )
             result['ablation']['full_text'] = ablation_prompt + continuation
-            result['ablation']['prompt_diff'] = len(baseline_prompt) - len(ablation_prompt)  # How much was removed
+            result['ablation']['prompt_diff'] = len(baseline_prompt) - len(ablation_prompt)
         except Exception as e:
             result['ablation']['error'] = str(e)[:200]
         
-        # === REPLACEMENT: Error replaced with truth ===
         try:
             replacement_prompt = self.create_replacement_prompt(
                 problem['problem_text'],
@@ -338,7 +330,8 @@ class CausalInterventionAnalyzer:
             
             result['replacement']['continuation'] = continuation
             result['replacement']['propagated_error'] = self.check_error_propagation(
-                continuation, problem['injected_value'], problem['original_value']
+                replacement_prompt + continuation,
+                ground_truth
             )
             result['replacement']['full_text'] = replacement_prompt + continuation
         except Exception as e:
@@ -352,7 +345,6 @@ class CausalInterventionAnalyzer:
         print(f"{C.HEADER}Causal Intervention Analysis{C.ENDC}")
         print(f"{C.HEADER}{'='*80}{C.ENDC}\n")
         
-        # Load dataset
         print(f"Loading dataset from {dataset_path}...")
         problems = []
         with open(dataset_path, 'r') as f:
@@ -365,7 +357,6 @@ class CausalInterventionAnalyzer:
         
         print(f"Loaded {len(problems)} problems\n")
         
-        # Separate by classification
         classification_field = 'final_classification' if 'final_classification' in problems[0] else 'classification'
         faithful_problems = [p for p in problems if p[classification_field] is True]
         corrected_problems = [p for p in problems if p[classification_field] is False]
@@ -388,28 +379,24 @@ class CausalInterventionAnalyzer:
             }
         }
         
-        # Run interventions on faithful problems
         print(f"{C.OKCYAN}Running interventions on FAITHFUL problems...{C.ENDC}")
         for i, problem in enumerate(faithful_problems):
             print(f"[{i+1}/{len(faithful_problems)}] Problem {problem['problem_id']} (3 conditions)...", end="\r")
             result = self.run_intervention(problem)
             results['faithful'].append(result)
             
-            # Periodic save every 20 problems
             if (i + 1) % 20 == 0:
                 with open(OUTPUT_FILE + '.tmp', 'w') as f:
                     json.dump(results, f, indent=2)
         
         print(" " * 80)
         
-        # Run interventions on corrected problems
         print(f"{C.OKCYAN}Running interventions on SELF-CORRECTED problems...{C.ENDC}")
         for i, problem in enumerate(corrected_problems):
             print(f"[{i+1}/{len(corrected_problems)}] Problem {problem['problem_id']} (3 conditions)...", end="\r")
             result = self.run_intervention(problem)
             results['corrected'].append(result)
             
-            # Periodic save every 20 problems
             if (i + 1) % 20 == 0:
                 with open(OUTPUT_FILE + '.tmp', 'w') as f:
                     json.dump(results, f, indent=2)
@@ -473,25 +460,20 @@ def compute_intervention_statistics(results):
 
 
 def main():
-    # Initialize analyzer
     analyzer = CausalInterventionAnalyzer(MODEL_NAME, DEVICE)
     
-    # Run interventions
     results = analyzer.analyze_dataset(INPUT_FILE, max_problems=MAX_PROBLEMS)
     
-    # Save raw results
     print(f"\n{C.OKGREEN}Saving results to {OUTPUT_FILE}...{C.ENDC}")
     with open(OUTPUT_FILE, 'w') as f:
         json.dump(results, f, indent=2)
     
-    # Compute statistics
     print(f"\n{C.HEADER}{'='*80}{C.ENDC}")
     print(f"{C.HEADER}Causal Effect Analysis{C.ENDC}")
     print(f"{C.HEADER}{'='*80}{C.ENDC}\n")
     
     stats = compute_intervention_statistics(results)
     
-    # Display results
     print(f"{C.BOLD}Error Propagation Rates by Condition:{C.ENDC}\n")
     
     for group_name, group_color, group_stats in [
@@ -513,14 +495,13 @@ def main():
         
         print()
     
-    # Compute causal effects
     print(f"{C.HEADER}{'='*80}{C.ENDC}")
     print(f"{C.HEADER}Causal Effects (Change from Baseline){C.ENDC}")
     print(f"{C.HEADER}{'='*80}{C.ENDC}\n")
     
-    for group_name, group_color, group_stats in [
-        ('FAITHFUL', C.FAIL, stats['faithful']),
-        ('SELF-CORRECTED', C.OKGREEN, stats['corrected'])
+    for group_name, group_color, group_stats, results_key in [
+        ('FAITHFUL', C.FAIL, stats['faithful'], 'faithful'),
+        ('SELF-CORRECTED', C.OKGREEN, stats['corrected'], 'corrected')
     ]:
         baseline_rate = group_stats['baseline']['propagation_rate']
         ablation_rate = group_stats['ablation']['propagation_rate']
@@ -534,19 +515,17 @@ def main():
             print(f"  Ablation Effect:    {ablation_effect:+6.1%} (removing error token)")
             print(f"  Replacement Effect: {replacement_effect:+6.1%} (replacing with truth)")
             
-            # Statistical test
-            faithful_baseline = [r['baseline']['propagated_error'] for r in results[group_name.lower().replace('-', '')] 
+            group_baseline = [r['baseline']['propagated_error'] for r in results[results_key] 
                                if 'baseline' in r and r['baseline'].get('propagated_error') is not None]
-            faithful_ablation = [r['ablation']['propagated_error'] for r in results[group_name.lower().replace('-', '')] 
+            group_ablation = [r['ablation']['propagated_error'] for r in results[results_key] 
                                if 'ablation' in r and r['ablation'].get('propagated_error') is not None]
             
-            if len(faithful_baseline) > 5 and len(faithful_ablation) > 5:
+            if len(group_baseline) > 5 and len(group_ablation) > 5:
                 from scipy.stats import chi2_contingency
-                # Convert to counts
-                baseline_prop = sum(faithful_baseline)
-                ablation_prop = sum(faithful_ablation)
-                baseline_not = len(faithful_baseline) - baseline_prop
-                ablation_not = len(faithful_ablation) - ablation_prop
+                baseline_prop = sum(group_baseline)
+                ablation_prop = sum(group_ablation)
+                baseline_not = len(group_baseline) - baseline_prop
+                ablation_not = len(group_ablation) - ablation_prop
                 
                 contingency = [[baseline_prop, baseline_not], [ablation_prop, ablation_not]]
                 try:
@@ -557,7 +536,6 @@ def main():
             
             print()
     
-    # Interpretation
     print(f"{C.HEADER}{'='*80}{C.ENDC}")
     print(f"{C.HEADER}Interpretation{C.ENDC}")
     print(f"{C.HEADER}{'='*80}{C.ENDC}\n")
@@ -572,15 +550,14 @@ def main():
         
         print(f"{C.BOLD}Key Findings:{C.ENDC}\n")
         
-        # Faithful models
-        if faithful_ablation_effect < -0.2:  # Large reduction
+        if faithful_ablation_effect < -0.2:
             print(f"{C.OKGREEN}✓ FAITHFUL models are CAUSALLY DEPENDENT on error token:{C.ENDC}")
             print(f"  → Removing error reduces propagation by {abs(faithful_ablation_effect):.1%}")
             print(f"  → This SUPPORTS the embedding analysis (they DO read the error)")
             print(f"  → CONTRADICTS attention analysis (low attention but high causal effect)")
             print(f"  → {C.BOLD}Resolution:{C.ENDC} Attention weights don't capture full causal influence")
             print(f"  → The error token has mechanistic importance despite low attention scores")
-        elif faithful_ablation_effect > -0.05:  # Little change
+        elif faithful_ablation_effect > -0.05:
             print(f"{C.WARNING}⚠ FAITHFUL models are NOT causally dependent on error token:{C.ENDC}")
             print(f"  → Removing error barely affects propagation ({faithful_ablation_effect:+.1%})")
             print(f"  → This SUPPORTS the attention analysis (low attention = not reading)")
@@ -598,7 +575,6 @@ def main():
     if corrected_baseline is not None and corrected_ablation is not None:
         corrected_ablation_effect = corrected_ablation - corrected_baseline
         
-        # Self-corrected models
         if abs(corrected_ablation_effect) < 0.1:
             print(f"{C.OKGREEN}✓ SELF-CORRECTED models IGNORE the error token:{C.ENDC}")
             print(f"  → Ablation has minimal effect ({corrected_ablation_effect:+.1%})")
@@ -612,7 +588,6 @@ def main():
     
     print(f"\n{C.BOLD}Saved detailed results to: {OUTPUT_FILE}{C.ENDC}")
     print(f"{C.BOLD}Temporary checkpoints saved to: {OUTPUT_FILE}.tmp{C.ENDC}")
-
 
 if __name__ == "__main__":
     main()
