@@ -50,7 +50,7 @@ DEVICE = "cuda" if torch.cuda.is_available() else "mps" if torch.backends.mps.is
 
 MAX_PROBLEMS = None
 MAX_NEW_TOKENS = 1024
-LAYERS_TO_INTERVENE = 5  # Intervene on last N layers
+LAYERS_TO_INTERVENE = 28
 
 class TeeOutput:
     def __init__(self, file_path, original_stream):
@@ -84,17 +84,13 @@ class ComponentAblationHook:
     def create_attention_hook(self, layer_idx):
         """Hook to zero out attention output at error positions"""
         def hook(module, input, output):
-            # output is (batch, seq_len, hidden_dim) after attention projection
-            # We need to zero it at error positions
             if isinstance(output, tuple):
                 attn_output = output[0]
             else:
                 attn_output = output
             
-            # Clone to avoid in-place modification
             modified_output = attn_output.clone()
             
-            # Zero out error positions
             for pos in self.error_positions:
                 if pos < modified_output.shape[1]:
                     modified_output[:, pos, :] = 0.0
@@ -108,10 +104,8 @@ class ComponentAblationHook:
     def create_mlp_hook(self, layer_idx):
         """Hook to zero out MLP output at error positions"""
         def hook(module, input, output):
-            # output is (batch, seq_len, hidden_dim) after MLP
             modified_output = output.clone()
             
-            # Zero out error positions
             for pos in self.error_positions:
                 if pos < modified_output.shape[1]:
                     modified_output[:, pos, :] = 0.0
@@ -128,16 +122,13 @@ class ComponentAblationHook:
         for layer_idx in range(start_layer, num_layers):
             layer = model.model.layers[layer_idx]
             
-            # Hook attention output projection
             if self.ablate_attention and hasattr(layer.self_attn, 'o_proj'):
                 hook = layer.self_attn.o_proj.register_forward_hook(
                     self.create_attention_hook(layer_idx)
                 )
                 self.hooks.append(hook)
             
-            # Hook MLP output
             if self.ablate_mlp and hasattr(layer, 'mlp'):
-                # Hook the final projection of MLP (down_proj for LLaMA-style)
                 if hasattr(layer.mlp, 'down_proj'):
                     hook = layer.mlp.down_proj.register_forward_hook(
                         self.create_mlp_hook(layer_idx)
@@ -219,7 +210,7 @@ class ComponentAblationAnalyzer:
         ground_truth = float(ground_truth)
         is_correct = abs(final_answer - ground_truth) < 0.01 * abs(ground_truth) + 0.01
         
-        return not is_correct  # True = error propagated, False = corrected
+        return not is_correct
     
     def find_error_positions(self, full_text, injected_value):
         """Find token positions of injected error"""
@@ -243,10 +234,6 @@ class ComponentAblationAnalyzer:
             max_length=4096
         ).to(self.device)
         
-        # Adjust error positions for any tokenization differences
-        # (they should be relative to the input_ids)
-        
-        # Set up hooks
         hook_manager = ComponentAblationHook(
             error_positions=error_positions,
             ablate_attention=ablate_attention,
@@ -287,7 +274,6 @@ class ComponentAblationAnalyzer:
             'replacement': {}
         }
         
-        # Build prompt with error
         messages = [
             {"role": "system", "content": "You are a helpful assistant. Solve math problems step by step."},
             {"role": "user", "content": f"Solve this problem step by step:\n\n{problem['problem_text']}"}
@@ -296,7 +282,6 @@ class ComponentAblationAnalyzer:
             messages, tokenize=False, add_generation_prompt=True
         )
         
-        # Get prefix with error
         continued_cot = problem['continued_cot']
         injection_pos = continued_cot.find(str(problem['injected_value']))
         
@@ -309,21 +294,18 @@ class ComponentAblationAnalyzer:
         
         full_prompt = base_prompt + continued_cot_prefix
         
-        # Find error token positions
         error_positions = self.find_error_positions(continued_cot_prefix, problem['injected_value'])
         
         if not error_positions:
             result['error'] = 'Could not find error tokens'
             return result
         
-        # Adjust positions for base prompt length
         base_length = len(self.tokenizer.encode(base_prompt, add_special_tokens=False))
         error_positions = [pos + base_length for pos in error_positions]
         
         result['error_positions'] = error_positions
         result['prefix_length'] = len(continued_cot_prefix)
         
-        # Condition 1: BASELINE (no intervention)
         try:
             continuation, full_text = self.generate_with_ablation(
                 full_prompt, error_positions, 
@@ -336,7 +318,6 @@ class ComponentAblationAnalyzer:
         except Exception as e:
             result['baseline']['error'] = str(e)[:200]
         
-        # Condition 2: ABLATE ATTENTION ONLY
         try:
             continuation, full_text = self.generate_with_ablation(
                 full_prompt, error_positions,
@@ -349,7 +330,6 @@ class ComponentAblationAnalyzer:
         except Exception as e:
             result['ablate_attention']['error'] = str(e)[:200]
         
-        # Condition 3: ABLATE MLP ONLY
         try:
             continuation, full_text = self.generate_with_ablation(
                 full_prompt, error_positions,
@@ -362,7 +342,6 @@ class ComponentAblationAnalyzer:
         except Exception as e:
             result['ablate_mlp']['error'] = str(e)[:200]
         
-        # Condition 4: ABLATE BOTH
         try:
             continuation, full_text = self.generate_with_ablation(
                 full_prompt, error_positions,
@@ -375,14 +354,13 @@ class ComponentAblationAnalyzer:
         except Exception as e:
             result['ablate_both']['error'] = str(e)[:200]
         
-        # Condition 5: REPLACEMENT (control)
         try:
             replacement_prompt = full_prompt.replace(
                 str(problem['injected_value']), 
                 str(problem['original_value'])
             )
             continuation, full_text = self.generate_with_ablation(
-                replacement_prompt, [],  # No positions to ablate
+                replacement_prompt, [],
                 ablate_attention=False, ablate_mlp=False
             )
             result['replacement']['continuation'] = continuation
@@ -533,26 +511,24 @@ def main():
                     print(f"  {cond:18} → {s['rate']:5.1%} propagated "
                           f"({s['propagated']}/{s['valid']} valid)")
             
-            # Compute rescue effects
             baseline = group_data['baseline']['rate']
             if baseline is not None:
                 print(f"\n  {C.BOLD}Rescue Effects (vs baseline):{C.ENDC}")
                 for cond in ['ablate_attention', 'ablate_mlp', 'ablate_both']:
                     rate = group_data[cond]['rate']
                     if rate is not None:
-                        effect = baseline - rate
+                        effect = rate - baseline
                         print(f"    {cond:18}: {effect:+6.1%}")
                 
-                # Test additivity
                 attn_rate = group_data['ablate_attention']['rate']
                 mlp_rate = group_data['ablate_mlp']['rate']
                 both_rate = group_data['ablate_both']['rate']
                 
                 if all(r is not None for r in [attn_rate, mlp_rate, both_rate]):
-                    attn_effect = baseline - attn_rate
-                    mlp_effect = baseline - mlp_rate
+                    attn_effect = attn_rate - baseline
+                    mlp_effect = mlp_rate - baseline
                     predicted_combined = attn_effect + mlp_effect
-                    actual_combined = baseline - both_rate
+                    actual_combined = both_rate - baseline
                     
                     print(f"\n  {C.BOLD}Additivity Test:{C.ENDC}")
                     print(f"    Attention effect:  {attn_effect:.1%}")
@@ -576,7 +552,7 @@ def main():
         if faithful['baseline']['rate'] and faithful['ablate_mlp']['rate'] and faithful['ablate_attention']['rate']:
             baseline_rate = faithful['baseline']['rate']
             mlp_rescue = baseline_rate - faithful['ablate_mlp']['rate']
-            attn_rescue = baseline_rate - faithful['ablate_attention']['rate']
+            attn_rescue = baseline_rate - faithful['ablate_attention']['rate'] 
             
             print(f"{C.BOLD}Key Findings:{C.ENDC}\n")
             
