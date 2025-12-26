@@ -353,3 +353,4766 @@ Analyzing problem 3:
    Therefore, James needs a total of 20 candles.
 
 3...
+      Extracted answer: 12.0
+      Ground truth: 12.0
+      Is correct: True
+
+    Layer 23 Patched Generation:
+      Generated (first 150 chars):  - The first son needs 12 candles.
+   - The second son needs 8 candles.
+   \[
+   12 + 8 = 20
+   \]
+   Therefore, James needs a total of 20 candles.
+
+3...
+      Extracted answer: 12.0
+      Ground truth: 12.0
+      Is correct: True
+
+    Layer 24 Patched Generation:
+      Generated (first 150 chars):  - The first son needs 12 candles.
+   - The second son needs 8 candles.
+   \[
+   12 + 8 = 20
+   \]
+   Therefore, James needs a total of 20 candles.
+
+3...
+      Extracted answer: 12.0
+      Ground truth: 12.0
+      Is correct: True
+
+    Layer 25 Patched Generation:
+      Generated (first 150 chars):  - The first son needs 12 candles.
+   - The second son needs 8 candles.
+   \[
+   12 + 8 = 20
+   \]
+   Therefore, James needs a total of 20 candles.
+
+3...
+      Extracted answer: 12.0
+      Ground truth: 12.0
+      Is correct: True
+
+    Layer 26 Patched Generation:
+      Generated (first 150 chars):  - The first son needs 12 candles.
+   - The second son needs 8 candles.
+   \[
+   12 + 8 = 20
+   \]
+   Therefore, James needs a total of 20 candles.
+
+3...
+      Extracted answer: 12.0
+      Ground truth: 12.0
+      Is correct: True
+
+    Layer 27 Patched Generation:
+      Generated (first 150 chars):  - The first son needs 12 candles.
+   - The second son needs 8 candles.
+   \[
+   12 + 8 = 20
+   \]
+   Therefore, James needs a total of 20 candles.
+
+3...
+      Extracted answer: 12.0
+      Ground truth: 12.0
+      Is correct: True
+
+  ✓ Problem 3 complete
+
+================================================================================
+Analyzing problem 4:
+  Injected: 138, Correct: 91
+  Ground truth answer: 273.0
+
+  Using CoT prefix (length 565 of 996):
+    To determine the total number of yards of yarn Mariah and her grandma used, we need to follow these steps:
+
+1. Calculate the number of yards Mariah used.
+2. Calculate the number of yards her grandma u...
+
+  CORRUPTED_BASELINE:
+    Generated (first 150 chars):  Her grandma used \(\frac{1}{2}\) of a skein of yarn. Since there are 364 yards in a skein, we multiply 364 by \(\frac{1}{2}\):
+
+\[
+364 \times \frac{1...
+    Extracted answer: 320.0
+    Ground truth: 273.0
+    Is correct: False
+
+  CLEAN_BASELINE:
+    Generated (first 150 chars):  Her grandma used \(\frac{1}{2}\) of a skein of yarn. Since there are 364 yards in a skein, we multiply 364 by \(\frac{1}{2}\):
+
+\[
+364 \times \frac{1...
+    Extracted answer: 273.0
+    Ground truth: 273.0
+    Is correct: True
+
+    Layer 0 Patched Generation:
+      Generated (first 150 chars):  Her grandma used \(\frac{1}{2}\) of a skein of yarn. Since there are 364 yards in a skein, we multiply 364 by \(\frac{1}{2}\):
+
+\[
+364 \times \frac{1...
+      Extracted answer: 273.0
+      Ground truth: 273.0
+      Is correct: True
+
+    Layer 1 Patched Generation:
+      Generated (first 150 chars):  Her grandma used \(\frac{1}{2}\) of a skein of yarn. Since there are 364 yards in a skein, we multiply 364 by \(\frac{1}{2}\):
+
+\[
+364 \times \frac{1...
+      Extracted answer: 273.0
+      Ground truth: 273.0
+      Is correct: True
+
+    Layer 2 Patched Generation:
+      Generated (first 150 chars):  Her grandma used \(\frac{1}{2}\) of a skein of yarn. Since there are 364 yards in a skein, we multiply 364 by \(\frac{1}{2}\):
+
+\[
+364 \times \frac{1...
+      Extracted answer: 273.0
+      Ground truth: 273.0
+      Is correct: True
+
+    Layer 3 Patched Generation:
+      Generated (first 150 chars):  Her grandma used \(\frac{1}{2}\) of a skein of yarn. Since there are 364 yards in a skein, we multiply 364 by \(\frac{1}{2}\):
+
+\[
+364 \times \frac{1...
+      Extracted answer: 273.0
+      Ground truth: 273.0
+      Is correct: True
+
+    Layer 4 Patched Generation:
+      Generated (first 150 chars):  Her grandma used \(\frac{1}{2}\) of a skein of yarn. Since there are 364 yards in a skein, we multiply 364 by \(\frac{1}{2}\):
+
+\[
+364 \times \frac{1...
+      Extracted answer: 273.0
+      Ground truth: 273.0
+      Is correct: True
+
+    Layer 5 Patched Generation:
+      Generated (first 150 chars):  Her grandma used \(\frac{1}{2}\) of a skein of yarn. Since there are 364 yards in a skein, we multiply 364 by \(\frac{1}{2}\):
+
+\[
+364 \times \frac{1...
+      Extracted answer: 273.0
+      Ground truth: 273.0
+      Is correct: True
+
+    Layer 6 Patched Generation:
+      Generated (first 150 chars):  Her grandma used \(\frac{1}{2}\) of a skein of yarn. Since there are 364 yards in a skein, we multiply 364 by \(\frac{1}{2}\):
+
+\[
+364 \times \frac{1...
+      Extracted answer: 273.0
+      Ground truth: 273.0
+      Is correct: True
+
+    Layer 7 Patched Generation:
+      Generated (first 150 chars):  Her grandma used \(\frac{1}{2}\) of a skein of yarn. Since there are 364 yards in a skein, we multiply 364 by \(\frac{1}{2}\):
+
+\[
+364 \times \frac{1...
+      Extracted answer: 273.0
+      Ground truth: 273.0
+      Is correct: True
+
+    Layer 8 Patched Generation:
+      Generated (first 150 chars):  Her grandma used \(\frac{1}{2}\) of a skein of yarn. Since there are 364 yards in a skein, we multiply 364 by \(\frac{1}{2}\):
+
+\[
+364 \times \frac{1...
+      Extracted answer: 273.0
+      Ground truth: 273.0
+      Is correct: True
+
+    Layer 9 Patched Generation:
+      Generated (first 150 chars):  Her grandma used \(\frac{1}{2}\) of a skein of yarn. Since there are 364 yards in a skein, we multiply 364 by \(\frac{1}{2}\):
+
+\[
+364 \times \frac{1...
+      Extracted answer: 273.0
+      Ground truth: 273.0
+      Is correct: True
+
+    Layer 10 Patched Generation:
+      Generated (first 150 chars):  Her grandma used \(\frac{1}{2}\) of a skein of yarn. Since there are 364 yards in a skein, we multiply 364 by \(\frac{1}{2}\):
+
+\[
+364 \times \frac{1...
+      Extracted answer: 273.0
+      Ground truth: 273.0
+      Is correct: True
+
+    Layer 11 Patched Generation:
+      Generated (first 150 chars):  Her grandma used \(\frac{1}{2}\) of a skein of yarn. Since there are 364 yards in a skein, we multiply 364 by \(\frac{1}{2}\):
+
+\[
+364 \times \frac{1...
+      Extracted answer: 273.0
+      Ground truth: 273.0
+      Is correct: True
+
+    Layer 12 Patched Generation:
+      Generated (first 150 chars):  Her grandma used \(\frac{1}{2}\) of a skein of yarn. Since there are 364 yards in a skein, we multiply 364 by \(\frac{1}{2}\):
+
+\[
+364 \times \frac{1...
+      Extracted answer: 273.0
+      Ground truth: 273.0
+      Is correct: True
+
+    Layer 13 Patched Generation:
+      Generated (first 150 chars):  Her grandma used \(\frac{1}{2}\) of a skein of yarn. Since there are 364 yards in a skein, we multiply 364 by \(\frac{1}{2}\):
+
+\[
+364 \times \frac{1...
+      Extracted answer: 273.0
+      Ground truth: 273.0
+      Is correct: True
+
+    Layer 14 Patched Generation:
+      Generated (first 150 chars):  Her grandma used \(\frac{1}{2}\) of a skein of yarn. Since there are 364 yards in a skein, we multiply 364 by \(\frac{1}{2}\):
+
+\[
+364 \times \frac{1...
+      Extracted answer: 273.0
+      Ground truth: 273.0
+      Is correct: True
+
+    Layer 15 Patched Generation:
+      Generated (first 150 chars):  Her grandma used \(\frac{1}{2}\) of a skein of yarn. Since there are 364 yards in a skein, we multiply 364 by \(\frac{1}{2}\):
+
+\[
+364 \times \frac{1...
+      Extracted answer: 273.0
+      Ground truth: 273.0
+      Is correct: True
+
+    Layer 16 Patched Generation:
+      Generated (first 150 chars):  Her grandma used \(\frac{1}{2}\) of a skein of yarn. Since there are 364 yards in a skein, we multiply 364 by \(\frac{1}{2}\):
+
+\[
+364 \times \frac{1...
+      Extracted answer: 273.0
+      Ground truth: 273.0
+      Is correct: True
+
+    Layer 17 Patched Generation:
+      Generated (first 150 chars):  Her grandma used \(\frac{1}{2}\) of a skein of yarn. Since there are 364 yards in a skein, we multiply 364 by \(\frac{1}{2}\):
+
+\[
+364 \times \frac{1...
+      Extracted answer: 273.0
+      Ground truth: 273.0
+      Is correct: True
+
+    Layer 18 Patched Generation:
+      Generated (first 150 chars):  Her grandma used \(\frac{1}{2}\) of a skein of yarn. Since there are 364 yards in a skein, we multiply 364 by \(\frac{1}{2}\):
+
+\[
+364 \times \frac{1...
+      Extracted answer: 273.0
+      Ground truth: 273.0
+      Is correct: True
+
+    Layer 19 Patched Generation:
+      Generated (first 150 chars):  Her grandma used \(\frac{1}{2}\) of a skein of yarn. Since there are 364 yards in a skein, we multiply 364 by \(\frac{1}{2}\):
+
+\[
+364 \times \frac{1...
+      Extracted answer: 273.0
+      Ground truth: 273.0
+      Is correct: True
+
+    Layer 20 Patched Generation:
+      Generated (first 150 chars):  Her grandma used \(\frac{1}{2}\) of a skein of yarn. Since there are 364 yards in a skein, we multiply 364 by \(\frac{1}{2}\):
+
+\[
+364 \times \frac{1...
+      Extracted answer: 273.0
+      Ground truth: 273.0
+      Is correct: True
+
+    Layer 21 Patched Generation:
+      Generated (first 150 chars):  Her grandma used \(\frac{1}{2}\) of a skein of yarn. Since there are 364 yards in a skein, we multiply 364 by \(\frac{1}{2}\):
+
+\[
+364 \times \frac{1...
+      Extracted answer: 273.0
+      Ground truth: 273.0
+      Is correct: True
+
+    Layer 22 Patched Generation:
+      Generated (first 150 chars):  Her grandma used \(\frac{1}{2}\) of a skein of yarn. Since there are 364 yards in a skein, we multiply 364 by \(\frac{1}{2}\):
+
+\[
+364 \times \frac{1...
+      Extracted answer: 320.0
+      Ground truth: 273.0
+      Is correct: False
+
+    Layer 23 Patched Generation:
+      Generated (first 150 chars):  Her grandma used \(\frac{1}{2}\) of a skein of yarn. Since there are 364 yards in a skein, we multiply 364 by \(\frac{1}{2}\):
+
+\[
+364 \times \frac{1...
+      Extracted answer: 320.0
+      Ground truth: 273.0
+      Is correct: False
+
+    Layer 24 Patched Generation:
+      Generated (first 150 chars):  Her grandma used \(\frac{1}{2}\) of a skein of yarn. Since there are 364 yards in a skein, we multiply 364 by \(\frac{1}{2}\):
+
+\[
+364 \times \frac{1...
+      Extracted answer: 320.0
+      Ground truth: 273.0
+      Is correct: False
+
+    Layer 25 Patched Generation:
+      Generated (first 150 chars):  Her grandma used \(\frac{1}{2}\) of a skein of yarn. Since there are 364 yards in a skein, we multiply 364 by \(\frac{1}{2}\):
+
+\[
+364 \times \frac{1...
+      Extracted answer: 320.0
+      Ground truth: 273.0
+      Is correct: False
+
+    Layer 26 Patched Generation:
+      Generated (first 150 chars):  Her grandma used \(\frac{1}{2}\) of a skein of yarn. Since there are 364 yards in a skein, we multiply 364 by \(\frac{1}{2}\):
+
+\[
+364 \times \frac{1...
+      Extracted answer: 320.0
+      Ground truth: 273.0
+      Is correct: False
+
+    Layer 27 Patched Generation:
+      Generated (first 150 chars):  Her grandma used \(\frac{1}{2}\) of a skein of yarn. Since there are 364 yards in a skein, we multiply 364 by \(\frac{1}{2}\):
+
+\[
+364 \times \frac{1...
+      Extracted answer: 320.0
+      Ground truth: 273.0
+      Is correct: False
+
+  ✓ Problem 4 complete
+
+================================================================================
+Analyzing problem 9:
+  Injected: 56, Correct: 36
+  Ground truth answer: 122.0
+
+  Using CoT prefix (length 370 of 733):
+    To determine the total number of crabs that Rani, Monic, and Bo have together, we need to follow these steps:
+
+1. **Determine the number of crabs Monic has:**
+   - Bo has 40 crabs.
+   - Monic has 4 fe...
+
+  CORRUPTED_BASELINE:
+    Generated (first 150 chars):  than Monic.
+   - Therefore, Rani has:
+     \[
+     56 + 10 = 66 \text{ crabs}
+     \]
+
+3. **Calculate the total number of crabs:**
+   - Bo has 40 cra...
+    Extracted answer: 162.0
+    Ground truth: 122.0
+    Is correct: False
+
+  CLEAN_BASELINE:
+    Generated (first 150 chars):  than Monic.
+   - Therefore, Rani has:
+     \[
+     36 + 10 = 46  \text{ crabs}
+     \]
+
+3. **Calculate the total number of crabs:**
+   - Bo has 40 cr...
+    Extracted answer: 122.0
+    Ground truth: 122.0
+    Is correct: True
+
+    Layer 0 Patched Generation:
+      Generated (first 150 chars):  than Monic.
+   - Monic has 36 crabs.
+   - Therefore, Rani has:
+     \[
+     36 + 10 = 46 \text{ crabs}
+     \]
+
+3. **Calculate the total number of cr...
+      Extracted answer: 122.0
+      Ground truth: 122.0
+      Is correct: True
+
+    Layer 1 Patched Generation:
+      Generated (first 150 chars):  than Monic.
+   - Therefore, Rani has:
+     \[
+     36 + 10 = 46  \text{ crabs}
+     \]
+
+3. **Calculate the total number of crabs:**
+   - Bo has 40 cr...
+      Extracted answer: 122.0
+      Ground truth: 122.0
+      Is correct: True
+
+    Layer 2 Patched Generation:
+      Generated (first 150 chars):  than Monic.
+   - Therefore, Rani has:
+     \[
+     36 + 10 = 46  \text{ crabs}
+     \]
+
+3. **Calculate the total number of crabs:**
+   - Bo has 40 cr...
+      Extracted answer: 122.0
+      Ground truth: 122.0
+      Is correct: True
+
+    Layer 3 Patched Generation:
+      Generated (first 150 chars):  than Monic.
+   - Therefore, Rani has:
+     \[
+     36 + 10 = 46  \text{ crabs}
+     \]
+
+3. **Calculate the total number of crabs:**
+   - Bo has 40 cr...
+      Extracted answer: 122.0
+      Ground truth: 122.0
+      Is correct: True
+
+    Layer 4 Patched Generation:
+      Generated (first 150 chars):  than Monic.
+   - Therefore, Rani has:
+     \[
+     36 + 10 = 46  \text{ crabs}
+     \]
+
+3. **Calculate the total number of crabs:**
+   - Bo has 40 cr...
+      Extracted answer: 122.0
+      Ground truth: 122.0
+      Is correct: True
+
+    Layer 5 Patched Generation:
+      Generated (first 150 chars):  than Monic.
+   - Therefore, Rani has:
+     \[
+     36 + 10 = 46  \text{ crabs}
+     \]
+
+3. **Calculate the total number of crabs:**
+   - Bo has 40 cr...
+      Extracted answer: 122.0
+      Ground truth: 122.0
+      Is correct: True
+
+    Layer 6 Patched Generation:
+      Generated (first 150 chars):  than Monic.
+   - Therefore, Rani has:
+     \[
+     36 + 10 = 46  \text{ crabs}
+     \]
+
+3. **Calculate the total number of crabs:**
+   - Bo has 40 cr...
+      Extracted answer: 122.0
+      Ground truth: 122.0
+      Is correct: True
+
+    Layer 7 Patched Generation:
+      Generated (first 150 chars):  than Monic.
+   - Therefore, Rani has:
+     \[
+     36 + 10 = 46  \text{ crabs}
+     \]
+
+3. **Calculate the total number of crabs:**
+   - Bo has 40 cr...
+      Extracted answer: 122.0
+      Ground truth: 122.0
+      Is correct: True
+
+    Layer 8 Patched Generation:
+      Generated (first 150 chars):  than Monic.
+   - Therefore, Rani has:
+     \[
+     36 + 10 = 46  \text{ crabs}
+     \]
+
+3. **Calculate the total number of crabs:**
+   - Bo has 40 cr...
+      Extracted answer: 122.0
+      Ground truth: 122.0
+      Is correct: True
+
+    Layer 9 Patched Generation:
+      Generated (first 150 chars):  than Monic.
+   - Therefore, Rani has:
+     \[
+     36 + 10 = 46  \text{ crabs}
+     \]
+
+3. **Calculate the total number of crabs:**
+   - Bo has 40 cr...
+      Extracted answer: 122.0
+      Ground truth: 122.0
+      Is correct: True
+
+    Layer 10 Patched Generation:
+      Generated (first 150 chars):  than Monic.
+   - Therefore, Rani has:
+     \[
+     36 + 10 = 46  \text{ crabs}
+     \]
+
+3. **Calculate the total number of crabs:**
+   - Bo has 40 cr...
+      Extracted answer: 122.0
+      Ground truth: 122.0
+      Is correct: True
+
+    Layer 11 Patched Generation:
+      Generated (first 150 chars):  than Monic.
+   - Therefore, Rani has:
+     \[
+     36 + 10 = 46  \text{ crabs}
+     \]
+
+3. **Calculate the total number of crabs:**
+   - Bo has 40 cr...
+      Extracted answer: 122.0
+      Ground truth: 122.0
+      Is correct: True
+
+    Layer 12 Patched Generation:
+      Generated (first 150 chars):  than Monic.
+   - Therefore, Rani has:
+     \[
+     36 + 10 = 46  \text{ crabs}
+     \]
+
+3. **Calculate the total number of crabs:**
+   - Bo has 40 cr...
+      Extracted answer: 122.0
+      Ground truth: 122.0
+      Is correct: True
+
+    Layer 13 Patched Generation:
+      Generated (first 150 chars):  than Monic.
+   - Therefore, Rani has:
+     \[
+     36 + 10 = 46  \text{ crabs}
+     \]
+
+3. **Calculate the total number of crabs:**
+   - Bo has 40 cr...
+      Extracted answer: 122.0
+      Ground truth: 122.0
+      Is correct: True
+
+    Layer 14 Patched Generation:
+      Generated (first 150 chars):  than Monic.
+   - Therefore, Rani has:
+     \[
+     36 + 10 = 46  \text{ crabs}
+     \]
+
+3. **Calculate the total number of crabs:**
+   - Bo has 40 cr...
+      Extracted answer: 122.0
+      Ground truth: 122.0
+      Is correct: True
+
+    Layer 15 Patched Generation:
+      Generated (first 150 chars):  than Monic.
+   - Therefore, Rani has:
+     \[
+     36 + 10 = 46 \text{ crabs}
+     \]
+
+3. **Calculate the total number of crabs:**
+   - Bo has 40 cra...
+      Extracted answer: 122.0
+      Ground truth: 122.0
+      Is correct: True
+
+    Layer 16 Patched Generation:
+      Generated (first 150 chars):  than Monic.
+   - Therefore, Rani has:
+     \[
+     36 + 10 = 46  \text{ crabs}
+     \]
+
+3. **Calculate the total number of crabs:**
+   - Bo has 40 cr...
+      Extracted answer: 122.0
+      Ground truth: 122.0
+      Is correct: True
+
+    Layer 17 Patched Generation:
+      Generated (first 150 chars):  than Monic.
+   - Therefore, Rani has:
+     \[
+     36 + 10 = 46 \text{ crabs}
+     \]
+
+3. **Calculate the total number of crabs:**
+   - Bo has 40 cra...
+      Extracted answer: 122.0
+      Ground truth: 122.0
+      Is correct: True
+
+    Layer 18 Patched Generation:
+      Generated (first 150 chars):  than Monic.
+   - Therefore, Rani has:
+     \[
+     36 + 10 = 46 \text{ crabs}
+     \]
+
+3. **Calculate the total number of crabs:**
+   - Bo has 40 cra...
+      Extracted answer: 122.0
+      Ground truth: 122.0
+      Is correct: True
+
+    Layer 19 Patched Generation:
+      Generated (first 150 chars):  than Monic.
+   - Therefore, Rani has:
+     \[
+     36 + 10 = 46 \text{ crabs}
+     \]
+
+3. **Calculate the total number of crabs:**
+   - Bo has 40 cra...
+      Extracted answer: 122.0
+      Ground truth: 122.0
+      Is correct: True
+
+    Layer 20 Patched Generation:
+      Generated (first 150 chars):  than Monic.
+   - Therefore, Rani has:
+     \[
+     36 + 10 = 46 \text{ crabs}
+     \]
+
+3. **Calculate the total number of crabs:**
+   - Bo has 40 cra...
+      Extracted answer: 122.0
+      Ground truth: 122.0
+      Is correct: True
+
+    Layer 21 Patched Generation:
+      Generated (first 150 chars):  than Monic.
+   - Therefore, Rani has:
+     \[
+     36 + 10 = 46 \text{ crabs}
+     \]
+
+3. **Calculate the total number of crabs:**
+   - Bo has 40 cra...
+      Extracted answer: 122.0
+      Ground truth: 122.0
+      Is correct: True
+
+    Layer 22 Patched Generation:
+      Generated (first 150 chars):  than Monic.
+   - Therefore, Rani has:
+     \[
+     36 + 10 = 46 \text{ crabs}
+     \]
+
+3. **Calculate the total number of crabs:**
+   - Bo has 40 cra...
+      Extracted answer: 122.0
+      Ground truth: 122.0
+      Is correct: True
+
+    Layer 23 Patched Generation:
+      Generated (first 150 chars):  than Monic.
+   - Therefore, Rani has:
+     \[
+     56 + 10 = 66 \text{ crabs}
+     \]
+
+3. **Calculate the total number of crabs:**
+   - Bo has 40 cra...
+      Extracted answer: 162.0
+      Ground truth: 122.0
+      Is correct: False
+
+    Layer 24 Patched Generation:
+      Generated (first 150 chars):  than Monic.
+   - Therefore, Rani has:
+     \[
+     56 + 10 = 66 \text{ crabs}
+     \]
+
+3. **Calculate the total number of crabs:**
+   - Bo has 40 cra...
+      Extracted answer: 162.0
+      Ground truth: 122.0
+      Is correct: False
+
+    Layer 25 Patched Generation:
+      Generated (first 150 chars):  than Monic.
+   - Therefore, Rani has:
+     \[
+     56 + 10 = 66 \text{ crabs}
+     \]
+
+3. **Calculate the total number of crabs:**
+   - Bo has 40 cra...
+      Extracted answer: 162.0
+      Ground truth: 122.0
+      Is correct: False
+
+    Layer 26 Patched Generation:
+      Generated (first 150 chars):  than Monic.
+   - Therefore, Rani has:
+     \[
+     56 + 10 = 66 \text{ crabs}
+     \]
+
+3. **Calculate the total number of crabs:**
+   - Bo has 40 cra...
+      Extracted answer: 162.0
+      Ground truth: 122.0
+      Is correct: False
+
+    Layer 27 Patched Generation:
+      Generated (first 150 chars):  than Monic.
+   - Therefore, Rani has:
+     \[
+     56 + 10 = 66 \text{ crabs}
+     \]
+
+3. **Calculate the total number of crabs:**
+   - Bo has 40 cra...
+      Extracted answer: 162.0
+      Ground truth: 122.0
+      Is correct: False
+
+  ✓ Problem 9 complete
+
+================================================================================
+Analyzing problem 10:
+  Injected: 8, Correct: 4
+  Ground truth answer: 29.0
+
+  Using CoT prefix (length 510 of 1043):
+    To determine the total amount of water removed by the dehumidifier, we need to calculate the water removed by each setting and then sum these amounts.
+
+First, let's find out how much water the dehumid...
+
+  CORRUPTED_BASELINE:
+    Generated (first 150 chars):  3 days on the low setting: \(3 \times 1 = 3\) liters
+- For 3 days on the medium setting: \(3 \times 2 = 6\) liters
+- For 5 days on the high setting: ...
+    Extracted answer: 49.0
+    Ground truth: 29.0
+    Is correct: False
+
+  CLEAN_BASELINE:
+    Generated (first 150 chars):  3 days on the low setting: \(3 \times 1 = 3\) liters
+- For 3 days on the medium setting: \(3 \times 2 = 6\) liters
+- For 5 days on the high setting: ...
+    Extracted answer: 29.0
+    Ground truth: 29.0
+    Is correct: True
+
+    Layer 0 Patched Generation:
+      Generated (first 150 chars):  the low setting: \(1 \text{ liter/day} \times 3 \text{ days} = 3 \text{ liters}\)
+- For the medium setting: \(2 \text{ liters/day} \times 3 \text{ da...
+      Extracted answer: 29.0
+      Ground truth: 29.0
+      Is correct: True
+
+    Layer 1 Patched Generation:
+      Generated (first 150 chars):  3 days on the low setting: \(3 \times 1 = 3\) liters
+- For 3 days on the medium setting: \(3 \times 2 = 6\) liters
+- For 5 days on the high setting: ...
+      Extracted answer: 29.0
+      Ground truth: 29.0
+      Is correct: True
+
+    Layer 2 Patched Generation:
+      Generated (first 150 chars):  3 days on the low setting: \(3 \times 1 = 3\) liters
+- For 3 days on the medium setting: \(3 \times 2 = 6\) liters
+- For 5 days on the high setting: ...
+      Extracted answer: 29.0
+      Ground truth: 29.0
+      Is correct: True
+
+    Layer 3 Patched Generation:
+      Generated (first 150 chars):  3 days on the low setting: \(3 \times 1 = 3\) liters
+- For 3 days on the medium setting: \(3 \times 2 = 6\) liters
+- For 5 days on the high setting: ...
+      Extracted answer: 29.0
+      Ground truth: 29.0
+      Is correct: True
+
+    Layer 4 Patched Generation:
+      Generated (first 150 chars):  3 days on the low setting: \(3 \times 1 = 3\) liters
+- For 3 days on the medium setting: \(3 \times 2 = 6\) liters
+- For 5 days on the high setting: ...
+      Extracted answer: 29.0
+      Ground truth: 29.0
+      Is correct: True
+
+    Layer 5 Patched Generation:
+      Generated (first 150 chars):  3 days on the low setting: \(3 \times 1 = 3\) liters
+- For 3 days on the medium setting: \(3 \times 2 = 6\) liters
+- For 5 days on the high setting: ...
+      Extracted answer: 29.0
+      Ground truth: 29.0
+      Is correct: True
+
+    Layer 6 Patched Generation:
+      Generated (first 150 chars):  3 days on the low setting: \(3 \times 1 = 3\) liters
+- For 3 days on the medium setting: \(3 \times 2 = 6\) liters
+- For 5 days on the high setting: ...
+      Extracted answer: 29.0
+      Ground truth: 29.0
+      Is correct: True
+
+    Layer 7 Patched Generation:
+      Generated (first 150 chars):  3 days on the low setting: \(3 \times 1 = 3\) liters
+- For 3 days on the medium setting: \(3 \times 2 = 6\) liters
+- For 5 days on the high setting: ...
+      Extracted answer: 29.0
+      Ground truth: 29.0
+      Is correct: True
+
+    Layer 8 Patched Generation:
+      Generated (first 150 chars):  3 days on the low setting: \(3 \times 1 = 3\) liters
+- For 3 days on the medium setting: \(3 \times 2 = 6\) liters
+- For 5 days on the high setting: ...
+      Extracted answer: 29.0
+      Ground truth: 29.0
+      Is correct: True
+
+    Layer 9 Patched Generation:
+      Generated (first 150 chars):  3 days on the low setting: \(3 \times 1 = 3\) liters
+- For 3 days on the medium setting: \(3 \times 2 = 6\) liters
+- For 5 days on the high setting: ...
+      Extracted answer: 29.0
+      Ground truth: 29.0
+      Is correct: True
+
+    Layer 10 Patched Generation:
+      Generated (first 150 chars):  3 days on the low setting: \(3 \times 1 = 3\) liters
+- For 3 days on the medium setting: \(3 \times 2 = 6\) liters
+- For 5 days on the high setting: ...
+      Extracted answer: 29.0
+      Ground truth: 29.0
+      Is correct: True
+
+    Layer 11 Patched Generation:
+      Generated (first 150 chars):  3 days on the low setting: \(3 \times 1 = 3\) liters
+- For 3 days on the medium setting: \(3 \times 2 = 6\) liters
+- For 5 days on the high setting: ...
+      Extracted answer: 29.0
+      Ground truth: 29.0
+      Is correct: True
+
+    Layer 12 Patched Generation:
+      Generated (first 150 chars):  3 days on the low setting: \(3 \times 1 = 3\) liters
+- For 3 days on the medium setting: \(3 \times 2 = 6\) liters
+- For 5 days on the high setting: ...
+      Extracted answer: 29.0
+      Ground truth: 29.0
+      Is correct: True
+
+    Layer 13 Patched Generation:
+      Generated (first 150 chars):  3 days on the low setting: \(3 \times 1 = 3\) liters
+- For 3 days on the medium setting: \(3 \times 2 = 6\) liters
+- For 5 days on the high setting: ...
+      Extracted answer: 29.0
+      Ground truth: 29.0
+      Is correct: True
+
+    Layer 14 Patched Generation:
+      Generated (first 150 chars):  3 days on the low setting: \(3 \times 1 = 3\) liters
+- For 3 days on the medium setting: \(3 \times 2 = 6\) liters
+- For 5 days on the high setting: ...
+      Extracted answer: 29.0
+      Ground truth: 29.0
+      Is correct: True
+
+    Layer 15 Patched Generation:
+      Generated (first 150 chars):  3 days on the low setting: \(3 \times 1 = 3\) liters
+- For 3 days on the medium setting: \(3 \times 2 = 6\) liters
+- For 5 days on the high setting: ...
+      Extracted answer: 29.0
+      Ground truth: 29.0
+      Is correct: True
+
+    Layer 16 Patched Generation:
+      Generated (first 150 chars):  3 days on the low setting: \(3 \times 1 = 3\) liters
+- For 3 days on the medium setting: \(3 \times 2 = 6\) liters
+- For 5 days on the high setting: ...
+      Extracted answer: 29.0
+      Ground truth: 29.0
+      Is correct: True
+
+    Layer 17 Patched Generation:
+      Generated (first 150 chars):  3 days on the low setting: \(3 \times 1 = 3\) liters
+- For 3 days on the medium setting: \(3 \times 2 = 6\) liters
+- For 5 days on the high setting: ...
+      Extracted answer: 29.0
+      Ground truth: 29.0
+      Is correct: True
+
+    Layer 18 Patched Generation:
+      Generated (first 150 chars):  3 days on the low setting: \(3 \times 1 = 3\) liters
+- For 3 days on the medium setting: \(3 \times 2 = 6\) liters
+- For 5 days on the high setting: ...
+      Extracted answer: 29.0
+      Ground truth: 29.0
+      Is correct: True
+
+    Layer 19 Patched Generation:
+      Generated (first 150 chars):  3 days on the low setting: \(3 \times 1 = 3\) liters
+- For 3 days on the medium setting: \(3 \times 2 = 6\) liters
+- For 5 days on the high setting: ...
+      Extracted answer: 29.0
+      Ground truth: 29.0
+      Is correct: True
+
+    Layer 20 Patched Generation:
+      Generated (first 150 chars):  3 days on the low setting: \(3 \times 1 = 3\) liters
+- For 3 days on the medium setting: \(3 \times 2 = 6\) liters
+- For 5 days on the high setting: ...
+      Extracted answer: 29.0
+      Ground truth: 29.0
+      Is correct: True
+
+    Layer 21 Patched Generation:
+      Generated (first 150 chars):  3 days on the low setting: \(3 \times 1 = 3\) liters
+- For 3 days on the medium setting: \(3 \times 2 = 6\) liters
+- For 5 days on the high setting: ...
+      Extracted answer: 29.0
+      Ground truth: 29.0
+      Is correct: True
+
+    Layer 22 Patched Generation:
+      Generated (first 150 chars):  3 days on the low setting: \(3 \times 1 = 3\) liters
+- For 3 days on the medium setting: \(3 \times 2 = 6\) liters
+- For 5 days on the high setting: ...
+      Extracted answer: 29.0
+      Ground truth: 29.0
+      Is correct: True
+
+    Layer 23 Patched Generation:
+      Generated (first 150 chars):  3 days on the low setting: \(3 \times 1 = 3\) liters
+- For 3 days on the medium setting: \(3 \times 2 = 6\) liters
+- For 5 days on the high setting: ...
+      Extracted answer: 49.0
+      Ground truth: 29.0
+      Is correct: False
+
+    Layer 24 Patched Generation:
+      Generated (first 150 chars):  3 days on the low setting: \(3 \times 1 = 3\) liters
+- For 3 days on the medium setting: \(3 \times 2 = 6\) liters
+- For 5 days on the high setting: ...
+      Extracted answer: 49.0
+      Ground truth: 29.0
+      Is correct: False
+
+    Layer 25 Patched Generation:
+      Generated (first 150 chars):  3 days on the low setting: \(3 \times 1 = 3\) liters
+- For 3 days on the medium setting: \(3 \times 2 = 6\) liters
+- For 5 days on the high setting: ...
+      Extracted answer: 49.0
+      Ground truth: 29.0
+      Is correct: False
+
+    Layer 26 Patched Generation:
+      Generated (first 150 chars):  3 days on the low setting: \(3 \times 1 = 3\) liters
+- For 3 days on the medium setting: \(3 \times 2 = 6\) liters
+- For 5 days on the high setting: ...
+      Extracted answer: 49.0
+      Ground truth: 29.0
+      Is correct: False
+
+    Layer 27 Patched Generation:
+      Generated (first 150 chars):  3 days on the low setting: \(3 \times 1 = 3\) liters
+- For 3 days on the medium setting: \(3 \times 2 = 6\) liters
+- For 5 days on the high setting: ...
+      Extracted answer: 49.0
+      Ground truth: 29.0
+      Is correct: False
+
+  ✓ Problem 10 complete
+
+================================================================================
+Analyzing problem 12:
+  Injected: 6, Correct: 3
+  Ground truth answer: 36.0
+
+  Using CoT prefix (length 540 of 1489):
+    To determine how many hours Jim spends on TV and reading in 4 weeks, we need to break down the problem into smaller, manageable steps.
+
+1. **Calculate the total time Jim spends on TV in one week:**
+  ...
+
+  CORRUPTED_BASELINE:
+    Generated (first 150 chars):  reads for half as long as he watches TV each time he reads. Since he reads 3 times a week, we first find out how long he reads each time:
+   \[
+   \f...
+    Extracted answer: 36.0
+    Ground truth: 36.0
+    Is correct: True
+
+  CLEAN_BASELINE:
+    Generated (first 150 chars):  reads for half as long as he watches TV each time he reads. Since he reads 3 times a week, we first find out how long he reads each time:
+   \[
+   \f...
+    Extracted answer: 24.0
+    Ground truth: 36.0
+    Is correct: False
+
+    Layer 0 Patched Generation:
+      Generated (first 150 chars):  reads for half as long as he watches TV each time he reads. Since he reads 3 times a week, we first find out how long he reads each time:
+   \[
+   \f...
+      Extracted answer: 36.0
+      Ground truth: 36.0
+      Is correct: True
+
+    Layer 1 Patched Generation:
+      Generated (first 150 chars):  reads for half as long as he watches TV each time he reads. Since he reads 3 times a week, we first find out how long he reads each time:
+   \[
+   \f...
+      Extracted answer: 36.0
+      Ground truth: 36.0
+      Is correct: True
+
+    Layer 2 Patched Generation:
+      Generated (first 150 chars):  reads for half as long as he watches TV each time he reads. Since he reads 3 times a week, we first find out how long he reads each time:
+   \[
+   \f...
+      Extracted answer: 24.0
+      Ground truth: 36.0
+      Is correct: False
+
+    Layer 3 Patched Generation:
+      Generated (first 150 chars):  reads for half as long as he watches TV each time he reads. Since he reads 3 times a week, we first find out how long he reads each time:
+   \[
+   \f...
+      Extracted answer: 24.0
+      Ground truth: 36.0
+      Is correct: False
+
+    Layer 4 Patched Generation:
+      Generated (first 150 chars):  reads for half as long as he watches TV each time he reads. Since he reads 3 times a week, we first find out how long he reads each time:
+   \[
+   \f...
+      Extracted answer: 24.0
+      Ground truth: 36.0
+      Is correct: False
+
+    Layer 5 Patched Generation:
+      Generated (first 150 chars):  reads for half as long as he watches TV each time he reads. Since he reads 3 times a week, we first find out how long he reads each time:
+   \[
+   \f...
+      Extracted answer: 24.0
+      Ground truth: 36.0
+      Is correct: False
+
+    Layer 6 Patched Generation:
+      Generated (first 150 chars):  reads for half as long as he watches TV each time he reads. Since he reads 3 times a week, we first find out how long he reads each time:
+   \[
+   \f...
+      Extracted answer: 24.0
+      Ground truth: 36.0
+      Is correct: False
+
+    Layer 7 Patched Generation:
+      Generated (first 150 chars):  reads for half as long as he watches TV each time he reads. Since he reads 3 times a week, we first find out how long he reads each time:
+   \[
+   \f...
+      Extracted answer: 24.0
+      Ground truth: 36.0
+      Is correct: False
+
+    Layer 8 Patched Generation:
+      Generated (first 150 chars):  reads for half as long as he watches TV each time he reads. Since he reads 3 times a week, we first find out how long he reads each time:
+   \[
+   \f...
+      Extracted answer: 24.0
+      Ground truth: 36.0
+      Is correct: False
+
+    Layer 9 Patched Generation:
+      Generated (first 150 chars):  reads for half as long as he watches TV each time he reads. Since he reads 3 times a week, we first find out how long he reads each time:
+   \[
+   \f...
+      Extracted answer: 24.0
+      Ground truth: 36.0
+      Is correct: False
+
+    Layer 10 Patched Generation:
+      Generated (first 150 chars):  reads for half as long as he watches TV each time he reads. Since he reads 3 times a week, we first find out how long he reads each time:
+   \[
+   \f...
+      Extracted answer: 24.0
+      Ground truth: 36.0
+      Is correct: False
+
+    Layer 11 Patched Generation:
+      Generated (first 150 chars):  reads for half as long as he watches TV each time he reads. Since he reads 3 times a week, we first find out how long he reads each time:
+   \[
+   \f...
+      Extracted answer: 24.0
+      Ground truth: 36.0
+      Is correct: False
+
+    Layer 12 Patched Generation:
+      Generated (first 150 chars):  reads for half as long as he watches TV each time he reads. Since he reads 3 times a week, we first find out how long he reads each time:
+   \[
+   \f...
+      Extracted answer: 24.0
+      Ground truth: 36.0
+      Is correct: False
+
+    Layer 13 Patched Generation:
+      Generated (first 150 chars):  reads for half as long as he watches TV each time he reads. Since he reads 3 times a week, we first find out how long he reads each time:
+   \[
+   \f...
+      Extracted answer: 24.0
+      Ground truth: 36.0
+      Is correct: False
+
+    Layer 14 Patched Generation:
+      Generated (first 150 chars):  reads for half as long as he watches TV each time he reads. Since he reads 3 times a week, we first find out how long he reads each time:
+   \[
+   \f...
+      Extracted answer: 24.0
+      Ground truth: 36.0
+      Is correct: False
+
+    Layer 15 Patched Generation:
+      Generated (first 150 chars):  reads for half as long as he watches TV each time he reads. Since he reads 3 times a week, we first find out how long he reads each time:
+   \[
+   \f...
+      Extracted answer: 24.0
+      Ground truth: 36.0
+      Is correct: False
+
+    Layer 16 Patched Generation:
+      Generated (first 150 chars):  reads for half as long as he watches TV each time he reads. Since he reads 3 times a week, we first find out how long he reads each time:
+   \[
+   \f...
+      Extracted answer: 24.0
+      Ground truth: 36.0
+      Is correct: False
+
+    Layer 17 Patched Generation:
+      Generated (first 150 chars):  reads for half as long as he watches TV each time he reads. Since he reads 3 times a week, we first find out how long he reads each time:
+   \[
+   \f...
+      Extracted answer: 24.0
+      Ground truth: 36.0
+      Is correct: False
+
+    Layer 18 Patched Generation:
+      Generated (first 150 chars):  reads for half as long as he watches TV each time he reads. Since he reads 3 times a week, we first find out how long he reads each time:
+   \[
+   \f...
+      Extracted answer: 24.0
+      Ground truth: 36.0
+      Is correct: False
+
+    Layer 19 Patched Generation:
+      Generated (first 150 chars):  reads for half as long as he watches TV each time he reads. Since he reads 3 times a week, we first find out how long he reads each time:
+   \[
+   \f...
+      Extracted answer: 24.0
+      Ground truth: 36.0
+      Is correct: False
+
+    Layer 20 Patched Generation:
+      Generated (first 150 chars):  reads for half as long as he watches TV each time he reads. Since he reads 3 times a week, we first find out how long he reads each time:
+   \[
+   \f...
+      Extracted answer: 24.0
+      Ground truth: 36.0
+      Is correct: False
+
+    Layer 21 Patched Generation:
+      Generated (first 150 chars):  reads for half as long as he watches TV each time he reads. Since he reads 3 times a week, we first find out how long he reads each time:
+   \[
+   \f...
+      Extracted answer: 24.0
+      Ground truth: 36.0
+      Is correct: False
+
+    Layer 22 Patched Generation:
+      Generated (first 150 chars):  reads for half as long as he watches TV each time he reads. Since he reads 3 times a week, we first find out how long he reads each time:
+   \[
+   \f...
+      Extracted answer: 36.0
+      Ground truth: 36.0
+      Is correct: True
+
+    Layer 23 Patched Generation:
+      Generated (first 150 chars):  reads for half as long as he watches TV each time he reads. Since he reads 3 times a week, we first find out how long he reads each time:
+   \[
+   \f...
+      Extracted answer: 36.0
+      Ground truth: 36.0
+      Is correct: True
+
+    Layer 24 Patched Generation:
+      Generated (first 150 chars):  reads for half as long as he watches TV each time he reads. Since he reads 3 times a week, we first find out how long he reads each time:
+   \[
+   \f...
+      Extracted answer: 36.0
+      Ground truth: 36.0
+      Is correct: True
+
+    Layer 25 Patched Generation:
+      Generated (first 150 chars):  reads for half as long as he watches TV each time he reads. Since he reads 3 times a week, we first find out how long he reads each time:
+   \[
+   \f...
+      Extracted answer: 36.0
+      Ground truth: 36.0
+      Is correct: True
+
+    Layer 26 Patched Generation:
+      Generated (first 150 chars):  reads for half as long as he watches TV each time he reads. Since he reads 3 times a week, we first find out how long he reads each time:
+   \[
+   \f...
+      Extracted answer: 36.0
+      Ground truth: 36.0
+      Is correct: True
+
+    Layer 27 Patched Generation:
+      Generated (first 150 chars):  reads for half as long as he watches TV each time he reads. Since he reads 3 times a week, we first find out how long he reads each time:
+   \[
+   \f...
+      Extracted answer: 36.0
+      Ground truth: 36.0
+      Is correct: True
+
+  ✓ Problem 12 complete
+
+================================================================================
+Analyzing problem 14:
+  Injected: 54, Correct: 35
+  Ground truth answer: 5.0
+
+  Using CoT prefix (length 628 of 898):
+    To determine how many pounds of insects a flock of ten ducks need per day, we can follow these steps:
+
+1. Calculate the total amount of insects needed per week for the entire flock.
+2. Convert the wee...
+
+  CORRUPTED_BASELINE:
+    Generated (first 150 chars):  in a week, so we divide the total weekly amount of insects by 7 to find the daily amount:
+\[ 54.5 \text{ pounds/week} \div 7 \text{ days/week} = 7.78...
+    Extracted answer: 7.71
+    Ground truth: 5.0
+    Is correct: False
+
+  CLEAN_BASELINE:
+    Generated (first 150 chars):  in a week, so we divide the total weekly amount of insects by 7 to find the daily amount:
+\[ 35 \text{ pounds/week} \div 7 \text{ days/week} = 5 \tex...
+    Extracted answer: 5.0
+    Ground truth: 5.0
+    Is correct: True
+
+    Layer 0 Patched Generation:
+      Generated (first 150 chars):  in a week, so we divide the total weekly amount of insects by 7 to find the daily amount:
+\[ 35 \text{ pounds/week} \div 7 \text{ days/week} = 5 \tex...
+      Extracted answer: 5.0
+      Ground truth: 5.0
+      Is correct: True
+
+    Layer 1 Patched Generation:
+      Generated (first 150 chars):  in a week, so we divide the total weekly amount of insects by 7 to find the daily amount:
+\[ 35 \text{ pounds/week} \div 7 \text{ days/week} = 5 \tex...
+      Extracted answer: 5.0
+      Ground truth: 5.0
+      Is correct: True
+
+    Layer 2 Patched Generation:
+      Generated (first 150 chars):  in a week, so we divide the total weekly amount of insects by 7 to find the daily amount:
+\[ 35 \text{ pounds/week} \div 7 \text{ days/week} = 5 \tex...
+      Extracted answer: 5.0
+      Ground truth: 5.0
+      Is correct: True
+
+    Layer 3 Patched Generation:
+      Generated (first 150 chars):  in a week, so we divide the total weekly amount of insects by 7 to find the daily amount:
+\[ 35 \text{ pounds/week} \div 7 \text{ days/week} = 5 \tex...
+      Extracted answer: 5.0
+      Ground truth: 5.0
+      Is correct: True
+
+    Layer 4 Patched Generation:
+      Generated (first 150 chars):  in a week, so we divide the total weekly amount of insects by 7 to find the daily amount:
+\[ 35 \text{ pounds/week} \div 7 \text{ days/week} = 5 \tex...
+      Extracted answer: 5.0
+      Ground truth: 5.0
+      Is correct: True
+
+    Layer 5 Patched Generation:
+      Generated (first 150 chars):  in a week, so we divide the total weekly amount of insects by 7 to find the daily amount:
+\[ 35 \text{ pounds/week} \div 7 \text{ days/week} = 5 \tex...
+      Extracted answer: 5.0
+      Ground truth: 5.0
+      Is correct: True
+
+    Layer 6 Patched Generation:
+      Generated (first 150 chars):  in a week, so we divide the total weekly amount of insects by 7 to find the daily amount:
+\[ 35 \text{ pounds/week} \div 7 \text{ days/week} = 5 \tex...
+      Extracted answer: 5.0
+      Ground truth: 5.0
+      Is correct: True
+
+    Layer 7 Patched Generation:
+      Generated (first 150 chars):  in a week, so we divide the total weekly amount of insects by 7 to find the daily amount:
+\[ 35 \text{ pounds/week} \div 7 \text{ days/week} = 5 \tex...
+      Extracted answer: 5.0
+      Ground truth: 5.0
+      Is correct: True
+
+    Layer 8 Patched Generation:
+      Generated (first 150 chars):  in a week, so we divide the total weekly amount of insects by 7 to find the daily amount:
+\[ 35 \text{ pounds/week} \div 7 \text{ days/week} = 5 \tex...
+      Extracted answer: 5.0
+      Ground truth: 5.0
+      Is correct: True
+
+    Layer 9 Patched Generation:
+      Generated (first 150 chars):  in a week, so we divide the total weekly amount of insects by 7 to find the daily amount:
+\[ 35 \text{ pounds/week} \div 7 \text{ days/week} = 5 \tex...
+      Extracted answer: 5.0
+      Ground truth: 5.0
+      Is correct: True
+
+    Layer 10 Patched Generation:
+      Generated (first 150 chars):  in a week, so we divide the total weekly amount of insects by 7 to find the daily amount:
+\[ 35 \text{ pounds/week} \div 7 \text{ days/week} = 5 \tex...
+      Extracted answer: 5.0
+      Ground truth: 5.0
+      Is correct: True
+
+    Layer 11 Patched Generation:
+      Generated (first 150 chars):  in a week, so we divide the total weekly amount of insects by 7 to find the daily amount:
+\[ 35 \text{ pounds/week} \div 7 \text{ days/week} = 5 \tex...
+      Extracted answer: 5.0
+      Ground truth: 5.0
+      Is correct: True
+
+    Layer 12 Patched Generation:
+      Generated (first 150 chars):  in a week, so we divide the total weekly amount of insects by 7 to find the daily amount:
+\[ 35 \text{ pounds/week} \div 7 \text{ days/week} = 5 \tex...
+      Extracted answer: 5.0
+      Ground truth: 5.0
+      Is correct: True
+
+    Layer 13 Patched Generation:
+      Generated (first 150 chars):  in a week, so we divide the total weekly amount of insects by 7 to find the daily amount:
+\[ 35 \text{ pounds/week} \div 7 \text{ days/week} = 5 \tex...
+      Extracted answer: 5.0
+      Ground truth: 5.0
+      Is correct: True
+
+    Layer 14 Patched Generation:
+      Generated (first 150 chars):  in a week, so we divide the total weekly amount of insects by 7 to find the daily amount:
+\[ 35 \text{ pounds/week} \div 7 \text{ days/week} = 5 \tex...
+      Extracted answer: 5.0
+      Ground truth: 5.0
+      Is correct: True
+
+    Layer 15 Patched Generation:
+      Generated (first 150 chars):  in a week, so we divide the total weekly amount of insects by 7 to find the daily amount:
+\[ 35 \text{ pounds/week} \div 7 \text{ days/week} = 5 \tex...
+      Extracted answer: 5.0
+      Ground truth: 5.0
+      Is correct: True
+
+    Layer 16 Patched Generation:
+      Generated (first 150 chars):  in a week, so we divide the total weekly amount of insects by 7 to find the daily amount:
+\[ 35 \text{ pounds/week} \div 7 \text{ days/week} = 5 \tex...
+      Extracted answer: 5.0
+      Ground truth: 5.0
+      Is correct: True
+
+    Layer 17 Patched Generation:
+      Generated (first 150 chars):  in a week, so we divide the total weekly amount of insects by 7 to find the daily amount:
+\[ 35 \text{ pounds/week} \div 7 \text{ days/week} = 5 \tex...
+      Extracted answer: 5.0
+      Ground truth: 5.0
+      Is correct: True
+
+    Layer 18 Patched Generation:
+      Generated (first 150 chars):  in a week, so we divide the total weekly amount of insects by 7 to find the daily amount:
+\[ 35 \text{ pounds/week} \div 7 \text{ days/week} = 5 \tex...
+      Extracted answer: 5.0
+      Ground truth: 5.0
+      Is correct: True
+
+    Layer 19 Patched Generation:
+      Generated (first 150 chars):  in a week, so we divide the total weekly amount of insects by 7 to find the daily amount:
+\[ 35 \text{ pounds/week} \div 7 \text{ days/week} = 5 \tex...
+      Extracted answer: 5.0
+      Ground truth: 5.0
+      Is correct: True
+
+    Layer 20 Patched Generation:
+      Generated (first 150 chars):  in a week, so we divide the total weekly amount of insects by 7 to find the daily amount:
+\[ 35 \text{ pounds/week} \div 7 \text{ days/week} = 5 \tex...
+      Extracted answer: 5.0
+      Ground truth: 5.0
+      Is correct: True
+
+    Layer 21 Patched Generation:
+      Generated (first 150 chars):  in a week, so we divide the total weekly amount of insects by 7 to find the daily amount:
+\[ 35 \text{ pounds/week} \div 7 \text{ days/week} = 5 \tex...
+      Extracted answer: 5.0
+      Ground truth: 5.0
+      Is correct: True
+
+    Layer 22 Patched Generation:
+      Generated (first 150 chars):  in a week, so we divide the total weekly amount of insects by 7 to find the daily amount:
+\[ 35 \text{ pounds/week} \div 7 \text{ days/week} = 5 \tex...
+      Extracted answer: 5.0
+      Ground truth: 5.0
+      Is correct: True
+
+    Layer 23 Patched Generation:
+      Generated (first 150 chars):  in a week, so we divide the total weekly amount of insects by 7 to find the daily amount:
+\[ 35 \text{ pounds/week} \div 7 \text{ days/week} = 5 \tex...
+      Extracted answer: 5.0
+      Ground truth: 5.0
+      Is correct: True
+
+    Layer 24 Patched Generation:
+      Generated (first 150 chars):  in a week, so we divide the total weekly amount of insects by 7 to find the daily amount:
+\[ 55 \text{ pounds/week} \div 7 \text{ days/week} = 7.8571...
+      Extracted answer: 7.857142857142857
+      Ground truth: 5.0
+      Is correct: False
+
+    Layer 25 Patched Generation:
+      Generated (first 150 chars):  in a week, so we divide the total weekly amount of insects by 7 to find the daily amount:
+\[ 54.5 \text{ pounds/week} \div 7 \text{ days/week} = 7.78...
+      Extracted answer: 7.71
+      Ground truth: 5.0
+      Is correct: False
+
+    Layer 26 Patched Generation:
+      Generated (first 150 chars):  in a week, so we divide the total weekly amount of insects by 7 to find the daily amount:
+\[ 54.5 \text{ pounds/week} \div 7 \text{ days/week} = 7.78...
+      Extracted answer: 7.71
+      Ground truth: 5.0
+      Is correct: False
+
+    Layer 27 Patched Generation:
+      Generated (first 150 chars):  in a week, so we divide the total weekly amount of insects by 7 to find the daily amount:
+\[ 54.5 \text{ pounds/week} \div 7 \text{ days/week} = 7.78...
+      Extracted answer: 7.71
+      Ground truth: 5.0
+      Is correct: False
+
+  ✓ Problem 14 complete
+
+================================================================================
+Analyzing problem 16:
+  Injected: 32, Correct: 20
+  Ground truth answer: 5.0
+
+  Using CoT prefix (length 518 of 893):
+    To determine how many books each child received, we need to follow these steps:
+
+1. **Calculate the total number of books Sarah bought:**
+   Sarah spent $300 on books, and each book cost $15. Therefor...
+
+  CORRUPTED_BASELINE:
+    Generated (first 150 chars):  gave an equal number of books to her 4 kids. Therefore, the number of books each child received is:
+   \[
+   \text{Books per child} = \frac{\text{Tot...
+    Extracted answer: 8.0
+    Ground truth: 5.0
+    Is correct: False
+
+  CLEAN_BASELINE:
+    Generated (first 150 chars): 4 kids and she gave an equal number of books to each child. Therefore, the number of books each child received is:
+   \[
+   \text{Books per child} = \...
+    Extracted answer: 5.0
+    Ground truth: 5.0
+    Is correct: True
+
+    Layer 0 Patched Generation:
+      Generated (first 150 chars): 4 kids and she gave an equal number of books to each. Therefore, the number of books each child received is:
+   \[
+   \text{Books per child} = \frac{\...
+      Extracted answer: 5.0
+      Ground truth: 5.0
+      Is correct: True
+
+    Layer 1 Patched Generation:
+      Generated (first 150 chars): 4 kids and she gave an equal number of books to each child. Therefore, the number of books each child received is:
+   \[
+   \text{Books per child} = \...
+      Extracted answer: 5.0
+      Ground truth: 5.0
+      Is correct: True
+
+    Layer 2 Patched Generation:
+      Generated (first 150 chars): 4 kids and she gave an equal number of books to each child. Therefore, the number of books each child received is:
+   \[
+   \text{Books per child} = \...
+      Extracted answer: 5.0
+      Ground truth: 5.0
+      Is correct: True
+
+    Layer 3 Patched Generation:
+      Generated (first 150 chars): 4 kids and she gave an equal number of books to each child. Therefore, the number of books each child received is:
+   \[
+   \text{Books per child} = \...
+      Extracted answer: 5.0
+      Ground truth: 5.0
+      Is correct: True
+
+    Layer 4 Patched Generation:
+      Generated (first 150 chars): 4 kids and she gave an equal number of books to each child. Therefore, the number of books each child received is:
+   \[
+   \text{Books per child} = \...
+      Extracted answer: 5.0
+      Ground truth: 5.0
+      Is correct: True
+
+    Layer 5 Patched Generation:
+      Generated (first 150 chars): 4 kids and she gave an equal number of books to each child. Therefore, the number of books each child received is:
+   \[
+   \text{Books per child} = \...
+      Extracted answer: 5.0
+      Ground truth: 5.0
+      Is correct: True
+
+    Layer 6 Patched Generation:
+      Generated (first 150 chars): 4 kids and she gave an equal number of books to each child. Therefore, the number of books each child received is:
+   \[
+   \text{Books per child} = \...
+      Extracted answer: 5.0
+      Ground truth: 5.0
+      Is correct: True
+
+    Layer 7 Patched Generation:
+      Generated (first 150 chars): 32 books equally among her 4 kids. Therefore, the number of books each child received is:
+   \[
+   \text{Books per child} = \frac{\text{Total number o...
+      Extracted answer: 8.0
+      Ground truth: 5.0
+      Is correct: False
+
+    Layer 8 Patched Generation:
+      Generated (first 150 chars): 4 kids and she gave an equal number of books to each child. Therefore, the number of books each child received is:
+   \[
+   \text{Books per child} = \...
+      Extracted answer: 5.0
+      Ground truth: 5.0
+      Is correct: True
+
+    Layer 9 Patched Generation:
+      Generated (first 150 chars): 4 kids and she gave an equal number of books to each child. Therefore, the number of books each child received is:
+   \[
+   \text{Books per child} = \...
+      Extracted answer: 5.0
+      Ground truth: 5.0
+      Is correct: True
+
+    Layer 10 Patched Generation:
+      Generated (first 150 chars): 4 kids and she gave an equal number of books to each child. Therefore, the number of books each child received is:
+   \[
+   \text{Books per child} = \...
+      Extracted answer: 5.0
+      Ground truth: 5.0
+      Is correct: True
+
+    Layer 11 Patched Generation:
+      Generated (first 150 chars): 4 kids and she gave an equal number of books to each child. Therefore, the number of books each child received is:
+   \[
+   \text{Books per child} = \...
+      Extracted answer: 5.0
+      Ground truth: 5.0
+      Is correct: True
+
+    Layer 12 Patched Generation:
+      Generated (first 150 chars): 4 kids and she gave an equal number of books to each child. Therefore, the number of books each child received is:
+   \[
+   \text{Books per child} = \...
+      Extracted answer: 5.0
+      Ground truth: 5.0
+      Is correct: True
+
+    Layer 13 Patched Generation:
+      Generated (first 150 chars): 4 kids and she gave an equal number of books to each child. Therefore, the number of books each child received is:
+   \[
+   \text{Books per child} = \...
+      Extracted answer: 5.0
+      Ground truth: 5.0
+      Is correct: True
+
+    Layer 14 Patched Generation:
+      Generated (first 150 chars): 4 kids and she gave an equal number of books to each child. Therefore, the number of books each child received is:
+   \[
+   \text{Books per child} = \...
+      Extracted answer: 5.0
+      Ground truth: 5.0
+      Is correct: True
+
+    Layer 15 Patched Generation:
+      Generated (first 150 chars):  gave an equal number of books to her 4 kids. Therefore, the number of books each child received is:
+   \[
+   \text{Books per child} = \frac{\text{Tot...
+      Extracted answer: 5.0
+      Ground truth: 5.0
+      Is correct: True
+
+    Layer 16 Patched Generation:
+      Generated (first 150 chars): 4 kids and she gave an equal number of books to each child. Therefore, the number of books each child received is:
+   \[
+   \text{Books per child} = \...
+      Extracted answer: 5.0
+      Ground truth: 5.0
+      Is correct: True
+
+    Layer 17 Patched Generation:
+      Generated (first 150 chars):  gave an equal number of books to her 4 kids. Therefore, the number of books each child received is:
+   \[
+   \text{Books per child} = \frac{\text{Tot...
+      Extracted answer: 5.0
+      Ground truth: 5.0
+      Is correct: True
+
+    Layer 18 Patched Generation:
+      Generated (first 150 chars):  gave an equal number of books to her 4 kids. Therefore, the number of books each child received is:
+   \[
+   \text{Books per child} = \frac{\text{Tot...
+      Extracted answer: 5.0
+      Ground truth: 5.0
+      Is correct: True
+
+    Layer 19 Patched Generation:
+      Generated (first 150 chars):  gave an equal number of books to her 4 kids. Therefore, the number of books each child received is:
+   \[
+   \text{Books per child} = \frac{\text{Tot...
+      Extracted answer: 5.0
+      Ground truth: 5.0
+      Is correct: True
+
+    Layer 20 Patched Generation:
+      Generated (first 150 chars):  gave an equal number of books to her 4 kids. Therefore, the number of books each child received is:
+   \[
+   \text{Books per child} = \frac{\text{Tot...
+      Extracted answer: 5.0
+      Ground truth: 5.0
+      Is correct: True
+
+    Layer 21 Patched Generation:
+      Generated (first 150 chars):  gave an equal number of books to her 4 kids. Therefore, the number of books each child received is:
+   \[
+   \text{Books per child} = \frac{\text{Tot...
+      Extracted answer: 5.0
+      Ground truth: 5.0
+      Is correct: True
+
+    Layer 22 Patched Generation:
+      Generated (first 150 chars):  gave an equal number of books to her 4 kids. Therefore, the number of books each child received is:
+   \[
+   \text{Books per child} = \frac{\text{Tot...
+      Extracted answer: 8.0
+      Ground truth: 5.0
+      Is correct: False
+
+    Layer 23 Patched Generation:
+      Generated (first 150 chars):  gave an equal number of books to her 4 kids. Therefore, the number of books each child received is:
+   \[
+   \text{Books per child} = \frac{\text{Tot...
+      Extracted answer: 8.0
+      Ground truth: 5.0
+      Is correct: False
+
+    Layer 24 Patched Generation:
+      Generated (first 150 chars):  gave an equal number of books to her 4 kids. Therefore, the number of books each child received is:
+   \[
+   \text{Books per child} = \frac{\text{Tot...
+      Extracted answer: 8.0
+      Ground truth: 5.0
+      Is correct: False
+
+    Layer 25 Patched Generation:
+      Generated (first 150 chars):  gave an equal number of books to her 4 kids. Therefore, the number of books each child received is:
+   \[
+   \text{Books per child} = \frac{\text{Tot...
+      Extracted answer: 8.0
+      Ground truth: 5.0
+      Is correct: False
+
+    Layer 26 Patched Generation:
+      Generated (first 150 chars):  gave an equal number of books to her 4 kids. Therefore, the number of books each child received is:
+   \[
+   \text{Books per child} = \frac{\text{Tot...
+      Extracted answer: 8.0
+      Ground truth: 5.0
+      Is correct: False
+
+    Layer 27 Patched Generation:
+      Generated (first 150 chars):  gave an equal number of books to her 4 kids. Therefore, the number of books each child received is:
+   \[
+   \text{Books per child} = \frac{\text{Tot...
+      Extracted answer: 8.0
+      Ground truth: 5.0
+      Is correct: False
+
+  ✓ Problem 16 complete
+
+================================================================================
+Analyzing problem 17:
+  Injected: 74, Correct: 48
+  Ground truth answer: 66.0
+
+  Using CoT prefix (length 398 of 724):
+    To determine how much Ted spent in total, we need to calculate the cost of the books and the pencils separately and then sum these amounts.
+
+First, let's calculate the cost of the books:
+- Ted buys 3 ...
+
+  CORRUPTED_BASELINE:
+    Generated (first 150 chars):  pencil costs $6.
+- Therefore, the total cost of the pencils is:
+  \[
+  3 \times 6 = 18  \text{ dollars}
+  \]
+
+Now, we sum the total cost of the books...
+    Extracted answer: 92.0
+    Ground truth: 66.0
+    Is correct: False
+
+  CLEAN_BASELINE:
+    Generated (first 150 chars):  pencil costs $6.
+- Therefore, the total cost of the pencils is:
+  \[
+  3 \times 6 = 18  \text{ dollars}
+  \]
+
+Now, we sum the total cost of the books...
+    Extracted answer: 66.0
+    Ground truth: 66.0
+    Is correct: True
+
+    Layer 0 Patched Generation:
+      Generated (first 150 chars):  pencil costs $6.
+- Therefore, the total cost of the pencils is:
+  \[
+  3 \times 6 = 18 \text{ dollars}
+  \]
+
+Now, we add the total cost of the books ...
+      Extracted answer: 66.0
+      Ground truth: 66.0
+      Is correct: True
+
+    Layer 1 Patched Generation:
+      Generated (first 150 chars):  pencil costs $6.
+- Therefore, the total cost of the pencils is:
+  \[
+  3 \times 6 = 18  \text{ dollars}
+  \]
+
+Now, we sum the total cost of the books...
+      Extracted answer: 66.0
+      Ground truth: 66.0
+      Is correct: True
+
+    Layer 2 Patched Generation:
+      Generated (first 150 chars):  pencil costs $6.
+- Therefore, the total cost of the pencils is:
+  \[
+  3 \times 6 = 18  \text{ dollars}
+  \]
+
+Now, we sum the total cost of the books...
+      Extracted answer: 66.0
+      Ground truth: 66.0
+      Is correct: True
+
+    Layer 3 Patched Generation:
+      Generated (first 150 chars):  pencil costs $6.
+- Therefore, the total cost of the pencils is:
+  \[
+  3 \times 6 = 18  \text{ dollars}
+  \]
+
+Now, we sum the total cost of the books...
+      Extracted answer: 66.0
+      Ground truth: 66.0
+      Is correct: True
+
+    Layer 4 Patched Generation:
+      Generated (first 150 chars):  pencil costs $6.
+- Therefore, the total cost of the pencils is:
+  \[
+  3 \times 6 = 18  \text{ dollars}
+  \]
+
+Now, we sum the total cost of the books...
+      Extracted answer: 66.0
+      Ground truth: 66.0
+      Is correct: True
+
+    Layer 5 Patched Generation:
+      Generated (first 150 chars):  pencil costs $6.
+- Therefore, the total cost of the pencils is:
+  \[
+  3 \times 6 = 18  \text{ dollars}
+  \]
+
+Now, we sum the total cost of the books...
+      Extracted answer: 66.0
+      Ground truth: 66.0
+      Is correct: True
+
+    Layer 6 Patched Generation:
+      Generated (first 150 chars):  pencil costs $6.
+- Therefore, the total cost of the pencils is:
+  \[
+  3 \times 6 = 18  \text{ dollars}
+  \]
+
+Now, we sum the total cost of the books...
+      Extracted answer: 66.0
+      Ground truth: 66.0
+      Is correct: True
+
+    Layer 7 Patched Generation:
+      Generated (first 150 chars):  pencil costs $6.
+- Therefore, the total cost of the pencils is:
+  \[
+  3 \times 6 = 18  \text{ dollars}
+  \]
+
+Now, we sum the total cost of the books...
+      Extracted answer: 66.0
+      Ground truth: 66.0
+      Is correct: True
+
+    Layer 8 Patched Generation:
+      Generated (first 150 chars):  pencil costs $6.
+- Therefore, the total cost of the pencils is:
+  \[
+  3 \times 6 = 18  \text{ dollars}
+  \]
+
+Now, we sum the total cost of the books...
+      Extracted answer: 66.0
+      Ground truth: 66.0
+      Is correct: True
+
+    Layer 9 Patched Generation:
+      Generated (first 150 chars):  pencil costs $6.
+- Therefore, the total cost of the pencils is:
+  \[
+  3 \times 6 = 18  \text{ dollars}
+  \]
+
+Now, we sum the total cost of the books...
+      Extracted answer: 66.0
+      Ground truth: 66.0
+      Is correct: True
+
+    Layer 10 Patched Generation:
+      Generated (first 150 chars):  pencil costs $6.
+- Therefore, the total cost of the pencils is:
+  \[
+  3 \times 6 = 18  \text{ dollars}
+  \]
+
+Now, we sum the total cost of the books...
+      Extracted answer: 66.0
+      Ground truth: 66.0
+      Is correct: True
+
+    Layer 11 Patched Generation:
+      Generated (first 150 chars):  pencil costs $6.
+- Therefore, the total cost of the pencils is:
+  \[
+  3 \times 6 = 18  \text{ dollars}
+  \]
+
+Now, we sum the total cost of the books...
+      Extracted answer: 66.0
+      Ground truth: 66.0
+      Is correct: True
+
+    Layer 12 Patched Generation:
+      Generated (first 150 chars):  pencil costs $6.
+- Therefore, the total cost of the pencils is:
+  \[
+  3 \times 6 = 18  \text{ dollars}
+  \]
+
+Now, we sum the total cost of the books...
+      Extracted answer: 66.0
+      Ground truth: 66.0
+      Is correct: True
+
+    Layer 13 Patched Generation:
+      Generated (first 150 chars):  pencil costs $6.
+- Therefore, the total cost of the pencils is:
+  \[
+  3 \times 6 = 18  \text{ dollars}
+  \]
+
+Now, we sum the total cost of the books...
+      Extracted answer: 66.0
+      Ground truth: 66.0
+      Is correct: True
+
+    Layer 14 Patched Generation:
+      Generated (first 150 chars):  pencil costs $6.
+- Therefore, the total cost of the pencils is:
+  \[
+  3 \times 6 = 18  \text{ dollars}
+  \]
+
+Now, we sum the total cost of the books...
+      Extracted answer: 66.0
+      Ground truth: 66.0
+      Is correct: True
+
+    Layer 15 Patched Generation:
+      Generated (first 150 chars):  pencil costs $6.
+- Therefore, the total cost of the pencils is:
+  \[
+  3 \times 6 = 18  \text{ dollars}
+  \]
+
+Now, we sum the total cost of the books...
+      Extracted answer: 66.0
+      Ground truth: 66.0
+      Is correct: True
+
+    Layer 16 Patched Generation:
+      Generated (first 150 chars):  pencil costs $6.
+- Therefore, the total cost of the pencils is:
+  \[
+  3 \times 6 = 18  \text{ dollars}
+  \]
+
+Now, we sum the total cost of the books...
+      Extracted answer: 66.0
+      Ground truth: 66.0
+      Is correct: True
+
+    Layer 17 Patched Generation:
+      Generated (first 150 chars):  pencil costs $6.
+- Therefore, the total cost of the pencils is:
+  \[
+  3 \times 6 = 18  \text{ dollars}
+  \]
+
+Now, we sum the total cost of the books...
+      Extracted answer: 66.0
+      Ground truth: 66.0
+      Is correct: True
+
+    Layer 18 Patched Generation:
+      Generated (first 150 chars):  pencil costs $6.
+- Therefore, the total cost of the pencils is:
+  \[
+  3 \times 6 = 18  \text{ dollars}
+  \]
+
+Now, we sum the total cost of the books...
+      Extracted answer: 66.0
+      Ground truth: 66.0
+      Is correct: True
+
+    Layer 19 Patched Generation:
+      Generated (first 150 chars):  pencil costs $6.
+- Therefore, the total cost of the pencils is:
+  \[
+  3 \times 6 = 18  \text{ dollars}
+  \]
+
+Now, we sum the total cost of the books...
+      Extracted answer: 66.0
+      Ground truth: 66.0
+      Is correct: True
+
+    Layer 20 Patched Generation:
+      Generated (first 150 chars):  pencil costs $6.
+- Therefore, the total cost of the pencils is:
+  \[
+  3 \times 6 = 18  \text{ dollars}
+  \]
+
+Now, we sum the total cost of the books...
+      Extracted answer: 66.0
+      Ground truth: 66.0
+      Is correct: True
+
+    Layer 21 Patched Generation:
+      Generated (first 150 chars):  pencil costs $6.
+- Therefore, the total cost of the pencils is:
+  \[
+  3 \times 6 = 18  \text{ dollars}
+  \]
+
+Now, we sum the total cost of the books...
+      Extracted answer: 66.0
+      Ground truth: 66.0
+      Is correct: True
+
+    Layer 22 Patched Generation:
+      Generated (first 150 chars):  pencil costs $6.
+- Therefore, the total cost of the pencils is:
+  \[
+  3 \times 6 = 18  \text{ dollars}
+  \]
+
+Now, we sum the total cost of the books...
+      Extracted answer: 66.0
+      Ground truth: 66.0
+      Is correct: True
+
+    Layer 23 Patched Generation:
+      Generated (first 150 chars):  pencil costs $6.
+- Therefore, the total cost of the pencils is:
+  \[
+  3 \times 6 = 18  \text{ dollars}
+  \]
+
+Now, we sum the total cost of the books...
+      Extracted answer: 92.0
+      Ground truth: 66.0
+      Is correct: False
+
+    Layer 24 Patched Generation:
+      Generated (first 150 chars):  pencil costs $6.
+- Therefore, the total cost of the pencils is:
+  \[
+  3 \times 6 = 18  \text{ dollars}
+  \]
+
+Now, we sum the total cost of the books...
+      Extracted answer: 92.0
+      Ground truth: 66.0
+      Is correct: False
+
+    Layer 25 Patched Generation:
+      Generated (first 150 chars):  pencil costs $6.
+- Therefore, the total cost of the pencils is:
+  \[
+  3 \times 6 = 18  \text{ dollars}
+  \]
+
+Now, we sum the total cost of the books...
+      Extracted answer: 92.0
+      Ground truth: 66.0
+      Is correct: False
+
+    Layer 26 Patched Generation:
+      Generated (first 150 chars):  pencil costs $6.
+- Therefore, the total cost of the pencils is:
+  \[
+  3 \times 6 = 18  \text{ dollars}
+  \]
+
+Now, we sum the total cost of the books...
+      Extracted answer: 92.0
+      Ground truth: 66.0
+      Is correct: False
+
+    Layer 27 Patched Generation:
+      Generated (first 150 chars):  pencil costs $6.
+- Therefore, the total cost of the pencils is:
+  \[
+  3 \times 6 = 18  \text{ dollars}
+  \]
+
+Now, we sum the total cost of the books...
+      Extracted answer: 92.0
+      Ground truth: 66.0
+      Is correct: False
+
+  ✓ Problem 17 complete
+
+================================================================================
+Analyzing problem 19:
+  Injected: 33, Correct: 21
+  Ground truth answer: 40.0
+
+  Using CoT prefix (length 672 of 951):
+    To determine the total number of kittens the Doubtfire family now has, we need to follow these steps:
+
+1. Identify the number of adopted kittens.
+2. Calculate the number of kittens born to Patchy.
+3. ...
+
+  CORRUPTED_BASELINE:
+    Generated (first 150 chars): aten to Trixie is:
+\[ 12 \]
+
+Now, we add the number of adopted kittens, the kittens born to Patchy, and the kittens born to Trixie to find the total n...
+    Extracted answer: 52.0
+    Ground truth: 40.0
+    Is correct: False
+
+  CLEAN_BASELINE:
+    Generated (first 150 chars): aten to Trixie is:
+\[ 12 \]
+
+Now, we add the number of adopted kittens, the kittens born to Patchy, and the kittens born to Trixie to find the total n...
+    Extracted answer: 40.0
+    Ground truth: 40.0
+    Is correct: True
+
+    Layer 0 Patched Generation:
+      Generated (first 150 chars): aten to Trixie is:
+\[ 12 \]
+
+Now, we add all the kittens together:
+\[ 7 \text{ (adopted kittens)} + 21 \text{ (kittens born to Patchy)} + 12 \text{ (k...
+      Extracted answer: 40.0
+      Ground truth: 40.0
+      Is correct: True
+
+    Layer 1 Patched Generation:
+      Generated (first 150 chars): aten to Trixie is:
+\[ 12 \]
+
+Now, we add all the kittens together:
+\[ 7 \text{ (adopted kittens)} + 21 \text{ (kittens born to Patchy)} + 12 \text{ (k...
+      Extracted answer: 40.0
+      Ground truth: 40.0
+      Is correct: True
+
+    Layer 2 Patched Generation:
+      Generated (first 150 chars): aten to Trixie is:
+\[ 12 \]
+
+Now, we add the number of adopted kittens, the kittens born to Patchy, and the kittens born to Trixie to find the total n...
+      Extracted answer: 40.0
+      Ground truth: 40.0
+      Is correct: True
+
+    Layer 3 Patched Generation:
+      Generated (first 150 chars): aten to Trixie is:
+\[ 12 \]
+
+Now, we add the number of adopted kittens, the kittens born to Patchy, and the kittens born to Trixie to find the total n...
+      Extracted answer: 40.0
+      Ground truth: 40.0
+      Is correct: True
+
+    Layer 4 Patched Generation:
+      Generated (first 150 chars): aten to Trixie is:
+\[ 12 \]
+
+Now, we add the number of adopted kittens, the kittens born to Patchy, and the kittens born to Trixie to find the total n...
+      Extracted answer: 40.0
+      Ground truth: 40.0
+      Is correct: True
+
+    Layer 5 Patched Generation:
+      Generated (first 150 chars): aten to Trixie is:
+\[ 12 \]
+
+Now, we add the number of adopted kittens, the kittens born to Patchy, and the kittens born to Trixie to find the total n...
+      Extracted answer: 40.0
+      Ground truth: 40.0
+      Is correct: True
+
+    Layer 6 Patched Generation:
+      Generated (first 150 chars): aten to Trixie is:
+\[ 12 \]
+
+Now, we add all the kittens together:
+\[ 7 \text{ (adopted kittens)} + 21 \text{ (kittens born to Patchy)} + 12 \text{ (k...
+      Extracted answer: 40.0
+      Ground truth: 40.0
+      Is correct: True
+
+    Layer 7 Patched Generation:
+      Generated (first 150 chars): aten to Trixie is:
+\[ 12 \]
+
+Now, we add the number of adopted kittens, the kittens born to Patchy, and the kittens born to Trixie to find the total n...
+      Extracted answer: 40.0
+      Ground truth: 40.0
+      Is correct: True
+
+    Layer 8 Patched Generation:
+      Generated (first 150 chars): aten to Trixie is:
+\[ 12 \]
+
+Now, we add the number of adopted kittens, the kittens born to Patchy, and the kittens born to Trixie to find the total n...
+      Extracted answer: 40.0
+      Ground truth: 40.0
+      Is correct: True
+
+    Layer 9 Patched Generation:
+      Generated (first 150 chars): aten to Trixie is:
+\[ 12 \]
+
+Now, we add the number of adopted kittens, the kittens born to Patchy, and the kittens born to Trixie to find the total n...
+      Extracted answer: 40.0
+      Ground truth: 40.0
+      Is correct: True
+
+    Layer 10 Patched Generation:
+      Generated (first 150 chars): aten to Trixie is:
+\[ 12 \]
+
+Now, we add the number of adopted kittens, the kittens born to Patchy, and the kittens born to Trixie to find the total n...
+      Extracted answer: 40.0
+      Ground truth: 40.0
+      Is correct: True
+
+    Layer 11 Patched Generation:
+      Generated (first 150 chars): aten to Trixie is:
+\[ 12 \]
+
+Now, we add the number of adopted kittens, the kittens born to Patchy, and the kittens born to Trixie to find the total n...
+      Extracted answer: 40.0
+      Ground truth: 40.0
+      Is correct: True
+
+    Layer 12 Patched Generation:
+      Generated (first 150 chars): aten to Trixie is:
+\[ 12 \]
+
+Now, we add the number of adopted kittens, the kittens born to Patchy, and the kittens born to Trixie to find the total n...
+      Extracted answer: 40.0
+      Ground truth: 40.0
+      Is correct: True
+
+    Layer 13 Patched Generation:
+      Generated (first 150 chars): aten to Trixie is:
+\[ 12 \]
+
+Now, we add the number of adopted kittens, the kittens born to Patchy, and the kittens born to Trixie to find the total n...
+      Extracted answer: 40.0
+      Ground truth: 40.0
+      Is correct: True
+
+    Layer 14 Patched Generation:
+      Generated (first 150 chars): aten to Trixie is:
+\[ 12 \]
+
+Now, we add the number of adopted kittens, the kittens born to Patchy, and the kittens born to Trixie to find the total n...
+      Extracted answer: 40.0
+      Ground truth: 40.0
+      Is correct: True
+
+    Layer 15 Patched Generation:
+      Generated (first 150 chars): aten to Trixie is:
+\[ 12 \]
+
+Now, we add the number of adopted kittens, the kittens born to Patchy, and the kittens born to Trixie to find the total n...
+      Extracted answer: 40.0
+      Ground truth: 40.0
+      Is correct: True
+
+    Layer 16 Patched Generation:
+      Generated (first 150 chars): aten to Trixie is:
+\[ 12 \]
+
+Now, we add the number of adopted kittens, the kittens born to Patchy, and the kittens born to Trixie to find the total n...
+      Extracted answer: 40.0
+      Ground truth: 40.0
+      Is correct: True
+
+    Layer 17 Patched Generation:
+      Generated (first 150 chars): aten to Trixie is:
+\[ 12 \]
+
+Now, we add the number of adopted kittens, the kittens born to Patchy, and the kittens born to Trixie to find the total n...
+      Extracted answer: 40.0
+      Ground truth: 40.0
+      Is correct: True
+
+    Layer 18 Patched Generation:
+      Generated (first 150 chars): aten to Trixie is:
+\[ 12 \]
+
+Now, we add the number of adopted kittens, the kittens born to Patchy, and the kittens born to Trixie to find the total n...
+      Extracted answer: 40.0
+      Ground truth: 40.0
+      Is correct: True
+
+    Layer 19 Patched Generation:
+      Generated (first 150 chars): aten to Trixie is:
+\[ 12 \]
+
+Now, we add the number of adopted kittens, the kittens born to Patchy, and the kittens born to Trixie to find the total n...
+      Extracted answer: 40.0
+      Ground truth: 40.0
+      Is correct: True
+
+    Layer 20 Patched Generation:
+      Generated (first 150 chars): aten to Trixie is:
+\[ 12 \]
+
+Now, we add the number of adopted kittens, the kittens born to Patchy, and the kittens born to Trixie to find the total n...
+      Extracted answer: 40.0
+      Ground truth: 40.0
+      Is correct: True
+
+    Layer 21 Patched Generation:
+      Generated (first 150 chars): aten to Trixie is:
+\[ 12 \]
+
+Now, we add the number of adopted kittens, the kittens born to Patchy, and the kittens born to Trixie to find the total n...
+      Extracted answer: 40.0
+      Ground truth: 40.0
+      Is correct: True
+
+    Layer 22 Patched Generation:
+      Generated (first 150 chars): aten to Trixie is:
+\[ 12 \]
+
+Now, we add the number of adopted kittens, the kittens born to Patchy, and the kittens born to Trixie to find the total n...
+      Extracted answer: 36.0
+      Ground truth: 40.0
+      Is correct: False
+
+    Layer 23 Patched Generation:
+      Generated (first 150 chars): aten to Trixie is:
+\[ 12 \]
+
+Now, we add the number of adopted kittens, the kittens born to Patchy, and the kittens born to Trixie to find the total n...
+      Extracted answer: 52.0
+      Ground truth: 40.0
+      Is correct: False
+
+    Layer 24 Patched Generation:
+      Generated (first 150 chars): aten to Trixie is:
+\[ 12 \]
+
+Now, we add the number of adopted kittens, the kittens born to Patchy, and the kittens born to Trixie to find the total n...
+      Extracted answer: 52.0
+      Ground truth: 40.0
+      Is correct: False
+
+    Layer 25 Patched Generation:
+      Generated (first 150 chars): aten to Trixie is:
+\[ 12 \]
+
+Now, we add the number of adopted kittens, the kittens born to Patchy, and the kittens born to Trixie to find the total n...
+      Extracted answer: 52.0
+      Ground truth: 40.0
+      Is correct: False
+
+    Layer 26 Patched Generation:
+      Generated (first 150 chars): aten to Trixie is:
+\[ 12 \]
+
+Now, we add the number of adopted kittens, the kittens born to Patchy, and the kittens born to Trixie to find the total n...
+      Extracted answer: 52.0
+      Ground truth: 40.0
+      Is correct: False
+
+    Layer 27 Patched Generation:
+      Generated (first 150 chars): aten to Trixie is:
+\[ 12 \]
+
+Now, we add the number of adopted kittens, the kittens born to Patchy, and the kittens born to Trixie to find the total n...
+      Extracted answer: 52.0
+      Ground truth: 40.0
+      Is correct: False
+
+  ✓ Problem 19 complete
+
+================================================================================
+Analyzing problem 20:
+  Injected: 6, Correct: 3
+  Ground truth answer: 93.0
+
+  Using CoT prefix (length 509 of 808):
+    To determine how much Jen spends on food in the month of May, we need to follow these steps:
+
+1. **Calculate the daily food cost for one fish:**
+   Each fish needs $1 worth of food per day.
+
+2. **Calc...
+
+  CORRUPTED_BASELINE:
+    Generated (first 150 chars):  **Calculate the total monthly food cost:**
+   We multiply the daily food cost for all three fish by the number of days in May:
+   \[
+   6 \text{ doll...
+    Extracted answer: 186.0
+    Ground truth: 93.0
+    Is correct: False
+
+  CLEAN_BASELINE:
+    Generated (first 150 chars):  **Calculate the total monthly food cost:**
+   We multiply the daily food cost for all three fish by the number of days in May:
+   \[
+   3 \text{ doll...
+    Extracted answer: 93.0
+    Ground truth: 93.0
+    Is correct: True
+
+    Layer 0 Patched Generation:
+      Generated (first 150 chars):  **Calculate the total monthly food cost:**
+   We multiply the daily food cost for all three fish by the number of days in May:
+   \[
+   3 \text{ doll...
+      Extracted answer: 93.0
+      Ground truth: 93.0
+      Is correct: True
+
+    Layer 1 Patched Generation:
+      Generated (first 150 chars):  **Calculate the total monthly food cost:**
+   We multiply the daily food cost for all three fish by the number of days in May:
+   \[
+   31 \text{ day...
+      Extracted answer: 93.0
+      Ground truth: 93.0
+      Is correct: True
+
+    Layer 2 Patched Generation:
+      Generated (first 150 chars):  **Calculate the total monthly food cost:**
+   We multiply the daily food cost for all three fish by the number of days in May:
+   \[
+   3 \text{ doll...
+      Extracted answer: 93.0
+      Ground truth: 93.0
+      Is correct: True
+
+    Layer 3 Patched Generation:
+      Generated (first 150 chars):  **Calculate the total monthly food cost:**
+   We multiply the daily food cost for all three fish by the number of days in May:
+   \[
+   3 \text{ doll...
+      Extracted answer: 93.0
+      Ground truth: 93.0
+      Is correct: True
+
+    Layer 4 Patched Generation:
+      Generated (first 150 chars):  **Calculate the total monthly food cost:**
+   We multiply the daily food cost for all three fish by the number of days in May:
+   \[
+   3 \text{ doll...
+      Extracted answer: 93.0
+      Ground truth: 93.0
+      Is correct: True
+
+    Layer 5 Patched Generation:
+      Generated (first 150 chars):  **Calculate the total monthly food cost:**
+   We multiply the daily food cost for all three fish by the number of days in May:
+   \[
+   3 \text{ doll...
+      Extracted answer: 93.0
+      Ground truth: 93.0
+      Is correct: True
+
+    Layer 6 Patched Generation:
+      Generated (first 150 chars):  **Calculate the total monthly food cost:**
+   We multiply the daily food cost for all three fish by the number of days in May:
+   \[
+   3 \text{ doll...
+      Extracted answer: 93.0
+      Ground truth: 93.0
+      Is correct: True
+
+    Layer 7 Patched Generation:
+      Generated (first 150 chars):  **Calculate the total monthly food cost:**
+   We multiply the daily food cost for all three fish by the number of days in May:
+   \[
+   3 \text{ doll...
+      Extracted answer: 93.0
+      Ground truth: 93.0
+      Is correct: True
+
+    Layer 8 Patched Generation:
+      Generated (first 150 chars):  **Calculate the total monthly food cost:**
+   We multiply the daily food cost for all three fish by the number of days in May:
+   \[
+   3 \text{ doll...
+      Extracted answer: 93.0
+      Ground truth: 93.0
+      Is correct: True
+
+    Layer 9 Patched Generation:
+      Generated (first 150 chars):  **Calculate the total monthly food cost:**
+   We multiply the daily food cost for all three fish by the number of days in May:
+   \[
+   3 \text{ doll...
+      Extracted answer: 93.0
+      Ground truth: 93.0
+      Is correct: True
+
+    Layer 10 Patched Generation:
+      Generated (first 150 chars):  **Calculate the total monthly food cost:**
+   We multiply the daily food cost for all three fish by the number of days in May:
+   \[
+   3 \text{ doll...
+      Extracted answer: 93.0
+      Ground truth: 93.0
+      Is correct: True
+
+    Layer 11 Patched Generation:
+      Generated (first 150 chars):  **Calculate the total monthly food cost:**
+   We multiply the daily food cost for all three fish by the number of days in May:
+   \[
+   3 \text{ doll...
+      Extracted answer: 93.0
+      Ground truth: 93.0
+      Is correct: True
+
+    Layer 12 Patched Generation:
+      Generated (first 150 chars):  **Calculate the total monthly food cost:**
+   We multiply the daily food cost for all three fish by the number of days in May:
+   \[
+   3 \text{ doll...
+      Extracted answer: 93.0
+      Ground truth: 93.0
+      Is correct: True
+
+    Layer 13 Patched Generation:
+      Generated (first 150 chars):  **Calculate the total monthly food cost:**
+   We multiply the daily food cost for all three fish by the number of days in May:
+   \[
+   3 \text{ doll...
+      Extracted answer: 93.0
+      Ground truth: 93.0
+      Is correct: True
+
+    Layer 14 Patched Generation:
+      Generated (first 150 chars):  **Calculate the total monthly food cost:**
+   We multiply the daily food cost for all three fish by the number of days in May:
+   \[
+   3 \text{ doll...
+      Extracted answer: 93.0
+      Ground truth: 93.0
+      Is correct: True
+
+    Layer 15 Patched Generation:
+      Generated (first 150 chars):  **Calculate the total monthly food cost:**
+   We multiply the daily food cost for all three fish by the number of days in May:
+   \[
+   3 \text{ fish...
+      Extracted answer: 93.0
+      Ground truth: 93.0
+      Is correct: True
+
+    Layer 16 Patched Generation:
+      Generated (first 150 chars):  **Calculate the total monthly food cost:**
+   We multiply the daily food cost for all three fish by the number of days in May:
+   \[
+   3 \text{ fish...
+      Extracted answer: 93.0
+      Ground truth: 93.0
+      Is correct: True
+
+    Layer 17 Patched Generation:
+      Generated (first 150 chars):  **Calculate the total monthly food cost:**
+   We multiply the daily food cost for all three fish by the number of days in May:
+   \[
+   3 \text{ fish...
+      Extracted answer: 93.0
+      Ground truth: 93.0
+      Is correct: True
+
+    Layer 18 Patched Generation:
+      Generated (first 150 chars):  **Calculate the total monthly food cost:**
+   We multiply the daily food cost for all three fish by the number of days in May:
+   \[
+   31 \text{ day...
+      Extracted answer: 93.0
+      Ground truth: 93.0
+      Is correct: True
+
+    Layer 19 Patched Generation:
+      Generated (first 150 chars):  **Calculate the total monthly food cost:**
+   We multiply the daily food cost for all three fish by the number of days in May:
+   \[
+   31 \text{ day...
+      Extracted answer: 93.0
+      Ground truth: 93.0
+      Is correct: True
+
+    Layer 20 Patched Generation:
+      Generated (first 150 chars):  **Calculate the total monthly food cost:**
+   We multiply the daily food cost for all three fish by the number of days in May:
+   \[
+   31 \text{ day...
+      Extracted answer: 93.0
+      Ground truth: 93.0
+      Is correct: True
+
+    Layer 21 Patched Generation:
+      Generated (first 150 chars):  **Calculate the total monthly food cost:**
+   We multiply the daily food cost for all three fish by the number of days in May:
+   \[
+   31 \text{ day...
+      Extracted answer: 93.0
+      Ground truth: 93.0
+      Is correct: True
+
+    Layer 22 Patched Generation:
+      Generated (first 150 chars):  **Calculate the total monthly food cost:**
+   We multiply the daily food cost for all three fish by the number of days in May:
+   \[
+   31 \text{ day...
+      Extracted answer: 93.0
+      Ground truth: 93.0
+      Is correct: True
+
+    Layer 23 Patched Generation:
+      Generated (first 150 chars):  **Calculate the total monthly food cost:**
+   We multiply the daily food cost for all three fish by the number of days in May:
+   \[
+   6 \text{ doll...
+      Extracted answer: 186.0
+      Ground truth: 93.0
+      Is correct: False
+
+    Layer 24 Patched Generation:
+      Generated (first 150 chars):  **Calculate the total monthly food cost:**
+   We multiply the daily food cost for all three fish by the number of days in May:
+   \[
+   6 \text{ doll...
+      Extracted answer: 186.0
+      Ground truth: 93.0
+      Is correct: False
+
+    Layer 25 Patched Generation:
+      Generated (first 150 chars):  **Calculate the total monthly food cost:**
+   We multiply the daily food cost for all three fish by the number of days in May:
+   \[
+   6 \text{ doll...
+      Extracted answer: 186.0
+      Ground truth: 93.0
+      Is correct: False
+
+    Layer 26 Patched Generation:
+      Generated (first 150 chars):  **Calculate the total monthly food cost:**
+   We multiply the daily food cost for all three fish by the number of days in May:
+   \[
+   6 \text{ doll...
+      Extracted answer: 186.0
+      Ground truth: 93.0
+      Is correct: False
+
+    Layer 27 Patched Generation:
+      Generated (first 150 chars):  **Calculate the total monthly food cost:**
+   We multiply the daily food cost for all three fish by the number of days in May:
+   \[
+   6 \text{ doll...
+      Extracted answer: 186.0
+      Ground truth: 93.0
+      Is correct: False
+
+  ✓ Problem 20 complete
+
+================================================================================
+Analyzing problem 21:
+  Injected: 7502, Correct: 5,000
+  Ground truth answer: 2000.0
+
+  Using CoT prefix (length 828 of 1432):
+    To determine how many steps Elliott took during his jog, we need to follow these steps:
+
+1. **Calculate the total number of steps Elliott has completed so far:**
+   - He finished half of his steps on ...
+
+  CORRUPTED_BASELINE:
+    Generated (first 150 chars): 7,500 steps on his walks to and from school.
+   - He has taken 1,000 steps going for a short walk with his friend.
+   - Therefore, the total number of...
+    Extracted answer: 500.0
+    Ground truth: 2000.0
+    Is correct: False
+
+  CLEAN_BASELINE:
+    Generated (first 150 chars): 5,000 steps on his walks to and from school and 1,000 steps going for a short walk with his friend:
+     \[
+     5,000 + 1,000 = 6,000
+     \]
+
+5. **D...
+    Extracted answer: 2000.0
+    Ground truth: 2000.0
+    Is correct: True
+
+    Layer 0 Patched Generation:
+      Generated (first 150 chars): 5,000 steps on his walks to and from school.
+   - He did another 1,000 steps going for a short walk with his friend.
+   - Let \( x \) be the number of...
+      Extracted answer: 2000.0
+      Ground truth: 2000.0
+      Is correct: True
+
+    Layer 1 Patched Generation:
+      Generated (first 150 chars): 5,000 steps on his walks to and from school.
+   - He has taken another 1,000 steps going for a short walk with his friend.
+   - Therefore, the total n...
+      Extracted answer: 2000.0
+      Ground truth: 2000.0
+      Is correct: True
+
+    Layer 2 Patched Generation:
+      Generated (first 150 chars): 5,000 steps on his walks to and from school.
+   - He has taken 1,000 steps going for a short walk with his friend.
+   - Let \( x \) be the number of s...
+      Extracted answer: 2000.0
+      Ground truth: 2000.0
+      Is correct: True
+
+    Layer 3 Patched Generation:
+      Generated (first 150 chars): 5,000 steps on his walks to and from school and 1,000 steps going for a short walk with his friend:
+     \[
+     5,000 + 1,000 = 6,000
+     \]
+
+5. **D...
+      Extracted answer: 2000.0
+      Ground truth: 2000.0
+      Is correct: True
+
+    Layer 4 Patched Generation:
+      Generated (first 150 chars): 5,000 steps on his walks to and from school and 1,000 steps going for a short walk with his friend:
+     \[
+     5,000 + 1,000 = 6,000
+     \]
+
+5. **D...
+      Extracted answer: 2000.0
+      Ground truth: 2000.0
+      Is correct: True
+
+    Layer 5 Patched Generation:
+      Generated (first 150 chars): 5,000 steps on his walks to and from school and 1,000 steps going for a short walk with his friend:
+     \[
+     5,000 + 1,000 = 6,000
+     \]
+
+5. **D...
+      Extracted answer: 2000.0
+      Ground truth: 2000.0
+      Is correct: True
+
+    Layer 6 Patched Generation:
+      Generated (first 150 chars): 5,000 steps on his walks to and from school and 1,000 steps going for a short walk with his friend:
+     \[
+     5,000 + 1,000 = 6,000
+     \]
+
+5. **D...
+      Extracted answer: 2000.0
+      Ground truth: 2000.0
+      Is correct: True
+
+    Layer 7 Patched Generation:
+      Generated (first 150 chars): 5,000 steps on his walks to and from school and 1,000 steps going for a short walk with his friend:
+     \[
+     5,000 + 1,000 = 6,000
+     \]
+
+5. **D...
+      Extracted answer: 2000.0
+      Ground truth: 2000.0
+      Is correct: True
+
+    Layer 8 Patched Generation:
+      Generated (first 150 chars): 5,000 steps on his walks to and from school and 1,000 steps going for a short walk with his friend:
+     \[
+     5,000 + 1,000 = 6,000
+     \]
+
+5. **D...
+      Extracted answer: 2000.0
+      Ground truth: 2000.0
+      Is correct: True
+
+    Layer 9 Patched Generation:
+      Generated (first 150 chars): 5,000 steps on his walks to and from school and 1,000 steps going for a short walk with his friend:
+     \[
+     5,000 + 1,000 = 6,000
+     \]
+
+5. **D...
+      Extracted answer: 2000.0
+      Ground truth: 2000.0
+      Is correct: True
+
+    Layer 10 Patched Generation:
+      Generated (first 150 chars): 5,000 steps on his walks to and from school and 1,000 steps going for a short walk with his friend:
+     \[
+     5,000 + 1,000 = 6,000
+     \]
+
+5. **D...
+      Extracted answer: 2000.0
+      Ground truth: 2000.0
+      Is correct: True
+
+    Layer 11 Patched Generation:
+      Generated (first 150 chars): 5,000 steps on his walks to and from school and 1,000 steps going for a short walk with his friend:
+     \[
+     5,000 + 1,000 = 6,000
+     \]
+
+5. **D...
+      Extracted answer: 2000.0
+      Ground truth: 2000.0
+      Is correct: True
+
+    Layer 12 Patched Generation:
+      Generated (first 150 chars): 5,000 steps on his walks to and from school and 1,000 steps going for a short walk with his friend:
+     \[
+     5,000 + 1,000 = 6,000
+     \]
+
+5. **D...
+      Extracted answer: 2000.0
+      Ground truth: 2000.0
+      Is correct: True
+
+    Layer 13 Patched Generation:
+      Generated (first 150 chars): 5,000 steps on his walks to and from school and 1,000 steps going for a short walk with his friend:
+     \[
+     5,000 + 1,000 = 6,000
+     \]
+
+5. **D...
+      Extracted answer: 2000.0
+      Ground truth: 2000.0
+      Is correct: True
+
+    Layer 14 Patched Generation:
+      Generated (first 150 chars): 5,000 steps on his walks to and from school.
+   - He has taken 1,000 steps going for a short walk with his friend.
+   - Therefore, the total number of...
+      Extracted answer: 2000.0
+      Ground truth: 2000.0
+      Is correct: True
+
+    Layer 15 Patched Generation:
+      Generated (first 150 chars): 5,000 steps on his walks to and from school.
+   - He has taken 1,000 steps going for a short walk with his friend.
+   - Therefore, the total number of...
+      Extracted answer: 2000.0
+      Ground truth: 2000.0
+      Is correct: True
+
+    Layer 16 Patched Generation:
+      Generated (first 150 chars): 5,000 steps on his walks to and from school.
+   - He has taken another 1,000 steps going for a short walk with his friend.
+   - Therefore, the total n...
+      Extracted answer: 2000.0
+      Ground truth: 2000.0
+      Is correct: True
+
+    Layer 17 Patched Generation:
+      Generated (first 150 chars): 5,000 steps on his walks to and from school.
+   - He has taken 1,000 steps going for a short walk with his friend.
+   - Therefore, the total number of...
+      Extracted answer: 2000.0
+      Ground truth: 2000.0
+      Is correct: True
+
+    Layer 18 Patched Generation:
+      Generated (first 150 chars): 5,000 steps on his walks to and from school.
+   - He has taken another 1,000 steps going for a short walk with his friend.
+   - Therefore, the total n...
+      Extracted answer: 2000.0
+      Ground truth: 2000.0
+      Is correct: True
+
+    Layer 19 Patched Generation:
+      Generated (first 150 chars): 5,000 steps on his walks to and from school.
+   - He has taken another 1,000 steps going for a short walk with his friend.
+   - Therefore, the total n...
+      Extracted answer: 2000.0
+      Ground truth: 2000.0
+      Is correct: True
+
+    Layer 20 Patched Generation:
+      Generated (first 150 chars): 5,000 steps on his walks to and from school.
+   - He has taken another 1,000 steps going for a short walk with his friend.
+   - Therefore, the total n...
+      Extracted answer: 2000.0
+      Ground truth: 2000.0
+      Is correct: True
+
+    Layer 21 Patched Generation:
+      Generated (first 150 chars): 5,000 steps on his walks to and from school.
+   - He has taken another 1,000 steps going for a short walk with his friend.
+   - Therefore, the total n...
+      Extracted answer: 2000.0
+      Ground truth: 2000.0
+      Is correct: True
+
+    Layer 22 Patched Generation:
+      Generated (first 150 chars): 5,000 steps on his walks to and from school.
+   - He has taken another 1,000 steps going for a short walk with his friend.
+   - Therefore, the total n...
+      Extracted answer: 2000.0
+      Ground truth: 2000.0
+      Is correct: True
+
+    Layer 23 Patched Generation:
+      Generated (first 150 chars): 5,000 steps on his walks to and from school.
+   - He has taken another 1,000 steps going for a short walk with his friend.
+   - Therefore, the total n...
+      Extracted answer: 2000.0
+      Ground truth: 2000.0
+      Is correct: True
+
+    Layer 24 Patched Generation:
+      Generated (first 150 chars): 7,500 steps on his walks to and from school.
+   - He has taken 1,000 steps going for a short walk with his friend.
+   - Therefore, the total number of...
+      Extracted answer: 500.0
+      Ground truth: 2000.0
+      Is correct: False
+
+    Layer 25 Patched Generation:
+      Generated (first 150 chars): 7,500 steps on his walks to and from school.
+   - He has taken 1,000 steps going for a short walk with his friend.
+   - Therefore, the total number of...
+      Extracted answer: 500.0
+      Ground truth: 2000.0
+      Is correct: False
+
+    Layer 26 Patched Generation:
+      Generated (first 150 chars): 7,500 steps on his walks to and from school.
+   - He has taken 1,000 steps going for a short walk with his friend.
+   - Therefore, the total number of...
+      Extracted answer: 500.0
+      Ground truth: 2000.0
+      Is correct: False
+
+    Layer 27 Patched Generation:
+      Generated (first 150 chars): 7,500 steps on his walks to and from school.
+   - He has taken 1,000 steps going for a short walk with his friend.
+   - Therefore, the total number of...
+      Extracted answer: 500.0
+      Ground truth: 2000.0
+      Is correct: False
+
+  ✓ Problem 21 complete
+
+================================================================================
+Analyzing problem 27:
+  Injected: 128, Correct: 84
+  Ground truth answer: 21.0
+
+  Using CoT prefix (length 548 of 747):
+    To determine how many more dollars Mitchell made selling lemonade than Liam, we need to follow these steps:
+
+1. Calculate the total amount of money Mitchell made.
+2. Subtract the amount of money Liam ...
+
+  CORRUPTED_BASELINE:
+    Generated (first 150 chars): ach made than Liam, we subtract the amount Liam made from the amount Mitchell made:
+\[ 128 - 63 = 65  \]
+
+Therefore, Mitchell made \(\boxed{65}\) more...
+    Extracted answer: 65.0
+    Ground truth: 21.0
+    Is correct: False
+
+  CLEAN_BASELINE:
+    Generated (first 150 chars): 切尔 made than Liam, we subtract the amount Liam made from the amount Mitchell made:
+\[ 84 - 63 = 21 \]
+
+Therefore, Mitchell made \(\boxed{21}\) more do...
+    Extracted answer: 21.0
+    Ground truth: 21.0
+    Is correct: True
+
+    Layer 0 Patched Generation:
+      Generated (first 150 chars): 切尔 made than Liam, we subtract the amount Liam made from the amount Mitchell made:
+\[ 84 - 63 = 21 \]
+
+So, Mitchell made \(\boxed{21}\) more dollars s...
+      Extracted answer: 21.0
+      Ground truth: 21.0
+      Is correct: True
+
+    Layer 1 Patched Generation:
+      Generated (first 150 chars): 切尔 made than Liam, we subtract the amount Liam made from the amount Mitchell made:
+\[ 84 - 63 = 21  \]
+
+Therefore, Mitchell made \(\boxed{21}\) more d...
+      Extracted answer: 21.0
+      Ground truth: 21.0
+      Is correct: True
+
+    Layer 2 Patched Generation:
+      Generated (first 150 chars): 切尔 made than Liam, we subtract the amount Liam made from the amount Mitchell made:
+\[ 84 - 63 = 21 \]
+
+Therefore, Mitchell made \(\boxed{21}\) more do...
+      Extracted answer: 21.0
+      Ground truth: 21.0
+      Is correct: True
+
+    Layer 3 Patched Generation:
+      Generated (first 150 chars): 切尔 made than Liam, we subtract the amount Liam made from the amount Mitchell made:
+\[ 84 - 63 = 21 \]
+
+Therefore, Mitchell made \(\boxed{21}\) more do...
+      Extracted answer: 21.0
+      Ground truth: 21.0
+      Is correct: True
+
+    Layer 4 Patched Generation:
+      Generated (first 150 chars): 切尔 made than Liam, we subtract the amount Liam made from the amount Mitchell made:
+\[ 84 - 63 = 21 \]
+
+Therefore, Mitchell made \(\boxed{21}\) more do...
+      Extracted answer: 21.0
+      Ground truth: 21.0
+      Is correct: True
+
+    Layer 5 Patched Generation:
+      Generated (first 150 chars): 切尔 made than Liam, we subtract the amount Liam made from the amount Mitchell made:
+\[ 84 - 63 = 21 \]
+
+Therefore, Mitchell made \(\boxed{21}\) more do...
+      Extracted answer: 21.0
+      Ground truth: 21.0
+      Is correct: True
+
+    Layer 6 Patched Generation:
+      Generated (first 150 chars): 切尔 made than Liam, we subtract the amount Liam made from the amount Mitchell made:
+\[ 84 - 63 = 21 \]
+
+Therefore, Mitchell made \(\boxed{21}\) more do...
+      Extracted answer: 21.0
+      Ground truth: 21.0
+      Is correct: True
+
+    Layer 7 Patched Generation:
+      Generated (first 150 chars): 切尔 made than Liam, we subtract the amount Liam made from the amount Mitchell made:
+\[ 84 - 63 = 21 \]
+
+Therefore, Mitchell made \(\boxed{21}\) more do...
+      Extracted answer: 21.0
+      Ground truth: 21.0
+      Is correct: True
+
+    Layer 8 Patched Generation:
+      Generated (first 150 chars): 切尔 made than Liam, we subtract the amount Liam made from the amount Mitchell made:
+\[ 84 - 63 = 21 \]
+
+Therefore, Mitchell made \(\boxed{21}\) more do...
+      Extracted answer: 21.0
+      Ground truth: 21.0
+      Is correct: True
+
+    Layer 9 Patched Generation:
+      Generated (first 150 chars): 切尔 made than Liam, we subtract the amount Liam made from the amount Mitchell made:
+\[ 84 - 63 = 21 \]
+
+Therefore, Mitchell made \(\boxed{21}\) more do...
+      Extracted answer: 21.0
+      Ground truth: 21.0
+      Is correct: True
+
+    Layer 10 Patched Generation:
+      Generated (first 150 chars): 切尔 made than Liam, we subtract the amount Liam made from the amount Mitchell made:
+\[ 84 - 63 = 21 \]
+
+Therefore, Mitchell made \(\boxed{21}\) more do...
+      Extracted answer: 21.0
+      Ground truth: 21.0
+      Is correct: True
+
+    Layer 11 Patched Generation:
+      Generated (first 150 chars): 切尔 made than Liam, we subtract the amount Liam made from the amount Mitchell made:
+\[ 84 - 63 = 21 \]
+
+Therefore, Mitchell made \(\boxed{21}\) more do...
+      Extracted answer: 21.0
+      Ground truth: 21.0
+      Is correct: True
+
+    Layer 12 Patched Generation:
+      Generated (first 150 chars): 切尔 made than Liam, we subtract the amount Liam made from the amount Mitchell made:
+\[ 128 - 63 = 65 \]
+
+Therefore, Mitchell made \(\boxed{65}\) more d...
+      Extracted answer: 65.0
+      Ground truth: 21.0
+      Is correct: False
+
+    Layer 13 Patched Generation:
+      Generated (first 150 chars): 切尔 made than Liam, we subtract the amount Liam made from the amount Mitchell made:
+\[ 84 - 63 = 21 \]
+
+Therefore, Mitchell made \(\boxed{21}\) more do...
+      Extracted answer: 21.0
+      Ground truth: 21.0
+      Is correct: True
+
+    Layer 14 Patched Generation:
+      Generated (first 150 chars): 切尔 made than Liam, we subtract the amount Liam made from the amount Mitchell made:
+\[ 84 - 63 = 21 \]
+
+Therefore, Mitchell made \(\boxed{21}\) more do...
+      Extracted answer: 21.0
+      Ground truth: 21.0
+      Is correct: True
+
+    Layer 15 Patched Generation:
+      Generated (first 150 chars): ach made than Liam, we subtract the amount Liam made from the amount Mitchell made:
+\[ 84 - 63 = 21 \]
+
+Therefore, Mitchell made \(\boxed{21}\) more d...
+      Extracted answer: 21.0
+      Ground truth: 21.0
+      Is correct: True
+
+    Layer 16 Patched Generation:
+      Generated (first 150 chars): 切尔 made than Liam, we subtract the amount Liam made from the amount Mitchell made:
+\[ 84 - 63 = 21 \]
+
+Therefore, Mitchell made \(\boxed{21}\) more do...
+      Extracted answer: 21.0
+      Ground truth: 21.0
+      Is correct: True
+
+    Layer 17 Patched Generation:
+      Generated (first 150 chars): ach made than Liam, we subtract the amount Liam made from the amount Mitchell made:
+\[ 84 - 63 = 21 \]
+
+Therefore, Mitchell made \(\boxed{21}\) more d...
+      Extracted answer: 21.0
+      Ground truth: 21.0
+      Is correct: True
+
+    Layer 18 Patched Generation:
+      Generated (first 150 chars): ach made than Liam, we subtract the amount Liam made from the amount Mitchell made:
+\[ 84 - 63 = 21 \]
+
+Therefore, Mitchell made \(\boxed{21}\) more d...
+      Extracted answer: 21.0
+      Ground truth: 21.0
+      Is correct: True
+
+    Layer 19 Patched Generation:
+      Generated (first 150 chars): ach made than Liam, we subtract the amount Liam made from the amount Mitchell made:
+\[ 84 - 63 = 21 \]
+
+Therefore, Mitchell made \(\boxed{21}\) more d...
+      Extracted answer: 21.0
+      Ground truth: 21.0
+      Is correct: True
+
+    Layer 20 Patched Generation:
+      Generated (first 150 chars): 切尔 made than Liam, we subtract the amount Liam made from the amount Mitchell made:
+\[ 84 - 63 = 21 \]
+
+Therefore, Mitchell made \(\boxed{21}\) more do...
+      Extracted answer: 21.0
+      Ground truth: 21.0
+      Is correct: True
+
+    Layer 21 Patched Generation:
+      Generated (first 150 chars): ach made than Liam, we subtract the amount Liam made from the amount Mitchell made:
+\[ 84 - 63 = 21 \]
+
+Therefore, Mitchell made \(\boxed{21}\) more d...
+      Extracted answer: 21.0
+      Ground truth: 21.0
+      Is correct: True
+
+    Layer 22 Patched Generation:
+      Generated (first 150 chars): 切尔 made than Liam, we subtract the amount Liam made from the amount Mitchell made:
+\[ 128 - 63 = 65 \]
+
+Therefore, Mitchell made \(\boxed{65}\) more d...
+      Extracted answer: 65.0
+      Ground truth: 21.0
+      Is correct: False
+
+    Layer 23 Patched Generation:
+      Generated (first 150 chars): ach made than Liam, we subtract the amount Liam made from the amount Mitchell made:
+\[ 128 - 63 = 65 \]
+
+Therefore, Mitchell made \(\boxed{65}\) more ...
+      Extracted answer: 65.0
+      Ground truth: 21.0
+      Is correct: False
+
+    Layer 24 Patched Generation:
+      Generated (first 150 chars): ach made than Liam, we subtract the amount Liam made from the amount Mitchell made:
+\[ 128 - 63 = 65 \]
+
+Therefore, Mitchell made \(\boxed{65}\) more ...
+      Extracted answer: 65.0
+      Ground truth: 21.0
+      Is correct: False
+
+    Layer 25 Patched Generation:
+      Generated (first 150 chars): ach made than Liam, we subtract the amount Liam made from the amount Mitchell made:
+\[ 128 - 63 = 65  \]
+
+Therefore, Mitchell made \(\boxed{65}\) more...
+      Extracted answer: 65.0
+      Ground truth: 21.0
+      Is correct: False
+
+    Layer 26 Patched Generation:
+      Generated (first 150 chars): ach made than Liam, we subtract the amount Liam made from the amount Mitchell made:
+\[ 128 - 63 = 65  \]
+
+Therefore, Mitchell made \(\boxed{65}\) more...
+      Extracted answer: 65.0
+      Ground truth: 21.0
+      Is correct: False
+
+    Layer 27 Patched Generation:
+      Generated (first 150 chars): ach made than Liam, we subtract the amount Liam made from the amount Mitchell made:
+\[ 128 - 63 = 65  \]
+
+Therefore, Mitchell made \(\boxed{65}\) more...
+      Extracted answer: 65.0
+      Ground truth: 21.0
+      Is correct: False
+
+  ✓ Problem 27 complete
+
+================================================================================
+Analyzing problem 28:
+  Injected: 20, Correct: 12
+  Ground truth answer: 18.0
+
+  Using CoT prefix (length 1438 of 1523):
+    Let's denote the total number of vacuum cleaners Melanie started with as \( x \).
+
+1. **Sales at the green house:**
+   Melanie sold a third of her vacuum cleaners at the green house.
+   \[
+   \text{Va...
+
+  CORRUPTED_BASELINE:
+    Generated (first 150 chars):  = 30
+   \]
+
+Therefore, Melanie started with \(\boxed{30}\) vacuum cleaners....
+    Extracted answer: 30.0
+    Ground truth: 18.0
+    Is correct: False
+
+  CLEAN_BASELINE:
+    Generated (first 150 chars):  = 30
+   \]
+
+Therefore, Melanie started with \(\boxed{30}\) vacuum cleaners....
+    Extracted answer: 30.0
+    Ground truth: 18.0
+    Is correct: False
+
+    Layer 0 Patched Generation:
+      Generated (first 150 chars): 30
+   \]
+
+Therefore, Melanie started with \(\boxed{30}\) vacuum cleaners....
+      Extracted answer: 30.0
+      Ground truth: 18.0
+      Is correct: False
+
+    Layer 1 Patched Generation:
+      Generated (first 150 chars):  = 30
+   \]
+
+Therefore, Melanie started with \(\boxed{30}\) vacuum cleaners....
+      Extracted answer: 30.0
+      Ground truth: 18.0
+      Is correct: False
+
+    Layer 2 Patched Generation:
+      Generated (first 150 chars):  = 30
+   \]
+
+Therefore, Melanie started with \(\boxed{30}\) vacuum cleaners....
+      Extracted answer: 30.0
+      Ground truth: 18.0
+      Is correct: False
+
+    Layer 3 Patched Generation:
+      Generated (first 150 chars):  = 30
+   \]
+
+Therefore, Melanie started with \(\boxed{30}\) vacuum cleaners....
+      Extracted answer: 30.0
+      Ground truth: 18.0
+      Is correct: False
+
+    Layer 4 Patched Generation:
+      Generated (first 150 chars):  = 30
+   \]
+
+Therefore, Melanie started with \(\boxed{30}\) vacuum cleaners....
+      Extracted answer: 30.0
+      Ground truth: 18.0
+      Is correct: False
+
+    Layer 5 Patched Generation:
+      Generated (first 150 chars):  = 30
+   \]
+
+Therefore, Melanie started with \(\boxed{30}\) vacuum cleaners....
+      Extracted answer: 30.0
+      Ground truth: 18.0
+      Is correct: False
+
+    Layer 6 Patched Generation:
+      Generated (first 150 chars):  = 30
+   \]
+
+Therefore, Melanie started with \(\boxed{30}\) vacuum cleaners....
+      Extracted answer: 30.0
+      Ground truth: 18.0
+      Is correct: False
+
+    Layer 7 Patched Generation:
+      Generated (first 150 chars):  = 30
+   \]
+
+Therefore, Melanie started with \(\boxed{30}\) vacuum cleaners....
+      Extracted answer: 30.0
+      Ground truth: 18.0
+      Is correct: False
+
+    Layer 8 Patched Generation:
+      Generated (first 150 chars):  = 30
+   \]
+
+Therefore, Melanie started with \(\boxed{30}\) vacuum cleaners....
+      Extracted answer: 30.0
+      Ground truth: 18.0
+      Is correct: False
+
+    Layer 9 Patched Generation:
+      Generated (first 150 chars):  = 30
+   \]
+
+Therefore, Melanie started with \(\boxed{30}\) vacuum cleaners....
+      Extracted answer: 30.0
+      Ground truth: 18.0
+      Is correct: False
+
+    Layer 10 Patched Generation:
+      Generated (first 150 chars):  = 30
+   \]
+
+Therefore, Melanie started with \(\boxed{30}\) vacuum cleaners....
+      Extracted answer: 30.0
+      Ground truth: 18.0
+      Is correct: False
+
+    Layer 11 Patched Generation:
+      Generated (first 150 chars):  = 30
+   \]
+
+Therefore, Melanie started with \(\boxed{30}\) vacuum cleaners....
+      Extracted answer: 30.0
+      Ground truth: 18.0
+      Is correct: False
+
+    Layer 12 Patched Generation:
+      Generated (first 150 chars):  = 30
+   \]
+
+Therefore, Melanie started with \(\boxed{30}\) vacuum cleaners....
+      Extracted answer: 30.0
+      Ground truth: 18.0
+      Is correct: False
+
+    Layer 13 Patched Generation:
+      Generated (first 150 chars):  = 30
+   \]
+
+Therefore, Melanie started with \(\boxed{30}\) vacuum cleaners....
+      Extracted answer: 30.0
+      Ground truth: 18.0
+      Is correct: False
+
+    Layer 14 Patched Generation:
+      Generated (first 150 chars):  = 30
+   \]
+
+Therefore, Melanie started with \(\boxed{30}\) vacuum cleaners....
+      Extracted answer: 30.0
+      Ground truth: 18.0
+      Is correct: False
+
+    Layer 15 Patched Generation:
+      Generated (first 150 chars):  = 30
+   \]
+
+Therefore, Melanie started with \(\boxed{30}\) vacuum cleaners....
+      Extracted answer: 30.0
+      Ground truth: 18.0
+      Is correct: False
+
+    Layer 16 Patched Generation:
+      Generated (first 150 chars):  = 30
+   \]
+
+Therefore, Melanie started with \(\boxed{30}\) vacuum cleaners....
+      Extracted answer: 30.0
+      Ground truth: 18.0
+      Is correct: False
+
+    Layer 17 Patched Generation:
+      Generated (first 150 chars):  = 30
+   \]
+
+Therefore, Melanie started with \(\boxed{30}\) vacuum cleaners....
+      Extracted answer: 30.0
+      Ground truth: 18.0
+      Is correct: False
+
+    Layer 18 Patched Generation:
+      Generated (first 150 chars):  = 30
+   \]
+
+Therefore, Melanie started with \(\boxed{30}\) vacuum cleaners....
+      Extracted answer: 30.0
+      Ground truth: 18.0
+      Is correct: False
+
+    Layer 19 Patched Generation:
+      Generated (first 150 chars):  = 30
+   \]
+
+Therefore, Melanie started with \(\boxed{30}\) vacuum cleaners....
+      Extracted answer: 30.0
+      Ground truth: 18.0
+      Is correct: False
+
+    Layer 20 Patched Generation:
+      Generated (first 150 chars):  = 30
+   \]
+
+Therefore, Melanie started with \(\boxed{30}\) vacuum cleaners....
+      Extracted answer: 30.0
+      Ground truth: 18.0
+      Is correct: False
+
+    Layer 21 Patched Generation:
+      Generated (first 150 chars):  = 30
+   \]
+
+Therefore, Melanie started with \(\boxed{30}\) vacuum cleaners....
+      Extracted answer: 30.0
+      Ground truth: 18.0
+      Is correct: False
+
+    Layer 22 Patched Generation:
+      Generated (first 150 chars):  = 30
+   \]
+
+Therefore, Melanie started with \(\boxed{30}\) vacuum cleaners....
+      Extracted answer: 30.0
+      Ground truth: 18.0
+      Is correct: False
+
+    Layer 23 Patched Generation:
+      Generated (first 150 chars):  = 30
+   \]
+
+Therefore, Melanie started with \(\boxed{30}\) vacuum cleaners....
+      Extracted answer: 30.0
+      Ground truth: 18.0
+      Is correct: False
+
+    Layer 24 Patched Generation:
+      Generated (first 150 chars):  = 30
+   \]
+
+Therefore, Melanie started with \(\boxed{30}\) vacuum cleaners....
+      Extracted answer: 30.0
+      Ground truth: 18.0
+      Is correct: False
+
+    Layer 25 Patched Generation:
+      Generated (first 150 chars):  = 30
+   \]
+
+Therefore, Melanie started with \(\boxed{30}\) vacuum cleaners....
+      Extracted answer: 30.0
+      Ground truth: 18.0
+      Is correct: False
+
+    Layer 26 Patched Generation:
+      Generated (first 150 chars):  = 30
+   \]
+
+Therefore, Melanie started with \(\boxed{30}\) vacuum cleaners....
+      Extracted answer: 30.0
+      Ground truth: 18.0
+      Is correct: False
+
+    Layer 27 Patched Generation:
+      Generated (first 150 chars):  = 30
+   \]
+
+Therefore, Melanie started with \(\boxed{30}\) vacuum cleaners....
+      Extracted answer: 30.0
+      Ground truth: 18.0
+      Is correct: False
+
+  ✓ Problem 28 complete
+
+================================================================================
+Analyzing problem 31:
+  Injected: 99, Correct: 65
+  Ground truth answer: 145.0
+
+  Using CoT prefix (length 488 of 1541):
+    To determine how many points the class is missing to go on the trip, we need to calculate the total points collected by Adam, Martha, Betty, and Tom, and then subtract this total from the minimum thre...
+
+  CORRUPTED_BASELINE:
+    Generated (first 150 chars):  \[
+   \text{Tom's points} = 99 - 30 = 69
+   \]
+
+3. **Calculate Marta's points:**
+   Marta collected 3 times more points than Tom. Tom has 69 points.
+...
+    Extracted answer: 0.0
+    Ground truth: 145.0
+    Is correct: False
+
+  CLEAN_BASELINE:
+    Generated (first 150 chars):  \[
+   \text{Tom's points} = 65 - 30 = 35
+   \]
+
+3. **Calculate Marta's points:**
+   Marta collected 3 times more points than Tom. Tom has 35 points.
+...
+    Extracted answer: 145.0
+    Ground truth: 145.0
+    Is correct: True
+
+    Layer 0 Patched Generation:
+      Generated (first 150 chars):  \]
+
+2. **Calculate Tom's points:**
+   Tom has 30 points less than Betty. Betty has 65 points.
+   \[
+   \text{Tom's points} = 65 - 30 = 35
+   \]
+
+3. *...
+      Extracted answer: 145.0
+      Ground truth: 145.0
+      Is correct: True
+
+    Layer 1 Patched Generation:
+      Generated (first 150 chars):  \[
+   \text{Tom's points} = 65 - 30 = 35
+   \]
+4. **Calculate Marta's points:**
+   Marta collected 3 times more points than Tom. Tom has 35 points.
+ ...
+      Extracted answer: 148.0
+      Ground truth: 145.0
+      Is correct: False
+
+    Layer 2 Patched Generation:
+      Generated (first 150 chars):  \[
+   \text{Tom's points} = 65 - 30 = 35
+   \]
+
+3. **Calculate Marta's points:**
+   Marta collected 3 times more points than Tom. Tom has 35 points.
+...
+      Extracted answer: 145.0
+      Ground truth: 145.0
+      Is correct: True
+
+    Layer 3 Patched Generation:
+      Generated (first 150 chars):  \[
+   \text{Tom's points} = 65 - 30 = 35
+   \]
+
+3. **Calculate Marta's points:**
+   Marta collected 3 times more points than Tom. Tom has 35 points.
+...
+      Extracted answer: 145.0
+      Ground truth: 145.0
+      Is correct: True
+
+    Layer 4 Patched Generation:
+      Generated (first 150 chars):  \[
+   \text{Tom's points} = 65 - 30 = 35
+   \]
+
+3. **Calculate Marta's points:**
+   Marta collected 3 times more points than Tom. Tom has 35 points.
+...
+      Extracted answer: 145.0
+      Ground truth: 145.0
+      Is correct: True
+
+    Layer 5 Patched Generation:
+      Generated (first 150 chars):  \[
+   \text{Tom's points} = 65 - 30 = 35
+   \]
+
+3. **Calculate Marta's points:**
+   Marta collected 3 times more points than Tom. Tom has 35 points.
+...
+      Extracted answer: 145.0
+      Ground truth: 145.0
+      Is correct: True
+
+    Layer 6 Patched Generation:
+      Generated (first 150 chars):  \[
+   \text{Tom's points} = 65 - 30 = 35
+   \]
+
+3. **Calculate Marta's points:**
+   Marta collected 3 times more points than Tom. Tom has 35 points.
+...
+      Extracted answer: 145.0
+      Ground truth: 145.0
+      Is correct: True
+
+    Layer 7 Patched Generation:
+      Generated (first 150 chars):  \[
+   \text{Tom's points} = 65 - 30 = 35
+   \]
+
+3. **Calculate Marta's points:**
+   Marta collected 3 times more points than Tom. Tom has 35 points.
+...
+      Extracted answer: 145.0
+      Ground truth: 145.0
+      Is correct: True
+
+    Layer 8 Patched Generation:
+      Generated (first 150 chars):  \[
+   \text{Tom's points} = 65 - 30 = 35
+   \]
+
+3. **Calculate Marta's points:**
+   Marta collected 3 times more points than Tom. Tom has 35 points.
+...
+      Extracted answer: 145.0
+      Ground truth: 145.0
+      Is correct: True
+
+    Layer 9 Patched Generation:
+      Generated (first 150 chars):  \[
+   \text{Tom's points} = 65 - 30 = 35
+   \]
+
+3. **Calculate Marta's points:**
+   Marta collected 3 times more points than Tom. Tom has 35 points.
+...
+      Extracted answer: 145.0
+      Ground truth: 145.0
+      Is correct: True
+
+    Layer 10 Patched Generation:
+      Generated (first 150 chars):  \[
+   \text{Tom's points} = 65 - 30 = 35
+   \]
+
+3. **Calculate Marta's points:**
+   Marta collected 3 times more points than Tom. Tom has 35 points.
+...
+      Extracted answer: 145.0
+      Ground truth: 145.0
+      Is correct: True
+
+    Layer 11 Patched Generation:
+      Generated (first 150 chars):  \[
+   \text{Tom's points} = 65 - 30 = 35
+   \]
+
+3. **Calculate Marta's points:**
+   Marta collected 3 times more points than Tom. Tom has 35 points.
+...
+      Extracted answer: 145.0
+      Ground truth: 145.0
+      Is correct: True
+
+    Layer 12 Patched Generation:
+      Generated (first 150 chars):  \[
+   \text{Tom's points} = 65 - 30 = 35
+   \]
+
+3. **Calculate Marta's points:**
+   Marta collected 3 times more points than Tom. Tom has 35 points.
+...
+      Extracted answer: 145.0
+      Ground truth: 145.0
+      Is correct: True
+
+    Layer 13 Patched Generation:
+      Generated (first 150 chars):  \[
+   \text{Tom's points} = 65 - 30 = 35
+   \]
+
+3. **Calculate Marta's points:**
+   Marta collected 3 times more points than Tom. Tom has 35 points.
+...
+      Extracted answer: 145.0
+      Ground truth: 145.0
+      Is correct: True
+
+    Layer 14 Patched Generation:
+      Generated (first 150 chars):  \[
+   \text{Tom's points} = 65 - 30 = 35
+   \]
+
+3. **Calculate Marta's points:**
+   Marta collected 3 times more points than Tom. Tom has 35 points.
+...
+      Extracted answer: 145.0
+      Ground truth: 145.0
+      Is correct: True
+
+    Layer 15 Patched Generation:
+      Generated (first 150 chars):  \[
+   \text{Tom's points} = 65 - 30 = 35
+   \]
+
+3. **Calculate Marta's points:**
+   Marta collected 3 times more points than Tom. Tom has 35 points.
+...
+      Extracted answer: 135.0
+      Ground truth: 145.0
+      Is correct: False
+
+    Layer 16 Patched Generation:
+      Generated (first 150 chars):  \[
+   \text{Tom's points} = 65 - 30 = 35
+   \]
+
+3. **Calculate Marta's points:**
+   Marta collected 3 times more points than Tom. Tom has 35 points.
+...
+      Extracted answer: 135.0
+      Ground truth: 145.0
+      Is correct: False
+
+    Layer 17 Patched Generation:
+      Generated (first 150 chars):  \[
+   \text{Tom's points} = 65 - 30 = 35
+   \]
+
+3. **Calculate Marta's points:**
+   Marta collected 3 times more points than Tom. Tom has 35 points.
+...
+      Extracted answer: 145.0
+      Ground truth: 145.0
+      Is correct: True
+
+    Layer 18 Patched Generation:
+      Generated (first 150 chars):  \[
+   \text{Tom's points} = 65 - 30 = 35
+   \]
+
+3. **Calculate Marta's points:**
+   Marta collected 3 times more points than Tom. Tom has 35 points.
+...
+      Extracted answer: 135.0
+      Ground truth: 145.0
+      Is correct: False
+
+    Layer 19 Patched Generation:
+      Generated (first 150 chars):  \[
+   \text{Tom's points} = 65 - 30 = 35
+   \]
+
+3. **Calculate Marta's points:**
+   Marta collected 3 times more points than Tom. Tom has 35 points.
+...
+      Extracted answer: 145.0
+      Ground truth: 145.0
+      Is correct: True
+
+    Layer 20 Patched Generation:
+      Generated (first 150 chars):  \[
+   \text{Tom's points} = 65 - 30 = 35
+   \]
+
+3. **Calculate Marta's points:**
+   Marta collected 3 times more points than Tom. Tom has 35 points.
+...
+      Extracted answer: 145.0
+      Ground truth: 145.0
+      Is correct: True
+
+    Layer 21 Patched Generation:
+      Generated (first 150 chars):  \[
+   \text{Tom's points} = 65 - 30 = 35
+   \]
+
+3. **Calculate Marta's points:**
+   Marta collected 3 times more points than Tom. Tom has 35 points.
+...
+      Extracted answer: 145.0
+      Ground truth: 145.0
+      Is correct: True
+
+    Layer 22 Patched Generation:
+      Generated (first 150 chars):  \[
+   \text{Tom's points} = 65 - 30 = 35
+   \]
+
+3. **Calculate Marta's points:**
+   Marta collected 3 times more points than Tom. Tom has 35 points.
+...
+      Extracted answer: 81.0
+      Ground truth: 145.0
+      Is correct: False
+
+    Layer 23 Patched Generation:
+      Generated (first 150 chars):  \[
+   \text{Tom's points} = 99 - 30 = 69
+   \]
+
+3. **Calculate Marta's points:**
+   Marta collected 3 times more points than Tom. Tom has 69 points.
+...
+      Extracted answer: 0.0
+      Ground truth: 145.0
+      Is correct: False
+
+    Layer 24 Patched Generation:
+      Generated (first 150 chars):  \[
+   \text{Tom's points} = 99 - 30 = 69
+   \]
+
+3. **Calculate Marta's points:**
+   Marta collected 3 times more points than Tom. Tom has 69 points.
+...
+      Extracted answer: 425.0
+      Ground truth: 145.0
+      Is correct: False
+
+    Layer 25 Patched Generation:
+      Generated (first 150 chars):  \[
+   \text{Tom's points} = 99 - 30 = 69
+   \]
+
+3. **Calculate Marta's points:**
+   Marta collected 3 times more points than Tom. Tom has 69 points.
+...
+      Extracted answer: 425.0
+      Ground truth: 145.0
+      Is correct: False
+
+    Layer 26 Patched Generation:
+      Generated (first 150 chars):  \[
+   \text{Tom's points} = 99 - 30 = 69
+   \]
+
+3. **Calculate Marta's points:**
+   Marta collected 3 times more points than Tom. Tom has 69 points.
+...
+      Extracted answer: 0.0
+      Ground truth: 145.0
+      Is correct: False
+
+    Layer 27 Patched Generation:
+      Generated (first 150 chars):  \[
+   \text{Tom's points} = 99 - 30 = 69
+   \]
+
+3. **Calculate Marta's points:**
+   Marta collected 3 times more points than Tom. Tom has 69 points.
+...
+      Extracted answer: 0.0
+      Ground truth: 145.0
+      Is correct: False
+
+  ✓ Problem 31 complete
+
+================================================================================
+Analyzing problem 38:
+  Injected: 14, Correct: 8
+  Ground truth answer: 38.0
+
+  Using CoT prefix (length 704 of 1222):
+    To determine the total amount Winston spent on fruit, we need to calculate the cost of each type of fruit separately and then sum these costs.
+
+1. **Calculate the cost of peaches:**
+   - Winston picke...
+
+  CORRUPTED_BASELINE:
+    Generated (first 150 chars): icots.
+   - The cost per pound of apricots is $3.00.
+   \[
+   \text{Cost of apricots} = 6 \, \text{pounds} \times 3.00 \, \text{dollars per pound} = 1...
+    Extracted answer: 44.0
+    Ground truth: 38.0
+    Is correct: False
+
+  CLEAN_BASELINE:
+    Generated (first 150 chars): icots.
+   - The cost per pound of apricots is $3.00.
+   \[
+   \text{Cost of apricots} = 6 \, \text{pounds} \times 3.00 \, \text{dollars per pound} = 1...
+    Extracted answer: 38.0
+    Ground truth: 38.0
+    Is correct: True
+
+    Layer 0 Patched Generation:
+      Generated (first 150 chars): icots.
+   - The cost per pound of apricots is $3.00.
+   \[
+   \text{Cost of apricots} = 6 \, \text{pounds} \times 3.00 \, \text{dollars per pound} = 1...
+      Extracted answer: 38.0
+      Ground truth: 38.0
+      Is correct: True
+
+    Layer 1 Patched Generation:
+      Generated (first 150 chars): icots.
+   - The cost per pound of apricots is $3.00.
+   \[
+   \text{Cost of apricots} = 6 \, \text{pounds} \times 3.00 \, \text{dollars per pound} = 1...
+      Extracted answer: 38.0
+      Ground truth: 38.0
+      Is correct: True
+
+    Layer 2 Patched Generation:
+      Generated (first 150 chars): icots.
+   - The cost per pound of apricots is $3.00.
+   \[
+   \text{Cost of apricots} = 6 \, \text{pounds} \times 3.00 \, \text{dollars per pound} = 1...
+      Extracted answer: 38.0
+      Ground truth: 38.0
+      Is correct: True
+
+    Layer 3 Patched Generation:
+      Generated (first 150 chars): icots.
+   - The cost per pound of apricots is $3.00.
+   \[
+   \text{Cost of apricots} = 6 \, \text{pounds} \times 3.00 \, \text{dollars per pound} = 1...
+      Extracted answer: 38.0
+      Ground truth: 38.0
+      Is correct: True
+
+    Layer 4 Patched Generation:
+      Generated (first 150 chars): icots.
+   - The cost per pound of apricots is $3.00.
+   \[
+   \text{Cost of apricots} = 6 \, \text{pounds} \times 3.00 \, \text{dollars per pound} = 1...
+      Extracted answer: 38.0
+      Ground truth: 38.0
+      Is correct: True
+
+    Layer 5 Patched Generation:
+      Generated (first 150 chars): icots.
+   - The cost per pound of apricots is $3.00.
+   \[
+   \text{Cost of apricots} = 6 \, \text{pounds} \times 3.00 \, \text{dollars per pound} = 1...
+      Extracted answer: 38.0
+      Ground truth: 38.0
+      Is correct: True
+
+    Layer 6 Patched Generation:
+      Generated (first 150 chars): icots.
+   - The cost per pound of apricots is $3.00.
+   \[
+   \text{Cost of apricots} = 6 \, \text{pounds} \times 3.00 \, \text{dollars per pound} = 1...
+      Extracted answer: 38.0
+      Ground truth: 38.0
+      Is correct: True
+
+    Layer 7 Patched Generation:
+      Generated (first 150 chars): icots.
+   - The cost per pound of apricots is $3.00.
+   \[
+   \text{Cost of apricots} = 6 \, \text{pounds} \times 3.00 \, \text{dollars per pound} = 1...
+      Extracted answer: 38.0
+      Ground truth: 38.0
+      Is correct: True
+
+    Layer 8 Patched Generation:
+      Generated (first 150 chars): icots.
+   - The cost per pound of apricots is $3.00.
+   \[
+   \text{Cost of apricots} = 6 \, \text{pounds} \times 3.00 \, \text{dollars per pound} = 1...
+      Extracted answer: 38.0
+      Ground truth: 38.0
+      Is correct: True
+
+    Layer 9 Patched Generation:
+      Generated (first 150 chars): icots.
+   - The cost per pound of apricots is $3.00.
+   \[
+   \text{Cost of apricots} = 6 \, \text{pounds} \times 3.00 \, \text{dollars per pound} = 1...
+      Extracted answer: 38.0
+      Ground truth: 38.0
+      Is correct: True
+
+    Layer 10 Patched Generation:
+      Generated (first 150 chars): icots.
+   - The cost per pound of apricots is $3.00.
+   \[
+   \text{Cost of apricots} = 6 \, \text{pounds} \times 3.00 \, \text{dollars per pound} = 1...
+      Extracted answer: 38.0
+      Ground truth: 38.0
+      Is correct: True
+
+    Layer 11 Patched Generation:
+      Generated (first 150 chars): icots.
+   - The cost per pound of apricots is $3.00.
+   \[
+   \text{Cost of apricots} = 6 \, \text{pounds} \times 3.00 \, \text{dollars per pound} = 1...
+      Extracted answer: 38.0
+      Ground truth: 38.0
+      Is correct: True
+
+    Layer 12 Patched Generation:
+      Generated (first 150 chars): icots.
+   - The cost per pound of apricots is $3.00.
+   \[
+   \text{Cost of apricots} = 6 \, \text{pounds} \times 3.00 \, \text{dollars per pound} = 1...
+      Extracted answer: 38.0
+      Ground truth: 38.0
+      Is correct: True
+
+    Layer 13 Patched Generation:
+      Generated (first 150 chars): icots.
+   - The cost per pound of apricots is $3.00.
+   \[
+   \text{Cost of apricots} = 6 \, \text{pounds} \times 3.00 \, \text{dollars per pound} = 1...
+      Extracted answer: 38.0
+      Ground truth: 38.0
+      Is correct: True
+
+    Layer 14 Patched Generation:
+      Generated (first 150 chars): icots.
+   - The cost per pound of apricots is $3.00.
+   \[
+   \text{Cost of apricots} = 6 \, \text{pounds} \times 3.00 \, \text{dollars per pound} = 1...
+      Extracted answer: 38.0
+      Ground truth: 38.0
+      Is correct: True
+
+    Layer 15 Patched Generation:
+      Generated (first 150 chars): icots.
+   - The cost per pound of apricots is $3.00.
+   \[
+   \text{Cost of apricots} = 6 \, \text{pounds} \times 3.00 \, \text{dollars per pound} = 1...
+      Extracted answer: 38.0
+      Ground truth: 38.0
+      Is correct: True
+
+    Layer 16 Patched Generation:
+      Generated (first 150 chars): icots.
+   - The cost per pound of apricots is $3.00.
+   \[
+   \text{Cost of apricots} = 6 \, \text{pounds} \times 3.00 \, \text{dollars per pound} = 1...
+      Extracted answer: 38.0
+      Ground truth: 38.0
+      Is correct: True
+
+    Layer 17 Patched Generation:
+      Generated (first 150 chars): icots.
+   - The cost per pound of apricots is $3.00.
+   \[
+   \text{Cost of apricots} = 6 \, \text{pounds} \times 3.00 \, \text{dollars per pound} = 1...
+      Extracted answer: 38.0
+      Ground truth: 38.0
+      Is correct: True
+
+    Layer 18 Patched Generation:
+      Generated (first 150 chars): icots.
+   - The cost per pound of apricots is $3.00.
+   \[
+   \text{Cost of apricots} = 6 \, \text{pounds} \times 3.00 \, \text{dollars per pound} = 1...
+      Extracted answer: 38.0
+      Ground truth: 38.0
+      Is correct: True
+
+    Layer 19 Patched Generation:
+      Generated (first 150 chars): icots.
+   - The cost per pound of apricots is $3.00.
+   \[
+   \text{Cost of apricots} = 6 \, \text{pounds} \times 3.00 \, \text{dollars per pound} = 1...
+      Extracted answer: 38.0
+      Ground truth: 38.0
+      Is correct: True
+
+    Layer 20 Patched Generation:
+      Generated (first 150 chars): icots.
+   - The cost per pound of apricots is $3.00.
+   \[
+   \text{Cost of apricots} = 6 \, \text{pounds} \times 3.00 \, \text{dollars per pound} = 1...
+      Extracted answer: 38.0
+      Ground truth: 38.0
+      Is correct: True
+
+    Layer 21 Patched Generation:
+      Generated (first 150 chars): icots.
+   - The cost per pound of apricots is $3.00.
+   \[
+   \text{Cost of apricots} = 6 \, \text{pounds} \times 3.00 \, \text{dollars per pound} = 1...
+      Extracted answer: 38.0
+      Ground truth: 38.0
+      Is correct: True
+
+    Layer 22 Patched Generation:
+      Generated (first 150 chars): icots.
+   - The cost per pound of apricots is $3.00.
+   \[
+   \text{Cost of apricots} = 6 \, \text{pounds} \times 3.00 \, \text{dollars per pound} = 1...
+      Extracted answer: 38.0
+      Ground truth: 38.0
+      Is correct: True
+
+    Layer 23 Patched Generation:
+      Generated (first 150 chars): icots.
+   - The cost per pound of apricots is $3.00.
+   \[
+   \text{Cost of apricots} = 6 \, \text{pounds} \times 3.00 \, \text{dollars per pound} = 1...
+      Extracted answer: 44.0
+      Ground truth: 38.0
+      Is correct: False
+
+    Layer 24 Patched Generation:
+      Generated (first 150 chars): icots.
+   - The cost per pound of apricots is $3.00.
+   \[
+   \text{Cost of apricots} = 6 \, \text{pounds} \times 3.00 \, \text{dollars per pound} = 1...
+      Extracted answer: 44.0
+      Ground truth: 38.0
+      Is correct: False
+
+    Layer 25 Patched Generation:
+      Generated (first 150 chars): icots.
+   - The cost per pound of apricots is $3.00.
+   \[
+   \text{Cost of apricots} = 6 \, \text{pounds} \times 3.00 \, \text{dollars per pound} = 1...
+      Extracted answer: 44.0
+      Ground truth: 38.0
+      Is correct: False
+
+    Layer 26 Patched Generation:
+      Generated (first 150 chars): icots.
+   - The cost per pound of apricots is $3.00.
+   \[
+   \text{Cost of apricots} = 6 \, \text{pounds} \times 3.00 \, \text{dollars per pound} = 1...
+      Extracted answer: 44.0
+      Ground truth: 38.0
+      Is correct: False
+
+    Layer 27 Patched Generation:
+      Generated (first 150 chars): icots.
+   - The cost per pound of apricots is $3.00.
+   \[
+   \text{Cost of apricots} = 6 \, \text{pounds} \times 3.00 \, \text{dollars per pound} = 1...
+      Extracted answer: 44.0
+      Ground truth: 38.0
+      Is correct: False
+
+  ✓ Problem 38 complete
+
+================================================================================
+Analyzing problem 42:
+  Injected: 74, Correct: 48
+  Ground truth answer: 84.0
+
+  Using CoT prefix (length 576 of 840):
+    Let's solve the problem step by step.
+
+1. Determine how many grapes Madeline's brother used.
+   Madeline ate 6 grapes, and her brother used 5 times as many grapes as Madeline. Therefore, the number of...
+
+  CORRUPTED_BASELINE:
+    Generated (first 150 chars):  The total number of grapes used is the sum of the grapes eaten by Madeline, the grapes used by her brother, and the grapes used by their mother:
+   \...
+    Extracted answer: 110.0
+    Ground truth: 84.0
+    Is correct: False
+
+  CLEAN_BASELINE:
+    Generated (first 150 chars):  The total number of grapes used is the sum of the grapes eaten by Madeline, the grapes used by her brother, and the grapes used by their mother:
+   \...
+    Extracted answer: 84.0
+    Ground truth: 84.0
+    Is correct: True
+
+    Layer 0 Patched Generation:
+      Generated (first 150 chars):  The total number of grapes used is the sum of the grapes eaten by Madeline, the grapes used by her brother, and the grapes used by their mother:
+   \...
+      Extracted answer: 84.0
+      Ground truth: 84.0
+      Is correct: True
+
+    Layer 1 Patched Generation:
+      Generated (first 150 chars):  The total number of grapes used is the sum of the grapes eaten by Madeline, the grapes used by her brother, and the grapes used by their mother:
+   \...
+      Extracted answer: 84.0
+      Ground truth: 84.0
+      Is correct: True
+
+    Layer 2 Patched Generation:
+      Generated (first 150 chars):  The total number of grapes used is the sum of the grapes eaten by Madeline, the grapes used by her brother, and the grapes used by their mother:
+   \...
+      Extracted answer: 84.0
+      Ground truth: 84.0
+      Is correct: True
+
+    Layer 3 Patched Generation:
+      Generated (first 150 chars):  The total number of grapes used is the sum of the grapes eaten by Madeline, the grapes used by her brother, and the grapes used by their mother:
+   \...
+      Extracted answer: 84.0
+      Ground truth: 84.0
+      Is correct: True
+
+    Layer 4 Patched Generation:
+      Generated (first 150 chars):  The total number of grapes used is the sum of the grapes eaten by Madeline, the grapes used by her brother, and the grapes used by their mother:
+   \...
+      Extracted answer: 84.0
+      Ground truth: 84.0
+      Is correct: True
+
+    Layer 5 Patched Generation:
+      Generated (first 150 chars):  The total number of grapes used is the sum of the grapes eaten by Madeline, the grapes used by her brother, and the grapes used by their mother:
+   \...
+      Extracted answer: 84.0
+      Ground truth: 84.0
+      Is correct: True
+
+    Layer 6 Patched Generation:
+      Generated (first 150 chars):  The total number of grapes used is the sum of the grapes eaten by Madeline, the grapes used by her brother, and the grapes used by their mother:
+   \...
+      Extracted answer: 84.0
+      Ground truth: 84.0
+      Is correct: True
+
+    Layer 7 Patched Generation:
+      Generated (first 150 chars):  The total number of grapes used is the sum of the grapes eaten by Madeline, the grapes used by her brother, and the grapes used by their mother:
+   \...
+      Extracted answer: 84.0
+      Ground truth: 84.0
+      Is correct: True
+
+    Layer 8 Patched Generation:
+      Generated (first 150 chars):  The total number of grapes used is the sum of the grapes eaten by Madeline, the grapes used by her brother, and the grapes used by their mother:
+   \...
+      Extracted answer: 84.0
+      Ground truth: 84.0
+      Is correct: True
+
+    Layer 9 Patched Generation:
+      Generated (first 150 chars):  The total number of grapes used is the sum of the grapes eaten by Madeline, the grapes used by her brother, and the grapes used by their mother:
+   \...
+      Extracted answer: 84.0
+      Ground truth: 84.0
+      Is correct: True
+
+    Layer 10 Patched Generation:
+      Generated (first 150 chars):  The total number of grapes used is the sum of the grapes eaten by Madeline, the grapes used by her brother, and the grapes used by their mother:
+   \...
+      Extracted answer: 84.0
+      Ground truth: 84.0
+      Is correct: True
+
+    Layer 11 Patched Generation:
+      Generated (first 150 chars):  The total number of grapes used is the sum of the grapes eaten by Madeline, the grapes used by her brother, and the grapes used by their mother:
+   \...
+      Extracted answer: 84.0
+      Ground truth: 84.0
+      Is correct: True
+
+    Layer 12 Patched Generation:
+      Generated (first 150 chars):  The total number of grapes used is the sum of the grapes eaten by Madeline, the grapes used by her brother, and the grapes used by their mother:
+   \...
+      Extracted answer: 84.0
+      Ground truth: 84.0
+      Is correct: True
+
+    Layer 13 Patched Generation:
+      Generated (first 150 chars):  The total number of grapes used is the sum of the grapes eaten by Madeline, the grapes used by her brother, and the grapes used by their mother:
+   \...
+      Extracted answer: 84.0
+      Ground truth: 84.0
+      Is correct: True
+
+    Layer 14 Patched Generation:
+      Generated (first 150 chars):  The total number of grapes used is the sum of the grapes eaten by Madeline, the grapes used by her brother, and the grapes used by their mother:
+   \...
+      Extracted answer: 84.0
+      Ground truth: 84.0
+      Is correct: True
+
+    Layer 15 Patched Generation:
+      Generated (first 150 chars):  The total number of grapes used is the sum of the grapes eaten by Madeline, the grapes used by her brother, and the grapes used by their mother:
+   \...
+      Extracted answer: 84.0
+      Ground truth: 84.0
+      Is correct: True
+
+    Layer 16 Patched Generation:
+      Generated (first 150 chars):  The total number of grapes used is the sum of the grapes eaten by Madeline, the grapes used by her brother, and the grapes used by their mother:
+   \...
+      Extracted answer: 84.0
+      Ground truth: 84.0
+      Is correct: True
+
+    Layer 17 Patched Generation:
+      Generated (first 150 chars):  The total number of grapes used is the sum of the grapes eaten by Madeline, the grapes used by her brother, and the grapes used by their mother:
+   \...
+      Extracted answer: 84.0
+      Ground truth: 84.0
+      Is correct: True
+
+    Layer 18 Patched Generation:
+      Generated (first 150 chars):  The total number of grapes used is the sum of the grapes eaten by Madeline, the grapes used by her brother, and the grapes used by their mother:
+   \...
+      Extracted answer: 84.0
+      Ground truth: 84.0
+      Is correct: True
+
+    Layer 19 Patched Generation:
+      Generated (first 150 chars):  The total number of grapes used is the sum of the grapes eaten by Madeline, the grapes used by her brother, and the grapes used by their mother:
+   \...
+      Extracted answer: 84.0
+      Ground truth: 84.0
+      Is correct: True
+
+    Layer 20 Patched Generation:
+      Generated (first 150 chars):  The total number of grapes used is the sum of the grapes eaten by Madeline, the grapes used by her brother, and the grapes used by their mother:
+   \...
+      Extracted answer: 84.0
+      Ground truth: 84.0
+      Is correct: True
+
+    Layer 21 Patched Generation:
+      Generated (first 150 chars):  The total number of grapes used is the sum of the grapes eaten by Madeline, the grapes used by her brother, and the grapes used by their mother:
+   \...
+      Extracted answer: 84.0
+      Ground truth: 84.0
+      Is correct: True
+
+    Layer 22 Patched Generation:
+      Generated (first 150 chars):  The total number of grapes used is the sum of the grapes eaten by Madeline, the grapes used by her brother, and the grapes used by their mother:
+   \...
+      Extracted answer: 80.0
+      Ground truth: 84.0
+      Is correct: False
+
+    Layer 23 Patched Generation:
+      Generated (first 150 chars):  The total number of grapes used is the sum of the grapes eaten by Madeline, the grapes used by her brother, and the grapes used by their mother:
+   \...
+      Extracted answer: 110.0
+      Ground truth: 84.0
+      Is correct: False
+
+    Layer 24 Patched Generation:
+      Generated (first 150 chars):  The total number of grapes used is the sum of the grapes eaten by Madeline, the grapes used by her brother, and the grapes used by their mother:
+   \...
+      Extracted answer: 110.0
+      Ground truth: 84.0
+      Is correct: False
+
+    Layer 25 Patched Generation:
+      Generated (first 150 chars):  The total number of grapes used is the sum of the grapes eaten by Madeline, the grapes used by her brother, and the grapes used by their mother:
+   \...
+      Extracted answer: 110.0
+      Ground truth: 84.0
+      Is correct: False
+
+    Layer 26 Patched Generation:
+      Generated (first 150 chars):  The total number of grapes used is the sum of the grapes eaten by Madeline, the grapes used by her brother, and the grapes used by their mother:
+   \...
+      Extracted answer: 110.0
+      Ground truth: 84.0
+      Is correct: False
+
+    Layer 27 Patched Generation:
+      Generated (first 150 chars):  The total number of grapes used is the sum of the grapes eaten by Madeline, the grapes used by her brother, and the grapes used by their mother:
+   \...
+      Extracted answer: 110.0
+      Ground truth: 84.0
+      Is correct: False
+
+  ✓ Problem 42 complete
+
+================================================================================
+Analyzing problem 46:
+  Injected: 32, Correct: 20
+  Ground truth answer: 30.0
+
+  Using CoT prefix (length 354 of 449):
+    To determine Jeff's age, we need to follow the relationships given in the problem step by step.
+
+1. **Determine Martha's age:**
+   - Mike is 24 years old.
+   - Martha is 4 years younger than Mike.
+   ...
+
+  CORRUPTED_BASELINE:
+    Generated (first 150 chars): 's age is:
+     \[
+     32 + 10 = 42
+     \]
+
+Thus, Jeff is \(\boxed{42}\) years old....
+    Extracted answer: 42.0
+    Ground truth: 30.0
+    Is correct: False
+
+  CLEAN_BASELINE:
+    Generated (first 150 chars): 's age is:
+     \[
+     20 + 10 = 30
+     \]
+
+Thus, Jeff is \(\boxed{30}\) years old....
+    Extracted answer: 30.0
+    Ground truth: 30.0
+    Is correct: True
+
+    Layer 0 Patched Generation:
+      Generated (first 150 chars): 's age is:
+     \[
+     20 + 10 = 30
+     \]
+
+Thus, Jeff is \(\boxed{30}\) years old....
+      Extracted answer: 30.0
+      Ground truth: 30.0
+      Is correct: True
+
+    Layer 1 Patched Generation:
+      Generated (first 150 chars): 's age is:
+     \[
+     20 + 10 = 30
+     \]
+
+Thus, Jeff is \(\boxed{30}\) years old....
+      Extracted answer: 30.0
+      Ground truth: 30.0
+      Is correct: True
+
+    Layer 2 Patched Generation:
+      Generated (first 150 chars): 's age is:
+     \[
+     20 + 10 = 30
+     \]
+
+Thus, Jeff is \(\boxed{30}\) years old....
+      Extracted answer: 30.0
+      Ground truth: 30.0
+      Is correct: True
+
+    Layer 3 Patched Generation:
+      Generated (first 150 chars): 's age is:
+     \[
+     20 + 10 = 30
+     \]
+
+Thus, Jeff is \(\boxed{30}\) years old....
+      Extracted answer: 30.0
+      Ground truth: 30.0
+      Is correct: True
+
+    Layer 4 Patched Generation:
+      Generated (first 150 chars): 's age is:
+     \[
+     20 + 10 = 30
+     \]
+
+Thus, Jeff is \(\boxed{30}\) years old....
+      Extracted answer: 30.0
+      Ground truth: 30.0
+      Is correct: True
+
+    Layer 5 Patched Generation:
+      Generated (first 150 chars): 's age is:
+     \[
+     20 + 10 = 30
+     \]
+
+Thus, Jeff is \(\boxed{30}\) years old....
+      Extracted answer: 30.0
+      Ground truth: 30.0
+      Is correct: True
+
+    Layer 6 Patched Generation:
+      Generated (first 150 chars): 's age is:
+     \[
+     20 + 10 = 30
+     \]
+
+Thus, Jeff is \(\boxed{30}\) years old....
+      Extracted answer: 30.0
+      Ground truth: 30.0
+      Is correct: True
+
+    Layer 7 Patched Generation:
+      Generated (first 150 chars): 's age is:
+     \[
+     20 + 10 = 30
+     \]
+
+Thus, Jeff is \(\boxed{30}\) years old....
+      Extracted answer: 30.0
+      Ground truth: 30.0
+      Is correct: True
+
+    Layer 8 Patched Generation:
+      Generated (first 150 chars): 's age is:
+     \[
+     20 + 10 = 30
+     \]
+
+Thus, Jeff is \(\boxed{30}\) years old....
+      Extracted answer: 30.0
+      Ground truth: 30.0
+      Is correct: True
+
+    Layer 9 Patched Generation:
+      Generated (first 150 chars): 's age is:
+     \[
+     20 + 10 = 30
+     \]
+
+Thus, Jeff is \(\boxed{30}\) years old....
+      Extracted answer: 30.0
+      Ground truth: 30.0
+      Is correct: True
+
+    Layer 10 Patched Generation:
+      Generated (first 150 chars): 's age is:
+     \[
+     20 + 10 = 30
+     \]
+
+Thus, Jeff is \(\boxed{30}\) years old....
+      Extracted answer: 30.0
+      Ground truth: 30.0
+      Is correct: True
+
+    Layer 11 Patched Generation:
+      Generated (first 150 chars): 's age is:
+     \[
+     20 + 10 = 30
+     \]
+
+Thus, Jeff is \(\boxed{30}\) years old....
+      Extracted answer: 30.0
+      Ground truth: 30.0
+      Is correct: True
+
+    Layer 12 Patched Generation:
+      Generated (first 150 chars): 's age is:
+     \[
+     20 + 10 = 30
+     \]
+
+Thus, Jeff is \(\boxed{30}\) years old....
+      Extracted answer: 30.0
+      Ground truth: 30.0
+      Is correct: True
+
+    Layer 13 Patched Generation:
+      Generated (first 150 chars): 's age is:
+     \[
+     20 + 10 = 30
+     \]
+
+Thus, Jeff is \(\boxed{30}\) years old....
+      Extracted answer: 30.0
+      Ground truth: 30.0
+      Is correct: True
+
+    Layer 14 Patched Generation:
+      Generated (first 150 chars): 's age is:
+     \[
+     20 + 10 = 30
+     \]
+
+Thus, Jeff is \(\boxed{30}\) years old....
+      Extracted answer: 30.0
+      Ground truth: 30.0
+      Is correct: True
+
+    Layer 15 Patched Generation:
+      Generated (first 150 chars): 's age is:
+     \[
+     20 + 10 = 30
+     \]
+
+Thus, Jeff is \(\boxed{30}\) years old....
+      Extracted answer: 30.0
+      Ground truth: 30.0
+      Is correct: True
+
+    Layer 16 Patched Generation:
+      Generated (first 150 chars): 's age is:
+     \[
+     20 + 10 = 30
+     \]
+
+Thus, Jeff is \(\boxed{30}\) years old....
+      Extracted answer: 30.0
+      Ground truth: 30.0
+      Is correct: True
+
+    Layer 17 Patched Generation:
+      Generated (first 150 chars): 's age is:
+     \[
+     20 + 10 = 30
+     \]
+
+Thus, Jeff is \(\boxed{30}\) years old....
+      Extracted answer: 30.0
+      Ground truth: 30.0
+      Is correct: True
+
+    Layer 18 Patched Generation:
+      Generated (first 150 chars): 's age is:
+     \[
+     20 + 10 = 30
+     \]
+
+Thus, Jeff is \(\boxed{30}\) years old....
+      Extracted answer: 30.0
+      Ground truth: 30.0
+      Is correct: True
+
+    Layer 19 Patched Generation:
+      Generated (first 150 chars): 's age is:
+     \[
+     20 + 10 = 30
+     \]
+
+Thus, Jeff is \(\boxed{30}\) years old....
+      Extracted answer: 30.0
+      Ground truth: 30.0
+      Is correct: True
+
+    Layer 20 Patched Generation:
+      Generated (first 150 chars): 's age is:
+     \[
+     20 + 10 = 30
+     \]
+
+Thus, Jeff is \(\boxed{30}\) years old....
+      Extracted answer: 30.0
+      Ground truth: 30.0
+      Is correct: True
+
+    Layer 21 Patched Generation:
+      Generated (first 150 chars): 's age is:
+     \[
+     20 + 10 = 30
+     \]
+
+Thus, Jeff is \(\boxed{30}\) years old....
+      Extracted answer: 30.0
+      Ground truth: 30.0
+      Is correct: True
+
+    Layer 22 Patched Generation:
+      Generated (first 150 chars): 's age is:
+     \[
+     20 + 10 = 30
+     \]
+
+Thus, Jeff is \(\boxed{30}\) years old....
+      Extracted answer: 30.0
+      Ground truth: 30.0
+      Is correct: True
+
+    Layer 23 Patched Generation:
+      Generated (first 150 chars): 's age is:
+     \[
+     32 + 10 = 42
+     \]
+
+Thus, Jeff is \(\boxed{42}\) years old....
+      Extracted answer: 42.0
+      Ground truth: 30.0
+      Is correct: False
+
+    Layer 24 Patched Generation:
+      Generated (first 150 chars): 's age is:
+     \[
+     32 + 10 = 42
+     \]
+
+Thus, Jeff is \(\boxed{42}\) years old....
+      Extracted answer: 42.0
+      Ground truth: 30.0
+      Is correct: False
+
+    Layer 25 Patched Generation:
+      Generated (first 150 chars): 's age is:
+     \[
+     32 + 10 = 42
+     \]
+
+Thus, Jeff is \(\boxed{42}\) years old....
+      Extracted answer: 42.0
+      Ground truth: 30.0
+      Is correct: False
+
+    Layer 26 Patched Generation:
+      Generated (first 150 chars): 's age is:
+     \[
+     32 + 10 = 42
+     \]
+
+Thus, Jeff is \(\boxed{42}\) years old....
+      Extracted answer: 42.0
+      Ground truth: 30.0
+      Is correct: False
+
+    Layer 27 Patched Generation:
+      Generated (first 150 chars): 's age is:
+     \[
+     32 + 10 = 42
+     \]
+
+Thus, Jeff is \(\boxed{42}\) years old....
+      Extracted answer: 42.0
+      Ground truth: 30.0
+      Is correct: False
+
+  ✓ Problem 46 complete
+
+================================================================================
