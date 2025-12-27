@@ -1,0 +1,37 @@
+Visualization Generation Log
+Generated: 2025-12-26 23:07:09
+================================================================================
+
+Loading results from [B]-01-output.json...
+Loaded 164 faithful and 107 corrected samples
+
+================================================================================
+Generating All Visualizations
+================================================================================
+
+Generating temporal attention comparison...
+  Saved: [D]-01-figures/01_temporal_attention_comparison.png
+Generating all metrics summary...
+  Saved: [D]-01-figures/02_all_metrics_summary.png
+Generating Residual Stream Activation Ratio...
+  Saved: [D]-01-figures/03_residual_stream_comparison.png
+Generating Error Position Attention Entropy...
+  Saved: [D]-01-figures/04_attention_entropy_comparison.png
+Generating correlation heatmap...
+  Saved: [D]-01-figures/05_correlation_heatmaps.png
+Generating effect sizes plot...
+  Saved: [D]-01-figures/06_effect_sizes.png
+Generating scatter matrix...
+  Saved: [D]-01-figures/07_scatter_matrix.png
+Generating ratio comparison...
+  Saved: [D]-01-figures/08_ratio_comparison.png
+
+All visualizations generated successfully!
+Output directory: [D]-01-figures/
+
+================================================================================
+Summary:
+  • 8 visualizations generated
+  • Output directory: [D]-01-figures/
+  • Log file: [D]-01-logs.txt
+================================================================================
