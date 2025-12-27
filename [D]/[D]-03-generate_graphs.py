@@ -20,7 +20,6 @@ import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 from scipy import stats
-import sys
 from datetime import datetime
 
 class C:
@@ -33,9 +32,8 @@ class C:
     BOLD = '\033[1m'
     UNDERLINE = '\033[4m'
 
-INPUT_FILE = "[B]-03-output.json"
-OUTPUT_DIR = "[D]-03-figures/"
-LOG_FILE = "[D]-03-logs.txt"
+INPUT_FILE = "input/[B]-03-output.json"
+OUTPUT_DIR = "output/[D]-03-figures/"
 
 # Plot styling
 plt.style.use('seaborn-v0_8-darkgrid')
@@ -44,28 +42,6 @@ FIGSIZE_SINGLE = (10, 6)
 FIGSIZE_DOUBLE = (12, 5)
 FIGSIZE_LARGE = (14, 8)
 DPI = 300
-
-class Logger:
-    """Logs output to both console and file, stripping color codes from file."""
-    def __init__(self, filename):
-        import re
-        import os
-        os.makedirs(OUTPUT_DIR, exist_ok=True)
-        self.terminal = sys.stdout
-        self.log = open(filename, 'w', encoding='utf-8')
-        self.re = re
-        
-    def write(self, message):
-        self.terminal.write(message)
-        clean_message = self.re.sub(r'\033\[[0-9;]+m', '', message)
-        self.log.write(clean_message)
-        
-    def flush(self):
-        self.terminal.flush()
-        self.log.flush()
-        
-    def close(self):
-        self.log.close()
 
 
 class PrecomputationVisualizationGenerator:
@@ -598,46 +574,35 @@ def main():
     import os
     os.makedirs(OUTPUT_DIR, exist_ok=True)
     
-    logger = Logger(LOG_FILE)
-    sys.stdout = logger
+    print(f"Pre-Computation Visualization Generation")
+    print(f"Generated: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+    print(f"{'='*80}\n")
     
-    try:
-        print(f"Pre-Computation Visualization Generation Log")
-        print(f"Generated: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
-        print(f"{'='*80}\n")
-        
-        generator = PrecomputationVisualizationGenerator(INPUT_FILE)
-        generator.generate_all_plots()
-        
-        print(f"\n{C.HEADER}{'='*80}{C.ENDC}")
-        print(f"{C.BOLD}Summary:{C.ENDC}")
-        print(f"  • 5 visualizations generated")
-        print(f"  • Output directory: {OUTPUT_DIR}")
-        print(f"  • Log file: {LOG_FILE}")
-        
-        # Print key finding
-        faithful_above = generator.faithful['test_accuracy'] - generator.faithful['baseline_accuracy']
-        corrected_above = generator.corrected['test_accuracy'] - generator.corrected['baseline_accuracy']
-        diff = corrected_above - faithful_above
-        
-        print(f"\n{C.BOLD}Key Finding:{C.ENDC}")
-        print(f"  Faithful above baseline:      {faithful_above:+.4f}")
-        print(f"  Self-Corrected above baseline: {corrected_above:+.4f}")
-        print(f"  Difference:                    {diff:+.4f}")
-        
-        if abs(diff) < 0.05:
-            print(f"  → {C.OKGREEN}No evidence of differential pre-computation{C.ENDC}")
-        elif corrected_above > faithful_above:
-            print(f"  → {C.WARNING}Self-corrected shows more pre-computation{C.ENDC}")
-        else:
-            print(f"  → {C.WARNING}Faithful shows more pre-computation{C.ENDC}")
-        
-        print(f"{C.HEADER}{'='*80}{C.ENDC}")
-        
-    finally:
-        sys.stdout = logger.terminal
-        logger.close()
-        print(f"\n{C.OKGREEN}Full output saved to {LOG_FILE}{C.ENDC}")
+    generator = PrecomputationVisualizationGenerator(INPUT_FILE)
+    generator.generate_all_plots()
+    
+    print(f"\n{C.HEADER}{'='*80}{C.ENDC}")
+    print(f"{C.BOLD}Summary:{C.ENDC}")
+    print(f"  • 5 visualizations generated")
+    print(f"  • Output directory: {OUTPUT_DIR}")
+    
+    faithful_above = generator.faithful['test_accuracy'] - generator.faithful['baseline_accuracy']
+    corrected_above = generator.corrected['test_accuracy'] - generator.corrected['baseline_accuracy']
+    diff = corrected_above - faithful_above
+    
+    print(f"\n{C.BOLD}Key Finding:{C.ENDC}")
+    print(f"  Faithful above baseline:      {faithful_above:+.4f}")
+    print(f"  Self-Corrected above baseline: {corrected_above:+.4f}")
+    print(f"  Difference:                    {diff:+.4f}")
+    
+    if abs(diff) < 0.05:
+        print(f"  → {C.OKGREEN}No evidence of differential pre-computation{C.ENDC}")
+    elif corrected_above > faithful_above:
+        print(f"  → {C.WARNING}Self-corrected shows more pre-computation{C.ENDC}")
+    else:
+        print(f"  → {C.WARNING}Faithful shows more pre-computation{C.ENDC}")
+    
+    print(f"{C.HEADER}{'='*80}{C.ENDC}")
 
 
 if __name__ == "__main__":

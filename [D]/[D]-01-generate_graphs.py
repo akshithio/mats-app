@@ -22,7 +22,6 @@ import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 from scipy import stats
-import sys
 from datetime import datetime
 
 class C:
@@ -35,9 +34,8 @@ class C:
     BOLD = '\033[1m'
     UNDERLINE = '\033[4m'
 
-INPUT_FILE = "[B]-01-output.json"
-OUTPUT_DIR = "[D]-01-figures/"
-LOG_FILE = "[D]-01-logs.txt"
+INPUT_FILE = "input/[B]-01-output.json"
+OUTPUT_DIR = "output/[D]-01-figures/"
 
 # Plot styling
 plt.style.use('seaborn-v0_8-darkgrid')
@@ -46,28 +44,6 @@ FIGSIZE_SINGLE = (10, 6)
 FIGSIZE_DOUBLE = (12, 5)
 FIGSIZE_GRID = (15, 10)
 DPI = 300
-
-class Logger:
-    """Logs output to both console and file, stripping color codes from file."""
-    def __init__(self, filename):
-        import re
-        import os
-        os.makedirs(OUTPUT_DIR, exist_ok=True)
-        self.terminal = sys.stdout
-        self.log = open(filename, 'w', encoding='utf-8')
-        self.re = re
-        
-    def write(self, message):
-        self.terminal.write(message)
-        clean_message = self.re.sub(r'\033\[[0-9;]+m', '', message)
-        self.log.write(clean_message)
-        
-    def flush(self):
-        self.terminal.flush()
-        self.log.flush()
-        
-    def close(self):
-        self.log.close()
 
 
 class VisualizationGenerator:
@@ -603,28 +579,18 @@ def main():
     import os
     os.makedirs(OUTPUT_DIR, exist_ok=True)
     
-    logger = Logger(LOG_FILE)
-    sys.stdout = logger
+    print(f"Visualization Generation")
+    print(f"Generated: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+    print(f"{'='*80}\n")
     
-    try:
-        print(f"Visualization Generation Log")
-        print(f"Generated: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
-        print(f"{'='*80}\n")
-        
-        generator = VisualizationGenerator(INPUT_FILE)
-        generator.generate_all_plots()
-        
-        print(f"\n{C.HEADER}{'='*80}{C.ENDC}")
-        print(f"{C.BOLD}Summary:{C.ENDC}")
-        print(f"  • 8 visualizations generated")
-        print(f"  • Output directory: {OUTPUT_DIR}")
-        print(f"  • Log file: {LOG_FILE}")
-        print(f"{C.HEADER}{'='*80}{C.ENDC}")
-        
-    finally:
-        sys.stdout = logger.terminal
-        logger.close()
-        print(f"\n{C.OKGREEN}Full output saved to {LOG_FILE}{C.ENDC}")
+    generator = VisualizationGenerator(INPUT_FILE)
+    generator.generate_all_plots()
+    
+    print(f"\n{C.HEADER}{'='*80}{C.ENDC}")
+    print(f"{C.BOLD}Summary:{C.ENDC}")
+    print(f"  • 8 visualizations generated")
+    print(f"  • Output directory: {OUTPUT_DIR}")
+    print(f"{C.HEADER}{'='*80}{C.ENDC}")
 
 
 if __name__ == "__main__":
