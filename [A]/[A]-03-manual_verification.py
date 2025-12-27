@@ -23,8 +23,7 @@ Output:
 
 import json
 import os
-import re
-from typing import Dict, List, Tuple
+from typing import Dict, List
 
 class C:
     HEADER = '\033[95m'
